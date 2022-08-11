@@ -47,7 +47,9 @@ function NovoArtigo(){
                     {dados.map(({ codigo, titulo, descricao }) => (
                         <article key={codigo}>
                             <div className="artigo">
-                                <p> Imagem lateral </p>
+                                <div className="figura">
+                                    <p> Imagem lateral </p>
+                                </div>
                                 <p> Título: {titulo}  </p>
                                 <p> Descrição: {descricao} </p>
                             </div>
