@@ -1,0 +1,39 @@
+.artigo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    background-color: #dcdddd;
+    margin-top: 5px;
+    border-radius: 20px  5px 20px 20px;
+}
+.cabecalho {    
+    display: inline-flex;
+    font-size: 14px;
+    color: black;
+    margin-left: 10%;
+    margin-right: 40%;
+    padding: 1%;
+}
+
+
+.informacoes {
+    margin-top: 0;
+    background-color: #93909b;
+    color: aliceblue;
+    border-radius: 5px  10px 55px 10px;
+    margin-bottom: 15px;
+}
+
+.informacoes h2 {
+    margin-left: 5%;    
+}
+
+.foto {
+    background-color: whitesmoke;
+	border: 1px solid black;
+	height: 120px;
+	width: 150px;	margin: 10px;
+	border-radius: 5px  10px 5px 10px;	
+	box-shadow: 2px 3px 10px black;    
+}
