@@ -37,21 +37,24 @@ function NovoArtigo(){
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <h1> A Nova  list4 Artigos  </h1>
+                        <h1> A Nova  lista de Artigos  </h1>
                     </div>
                 </div>
                 <div className="row">
 
-                    Lista:
+                    <h4>Lista</h4>                    
                     
                     {dados.map(({ codigo, titulo, descricao }) => (
                         <article key={codigo}>
                             <div className="artigo">
-                                <div className="figura">
+                                <div className="foto">
                                     <p> Imagem lateral </p>
                                 </div>
-                                <p> Título: {titulo}  </p>
-                                <p> Descrição: {descricao} </p>
+                                <div className="texto">
+                                    <p> Título: {titulo}  </p>
+                                    <p> Descrição: {descricao} </p>
+                                    <p><Link to={`/DetalheArtigo/${codigo}`}  className="btn btn"> Ver: {codigo}</Link></p>
+                                </div>
                             </div>
                         </article>
                     ))}

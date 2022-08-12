@@ -27,9 +27,12 @@ const Navegacao = () => {
                             <li>
                                 <Link to="/Artigo" className="nav-link">Publicações</Link>
                             </li>
-                            {/* <li>
+                            <li>
                                 <Link to="/Perfil" className="nav-link">Perfil</Link>
-                            </li> */}
+                            </li>
+                            <li>
+                                <Link to="/NovoArtigo" className="nav-link">Lisa artigos</Link>
+                            </li>
                         </div>
                     </ul>
                 </div>
