@@ -1,11 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import	{ useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 import '../estilos/Publicar.css'
 import api from '../../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from '@material-ui/core/Button';
+
 function Publicar(){
 
     const history = useHistory();
+    const baseUrlExterno ="http://45.191.187.35:3033/artigo/imagem";
+    const { id } = useParams()
+
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+
+    useEffect(() => {   
+        if (selectedImage) {
+            setImageUrl(URL.createObjectURL(selectedImage));
+        }
+        
+      }, [selectedImage]);
+
+    // codigo para postar foto inicio
+    function postarFoto () {
+        if (!selectedImage) {
+            return;
+        }
+        console.log("Imagem selecionada okei, tentando postar.. ")
+        let formData = new FormData();
+        try {
+            formData.append('artigo', 10);
+            formData.append('image', selectedImage);
+            // Requisicao para postar imagem
+            api.post(baseUrlExterno, formData,
+                {          
+                    headers: {          
+                        Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
+                        'Content-Type': 'multipart/form-data'            
+                    }
+                })
+                .then(res => {
+                        alert("Imagem salva com sucesso.")
+                })
+            
+        } catch (error) {
+            alert("Erro ao postar imagem: "+ error)
+        }
+
+
+    };
+    // fim postar foto
 
     const [artigo, setArtigo]=useState(
         {
@@ -81,6 +126,24 @@ function Publicar(){
                     </div>
                 </div>
                 <div className="row">
+                        <div className="row">
+                        <input
+                            accept="image/*"
+                            type="file"
+                            id="select-image"
+                            style={{ display: 'none' }}
+                            onChange={e => setSelectedImage(e.target.files[0])}
+                        />
+                        <label htmlFor="select-image">
+                            <Button variant="contained" size='small' color="secondary" component="span">
+                                Buscar foto
+                            </Button>
+                        </label>
+                        </div>
+                        <div className="row">
+                            <button onClick={postarFoto} type="button" class="btn btn-secondary">Publicar imagem</button>
+                        </div>
+
                     <div className="col">
                         <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoPost()}>Cadastrar</button>
                     </div>
