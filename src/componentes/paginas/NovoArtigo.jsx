@@ -9,28 +9,47 @@ function NovoArtigo(){
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
     const [dados, setDados]=useState([]);
+    const [img, setImg]=useState();
+    const [imageUrl, setImageUrl] = useState(0);
 
     const artigos = []
 
     const artigoGet = async()=>{
-    if(!permit){
-      await axios.get(baseUrlExterno, 
-        { headers: {          
-            Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+        if(!permit){
+        await axios.get(baseUrlExterno, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+        })
+        .then(response => {
+            setDados(response.data);
+        }).catch(error=> {
+            console.log(error);
+        })
         }
-      })
-      .then(response => {
-        setDados(response.data);
-      }).catch(error=> {
-        console.log(error);
-      })
     }
-}
 
-    useEffect(()=>{
-        artigoGet()
-        console.log('Interval triggered');
-    }, 1000);      
+    useEffect(async ()=>{              
+        await artigoGet(); 
+        decodifImagem();     
+        console.log('Invocou use efeito');
+    }, img);      
+
+
+    function decodifImagem(){
+        // Decodifica a imagem do banco de dados
+        console.log(dados.length)
+        if (dados.length > 0) {
+            console.log("esperou e carregou dados")
+            console.log(dados)
+            console.log("Chamou como callback")
+            console.log(dados[7])
+
+            setImageUrl('data:image/jpeg;base64,' + dados[7].imagem)
+        }else {
+            setImg(true)
+        }
+    }
 
     return(
         <div>
@@ -44,11 +63,12 @@ function NovoArtigo(){
 
                     <h4>Lista</h4>                    
                     
-                    {dados.map(({ codigo, titulo, descricao }) => (
+                    {dados.map(({ codigo, titulo, descricao, imagem }) => (
                         <article key={codigo}>
                             <div className="artigo">
                                 <div className="foto">
                                     <p> Imagem lateral </p>
+                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "-50px 5px" }} src={imageUrl} /> : null}
                                 </div>
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>
