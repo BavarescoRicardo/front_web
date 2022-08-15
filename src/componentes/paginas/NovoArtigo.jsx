@@ -36,12 +36,9 @@ function NovoArtigo(){
 
     function decodifImagem(foto){
         // Decodifica a imagem do banco de dados
-        console.log(dados.length)
         if (dados.length > 0) {
             console.log("esperou e carregou dados")
-            console.log(dados)
             console.log("Chamou como callback")
-            console.log(imageUrl)
 
             // setImageUrl('data:image/jpeg;base64,' + foto)
 
@@ -72,9 +69,9 @@ function NovoArtigo(){
                         <article key={codigo}>
                             <div className="artigo">
                                 <div className="foto">
-                                    <p> Imagem lateral </p>
                                     {(imagem && img)? decodifImagem(imagem) : null}
-                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "-50px 5px" }} src={imageUrl[1]} /> : null}
+                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[imageUrl.length-1]} /> : null}
+                                    {console.log(imageUrl.length)}
                                 </div>
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>
