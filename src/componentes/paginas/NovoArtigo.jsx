@@ -9,10 +9,8 @@ function NovoArtigo(){
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
     const [dados, setDados]=useState([]);
-    const [img, setImg]=useState();
+    const [img, setImg]=useState(false);
     const [imageUrl, setImageUrl] = useState(0);
-
-    const artigos = []
 
     const artigoGet = async()=>{
         if(!permit){
@@ -29,14 +27,14 @@ function NovoArtigo(){
         }
     }
 
-    useEffect(async ()=>{              
-        await artigoGet(); 
-        decodifImagem();     
+    useEffect(async ()=>{            
+        await artigoGet();      
         console.log('Invocou use efeito');
-    }, img);      
+        setImg(true)
+    }, []); 
 
 
-    function decodifImagem(){
+    function decodifImagem(foto){
         // Decodifica a imagem do banco de dados
         console.log(dados.length)
         if (dados.length > 0) {
@@ -45,9 +43,8 @@ function NovoArtigo(){
             console.log("Chamou como callback")
             console.log(dados[7])
 
-            setImageUrl('data:image/jpeg;base64,' + dados[7].imagem)
-        }else {
-            setImg(true)
+            setImageUrl('data:image/jpeg;base64,' + foto)
+            setImg(false)
         }
     }
 
@@ -68,6 +65,7 @@ function NovoArtigo(){
                             <div className="artigo">
                                 <div className="foto">
                                     <p> Imagem lateral </p>
+                                    {(imagem && img)? decodifImagem(imagem) : null}
                                     {imagem? <img style={{ width: "95%", height: "85%", margin: "-50px 5px" }} src={imageUrl} /> : null}
                                 </div>
                                 <div className="texto">
