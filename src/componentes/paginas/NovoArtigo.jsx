@@ -10,7 +10,7 @@ function NovoArtigo(){
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
     const [dados, setDados]=useState([]);
     const [img, setImg]=useState(false);
-    const [imageUrl, setImageUrl] = useState(0);
+    const [imageUrl, setImageUrl] = useState([]);
 
     const artigoGet = async()=>{
         if(!permit){
@@ -25,7 +25,7 @@ function NovoArtigo(){
             console.log(error);
         })
         }
-    }
+    }    
 
     useEffect(async ()=>{            
         await artigoGet();      
@@ -41,9 +41,17 @@ function NovoArtigo(){
             console.log("esperou e carregou dados")
             console.log(dados)
             console.log("Chamou como callback")
-            console.log(dados[7])
+            console.log(imageUrl)
 
-            setImageUrl('data:image/jpeg;base64,' + foto)
+            // setImageUrl('data:image/jpeg;base64,' + foto)
+
+            // setImageUrl(
+            //     {
+            //         imageUrl.push('data:image/jpeg;base64,' + foto)
+            //     });
+
+            setImageUrl(imageUrl => [...imageUrl, ('data:image/jpeg;base64,' + foto)])
+
             setImg(false)
         }
     }
@@ -66,7 +74,7 @@ function NovoArtigo(){
                                 <div className="foto">
                                     <p> Imagem lateral </p>
                                     {(imagem && img)? decodifImagem(imagem) : null}
-                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "-50px 5px" }} src={imageUrl} /> : null}
+                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "-50px 5px" }} src={imageUrl[1]} /> : null}
                                 </div>
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>

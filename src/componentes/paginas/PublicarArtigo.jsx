@@ -10,8 +10,7 @@ function Publicar(){
 
     const history = useHistory();
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/imagem";
-    const { id } = useParams()
-
+    var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 
@@ -30,7 +29,7 @@ function Publicar(){
         console.log("Imagem selecionada okei, tentando postar.. ")
         let formData = new FormData();
         try {
-            formData.append('artigo', 10);
+            formData.append('artigo', codigoArtigo);
             formData.append('image', selectedImage);
             // Requisicao para postar imagem
             api.post(baseUrlExterno, formData,
@@ -42,6 +41,7 @@ function Publicar(){
                 })
                 .then(res => {
                         alert("Imagem salva com sucesso.")
+                        history.push('/Artigo');
                 })
             
         } catch (error) {
@@ -82,7 +82,10 @@ function Publicar(){
             })
             .then(async response => {
               if(response.data){
-                history.push('/Artigo');
+                //setArtigo(response.data)
+                console.log('Publicado artigo')
+                codigoArtigo = response.data.codigo
+                postarFoto()                
               }else{
                 console.log("error ao publicar");    
               }
@@ -100,7 +103,10 @@ function Publicar(){
                 <h1>Publicar</h1>
                 <h2>Artigo</h2>
             </div>
-            <div className="formulario">
+            <div className="image">                            
+                    {selectedImage? <img src={imageUrl} /> : null}
+            </div>
+            <div className="formulario" style={{marginTop:'-10%'}}>
                 <div className="camposcad">
                     <div className="row">
                         <div className="col">
