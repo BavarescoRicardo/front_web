@@ -8,9 +8,10 @@ function NovoArtigo(){
     const permit = localStorage.getItem('tokens') == null
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
-    const [dados, setDados]=useState([]);
+    const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
     const [imageUrl, setImageUrl] = useState([]);
+    const [codImagem, setCodImagem] = useState([]);
 
     const artigoGet = async()=>{
         if(!permit){
@@ -34,20 +35,12 @@ function NovoArtigo(){
     }, []); 
 
 
-    function decodifImagem(foto){
+    function decodifImagem(foto, codigo){
         // Decodifica a imagem do banco de dados
         if (dados.length > 0) {
-            console.log("esperou e carregou dados")
             console.log("Chamou como callback")
-
-            // setImageUrl('data:image/jpeg;base64,' + foto)
-
-            // setImageUrl(
-            //     {
-            //         imageUrl.push('data:image/jpeg;base64,' + foto)
-            //     });
-
             setImageUrl(imageUrl => [...imageUrl, ('data:image/jpeg;base64,' + foto)])
+            setCodImagem(codImagem => [...codImagem, codigo])
 
             setImg(false)
         }
@@ -69,9 +62,12 @@ function NovoArtigo(){
                         <article key={codigo}>
                             <div className="artigo">
                                 <div className="foto">
-                                    {(imagem && img)? decodifImagem(imagem) : null}
-                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[imageUrl.length-1]} /> : null}
-                                    {console.log(imageUrl.length)}
+                                {console.log("lista map")}
+                                {console.log(codImagem)}
+
+                                    {(imagem && img && dados.length > 1)? decodifImagem(imagem, codigo) : null}
+                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}
+                                    
                                 </div>
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>
