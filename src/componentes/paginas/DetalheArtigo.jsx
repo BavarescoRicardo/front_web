@@ -66,30 +66,34 @@ function Detalhe(){
                             <h2> Conteúdo </h2>
                         </div>
                     </div>
-                    <div className="row">
-                        {/* {artigos.map(artigo=> (
-                            <tr key= {artigo.codigo}>
-                                <td> {artigo.codigo }</td>
-                                <td> {artigo.titulo }</td>
-                                <td> {artigo.descricao }</td>
-                            </tr>                                   
-                        ))}                         */}
-                    </div>
                     
                     <div className="row">
                         <div className="col">
-                        <div className="col">
-                            <div className="informacoes" style={{height: '250px'}}>
-                                <h3>Imagem 1 deve estar aqui </h3>
-                                <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} />
+                            <div className="col">
+                                <div className="informacoes" style={{height: '250px'}}>
+                                    <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} />
+                                </div>
                             </div>
                         </div>
-                        </div>
-
-                        <div className="col">
-                            <p>comentarios ao lado </p>
+                        <div className="col">                            
                         </div>
                     </div>
+
+
+                    {artigos.map(({ codigo, titulo, descricao, imagem }) => (
+                        <article key={codigo}>
+                            <div className="row">
+                                <div className="col">
+                                    <div className="textoDetalhe">
+                                        <p> Título: {titulo}  </p>
+                                        <p> Descrição: {descricao} </p>
+                                        <p><Link to={`/DetalheArtigo/${codigo}`}  className="btn btn"> Ver: {codigo}</Link></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+
 
                     <div class="row">
                         <div className="col">
