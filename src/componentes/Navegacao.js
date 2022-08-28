@@ -31,7 +31,7 @@ const Navegacao = () => {
                                 <Link to="/Perfil" className="nav-link">Perfil</Link>
                             </li>
                             <li>
-                                <Link to="/NovoArtigo" className="nav-link">Lisa artigos</Link>
+                                <Link to="/Login" className="nav-link">Login</Link>
                             </li>
                         </div>
                     </ul>
@@ -39,7 +39,7 @@ const Navegacao = () => {
             </nav>
 
             <Switch>
-                <Route exact path="/"> <Login/>                                         </Route>
+                <Route exact path="/"> <NovoArtigo/>                                         </Route>
                 <Route path="/Login"> <Login/>                                          </Route>
                 <Route path="/NovoArtigo"> <NovoArtigo/>                                </Route>
                 <Route path="/Artigo"> <Artigo/>                                        </Route>
