@@ -14,18 +14,12 @@ function NovoArtigo(){
     const [codImagem, setCodImagem] = useState([]);
 
     const artigoGet = async()=>{
-        if(!permit){
-        await axios.get(baseUrlExterno, 
-            { headers: {          
-                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
-            }
-        })
+        await axios.get(baseUrlExterno)
         .then(response => {
             setDados(response.data);
         }).catch(error=> {
             console.log(error);
         })
-        }
     }    
 
     useEffect(async ()=>{            
