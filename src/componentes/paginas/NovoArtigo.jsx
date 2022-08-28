@@ -72,7 +72,7 @@ function NovoArtigo(){
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>
                                     <p> Descrição: {descricao} </p>
-                                    <p><Link to={`/DetalheArtigo/${codigo}`}  className="btn btn"> Ver: {codigo}</Link></p>
+                                    <p><Link to={`/DetalheArtigo/${codigo}`}  className="btn btn"> Ver </Link></p>
                                 </div>
                             </div>
                         </article>

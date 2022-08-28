@@ -50,7 +50,7 @@ function Artigo(){
                                 <td> {artigo.codigo }</td>
                                 <td> {artigo.titulo }</td>
                                 <td> {artigo.descricao }</td>
-                                <td><Link to={`/DetalheArtigo/${artigo.codigo}`}  className="btn btn"> Ver: {artigo.codigo}</Link></td>
+                                <td><Link to={`/DetalheArtigo/${artigo.codigo}`}  className="btn btn"> Ver: </Link></td>
                             </tr>
                             ))}
                         </tbody>
