@@ -7,7 +7,8 @@ import '../estilos/Detal.css';
 
 function Detalhe(){
     
-    const { id } = useParams();    
+    const { id } = useParams();
+    const permit = localStorage.getItem('tokens') == null
     const baseUrl ="http://localhost:3033/artigo/artigodettalhe";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigodettalhe";
 
@@ -17,13 +18,7 @@ function Detalhe(){
     const [imageUrl, setImageUrl] = useState([]);  
     
     const detalhrGet = async()=>{
-      await axios.post(baseUrl, formData,
-        {          
-            headers: {          
-                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
-                'Content-Type': 'multipart/form-data'            
-            }
-        })
+      await axios.post(baseUrl, formData)
       .then(response => {
         // console.log("Dados recebidos: ");
         
@@ -124,9 +119,11 @@ function Detalhe(){
             </section>
         
             <section>
-                rodape
                 <div className="btn-fim-editar">
-                    <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
+                    {!permit  
+                        ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
+                        : <h1>Sem permissões</h1>
+                    }
                 </div>
             </section>
             
