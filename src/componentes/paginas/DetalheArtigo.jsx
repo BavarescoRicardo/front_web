@@ -18,9 +18,9 @@ function Detalhe(){
     const [imageUrl, setImageUrl] = useState([]);  
     
     const detalhrGet = async()=>{
+        console.log("requisicao: "+id)
       await axios.post(baseUrl, formData)
       .then(response => {
-        // console.log("Dados recebidos: ");
         
         response.data.forEach(obj => {
             Object.entries(obj).forEach(([key, value]) => {
