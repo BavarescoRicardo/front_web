@@ -44,6 +44,8 @@ function EditarDetalhe(){
 
     // codigo para postar foto inicio
     function postarFoto () {
+        console.log("Caiu na func postar foto")
+        console.log(selectedImage)
         if (!selectedImage) {
             return;
         }
@@ -81,15 +83,17 @@ function EditarDetalhe(){
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
             })
-            // .then(async response => {
-            //   if(response.data){
-            //     history.push('/Artigo');
-            //   }else{
-            //     console.log("error ao publicar");    
-            //   }
-            // }).catch(error=> {
-            //   console.log(error);
-            // })            
+            .then(async response => {
+              if(response.data){
+                console.log("Agora tenta postar a foto! ");
+                postarFoto();
+              }else{
+                console.log("error ao publicar");    
+              }
+            }).catch(error=> {
+              console.log(error);
+            })
+                       
         } catch (error) {
             console.log(error);
         }
@@ -141,7 +145,9 @@ function EditarDetalhe(){
                         </label>
                         </div>
                         <div className="row">
-                            <button onClick={postarFoto} type="button" class="btn btn-secondary">Publicar imagem</button>
+                            <div className="col">
+                                
+                            </div>
                         </div>
 
                     </div>                    
