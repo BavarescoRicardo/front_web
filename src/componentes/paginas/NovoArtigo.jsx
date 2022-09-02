@@ -32,7 +32,6 @@ function NovoArtigo(){
     function decodifImagem(foto, codigo){
         // Decodifica a imagem do banco de dados
         if (dados.length > 0) {
-            console.log("Chamou como callback")
             setImageUrl(imageUrl => [...imageUrl, ('data:image/jpeg;base64,' + foto)])
             setCodImagem(codImagem => [...codImagem, codigo])
 

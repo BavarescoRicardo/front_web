@@ -40,32 +40,43 @@ function Detalhe(){
     const formData = new FormData();
     formData.append('idArtigo', id);
     const [artigos, setArtigos]=useState([]);
-    const [imageUrl, setImageUrl] = useState([]);  
+    const [imageUrl, setImageUrl] = useState([null]); 
+    const [codImagem, setCodImagem] = useState([null]); 
+    const [efeito, setEfeito] = useState(false); 
     
     const detalhrGet = async()=>{        
       await axios.post(baseUrl, formData)
       .then(response => {
-        
-        response.data.forEach(obj => {
-            Object.entries(obj).forEach(([key, value]) => {
-                if (key == 'fotoPublicacao'){
-                    setImageUrl('data:image/jpeg;base64,' + value)    
-                }
-                console.log(`${key} ${value}`);
-            });
-            console.log('-------------------');
-        });
-
         setArtigos(response.data);
+        usuarioGet();
       }).catch(error=> {
         console.log(error);
       })
     }
 
-    useEffect(()=>{
-        usuarioGet();
-        detalhrGet();        
+    useEffect(async ()=>{
+        if(artigos.length > 0)
+            return;
+        
+        await detalhrGet();  
+        setEfeito(true);
       }, [])
+
+      function decodifImagem(imagem, codigo){
+        // Se ja existe um indice para a imagem entao apenas retorna
+        if ((codImagem.indexOf(codigo) > 0) || (imagem == undefined)) {
+            console.log("Ja existe este codigo retornar")
+            return;
+        } else {
+            // Decodifica a imagem do banco de dados
+            console.log("Setou o codigo para: " + codigo)
+            console.log("Setou o foto eh..: " + imagem)
+            setImageUrl(imageUrl => [...imageUrl, ('data:image/jpeg;base64,' + imagem)])
+            setCodImagem(codImagem => [...codImagem, codigo])
+
+            setEfeito(false);
+        }        
+    }
 
       return(
         <div>
@@ -85,20 +96,21 @@ function Detalhe(){
                         </div>
                     </div>                    
                     
-                    {artigos.map(({ codArtigo, titulo, descricao, imagem }, codigo) => (
+                    {artigos.map(({ codigo, codArtigo, titulo, descricao, fotoPublicacao }) => (
                         <tr key={codigo}>
                             <article>
                                 <div className="row">                                    
                                     <div className="col">
                                         <div className="informacoes" style={{height: '250px'}}>
-                                            <img style={{ width: "95%", height: "85%" }} src={imageUrl} />
+                                            {(codImagem.indexOf(codigo) > 0) && (!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
+                                            <img style={{ width: "95%", height: "85%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
                                         </div>                                    
                                     </div>
                                     <div className="col-md-6">
                                         <div className="textoDetalhe">
                                             <p> Título: {titulo}  </p>
                                             <p> Descrição: {descricao} </p>
-                                            <p><Link to={`/DetalheArtigo/${codArtigo}`}  className="btn btn"> Ver: {codArtigo}</Link></p>
+                                            <p><Link to={`/DetalheArtigo/${codArtigo}`}  className="btn btn"> Ver: {codigo}</Link></p>
                                         </div>
                                     </div>
                                 </div>
