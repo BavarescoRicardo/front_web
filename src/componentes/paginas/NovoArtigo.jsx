@@ -56,12 +56,8 @@ function NovoArtigo(){
                         <article key={codigo}>
                             <div className="artigo">
                                 <div className="foto">
-                                {console.log("lista map")}
-                                {console.log(codImagem)}
-
                                     {(imagem && img && dados.length > 1)? decodifImagem(imagem, codigo) : null}
-                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}
-                                    
+                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
                                 </div>
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>
