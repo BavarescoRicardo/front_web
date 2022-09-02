@@ -37,7 +37,7 @@ function EditarDetalhe(){
     useEffect(() => {   
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
-            handleChange()
+            
         }
         
       }, [selectedImage]);

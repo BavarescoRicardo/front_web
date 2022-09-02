@@ -1,6 +1,5 @@
 import React from 'react'
 import Login from './paginas/Login';
-import Artigo from './paginas/Artigo';
 import NovoArtigo from './paginas/NovoArtigo';
 import PainelMestre from './paginas/PainelMestre';
 import Publicar from './paginas/PublicarArtigo';
@@ -42,7 +41,6 @@ const Navegacao = () => {
                 <Route exact path="/"> <NovoArtigo/>                                         </Route>
                 <Route path="/Login"> <Login/>                                          </Route>
                 <Route path="/NovoArtigo"> <NovoArtigo/>                                </Route>
-                <Route path="/Artigo"> <Artigo/>                                        </Route>
                 <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                      </Route>
                 <Route exact path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>          </Route>
                 <Route path="/Publicar"> <Publicar/>                                    </Route>
