@@ -21,7 +21,6 @@ function Detalhe(){
             }
             )
             .then(response => {                          
-            //console.log(response.data);
             if (response.data.login != null){
                 console.log('existe usuario pode editar '+response.data.login);
                 setPermit(true);
@@ -43,15 +42,13 @@ function Detalhe(){
     const [artigos, setArtigos]=useState([]);
     const [imageUrl, setImageUrl] = useState([]);  
     
-    const detalhrGet = async()=>{
-        console.log("requisicao: "+id)
+    const detalhrGet = async()=>{        
       await axios.post(baseUrl, formData)
       .then(response => {
         
         response.data.forEach(obj => {
             Object.entries(obj).forEach(([key, value]) => {
                 if (key == 'fotoPublicacao'){
-                    console.log("foto aqui:");
                     setImageUrl('data:image/jpeg;base64,' + value)    
                 }
                 console.log(`${key} ${value}`);
@@ -85,36 +82,33 @@ function Detalhe(){
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <h2> Conteúdo </h2>
                         </div>
-                    </div>
+                    </div>                    
                     
-                    <div className="row">
-                        <div className="col">
-                            <div className="col">
-                                <div className="informacoes" style={{height: '250px'}}>
-                                    <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">                            
-                        </div>
-                    </div>
-
-
-                    {artigos.map(({ codigo, titulo, descricao, imagem }) => (
-                        <article key={codigo}>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="textoDetalhe">
-                                        <p> Título: {titulo}  </p>
-                                        <p> Descrição: {descricao} </p>
-                                        <p><Link to={`/DetalheArtigo/${codigo}`}  className="btn btn"> Ver: {codigo}</Link></p>
+                    {artigos.map(({ codArtigo, titulo, descricao, imagem }, codigo) => (
+                        <tr key={codigo}>
+                            <article>
+                                <div className="row">                                    
+                                    <div className="col">
+                                        <div className="informacoes" style={{height: '250px'}}>
+                                            <img style={{ width: "95%", height: "85%" }} src={imageUrl} />
+                                        </div>                                    
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="textoDetalhe">
+                                            <p> Título: {titulo}  </p>
+                                            <p> Descrição: {descricao} </p>
+                                            <p><Link to={`/DetalheArtigo/${codArtigo}`}  className="btn btn"> Ver: {codArtigo}</Link></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </tr>                        
                     ))}
+
+
+
+
              
                 </div>
             </section>

@@ -25,7 +25,14 @@
 }
 
 .textoDetalhe {
-    margin-top: -20%;
+    margin-left: 10%;
+    width: 200%;
+    background-color: #a6a5a7;
+    color: rgb(39, 38, 38);
+    border-radius: 5px  10px 25px 10px;
+}
+
+.textoDetalhe img {
     margin-left: 50%;
     width: 40%;
     background-color: #a6a5a7;
@@ -33,6 +40,8 @@
     border-radius: 5px  10px 55px 10px;
     margin-bottom: 15px;
 }
+
+
 
 .informacoes {
     margin-top: 0;
