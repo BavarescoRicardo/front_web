@@ -8,7 +8,33 @@ import '../estilos/Detal.css';
 function Detalhe(){
     
     const { id } = useParams();
-    const permit = localStorage.getItem('tokens') == null
+    const [permit, setPermit]=useState(null);
+    const userUrl ="http://45.191.187.35:3033/selusuario/";
+
+    const usuarioGet = async()=>{        
+        if((permit == null) && (localStorage.getItem('tokens') != null)){            
+            await axios.get(userUrl, 
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            }
+            )
+            .then(response => {                          
+            //console.log(response.data);
+            if (response.data.login != null){
+                console.log('existe usuario pode editar '+response.data.login);
+                setPermit(true);
+            }else{
+                alert("Não existe usuário cadastrado para este login.")                
+            }
+            
+            }).catch(error=> {
+                console.log(error);
+            })
+        }
+    }
+
     const baseUrl ="http://localhost:3033/artigo/artigodettalhe";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigodettalhe";
 
@@ -40,6 +66,7 @@ function Detalhe(){
     }
 
     useEffect(()=>{
+        usuarioGet();
         detalhrGet();        
       }, [])
 
@@ -88,39 +115,13 @@ function Detalhe(){
                             </div>
                         </article>
                     ))}
-
-
-                    <div class="row">
-                        <div className="col">
-                            <div className="informacoes" style={{height: '200px'}}>
-                                <h3>Imagem 2 </h3>
-                                </div>
-                        </div>
-
-                        <div className="col">
-                            <p>comentarios ao lado </p>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col">
-                        <div className="col">
-                            <div className="informacoes" style={{height: '150px'}}>
-                                <h3>Imagem 3 </h3>
-                            </div>
-                        </div>
-                        </div>
-
-                        <div className="col">
-                            <p>comentarios ao lado </p>
-                        </div>
-                    </div>             
+             
                 </div>
             </section>
         
             <section>
                 <div className="btn-fim-editar">
-                    {!permit  
+                    {permit  
                         ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
                         : <h1>Sem permissões</h1>
                     }

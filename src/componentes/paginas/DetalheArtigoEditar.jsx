@@ -16,8 +16,8 @@ function EditarDetalhe(){
     );
 
     const baseUrl ="http://localhost:3033/artigo/foto";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/foto";
-    const baseUrlArtigoExterno ="http://45.191.187.35:3033/artigo/salvardetalhe";
+    const baseUrlExterno ="http://localhost:3033/artigo/foto";
+    const baseUrlArtigoExterno ="http://localhost:3033/artigo/salvardetalhe";
     const { id } = useParams()
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -37,6 +37,7 @@ function EditarDetalhe(){
     useEffect(() => {   
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
+            handleChange()
         }
         
       }, [selectedImage]);
@@ -108,17 +109,7 @@ function EditarDetalhe(){
             <section>
                 <div className="container">
                     <div className="row">
-                        <div className="col">
-                            <h2> Conteúdo </h2>
-                        </div>
-                    </div>
 
-                    <div className="row">
-                        <div className="col">
-                            <div className="informacoes" style={{height: '250px'}}>
-                                {selectedImage? <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} /> : null}
-                            </div>
-                        </div>
                     </div>
                     <div className="row">
                         <div className="col">
@@ -139,6 +130,7 @@ function EditarDetalhe(){
                             accept="image/*"
                             type="file"
                             id="select-image"
+                            name="fotoPublicacao"
                             style={{ display: 'none' }}
                             onChange={e => setSelectedImage(e.target.files[0])}
                         />
