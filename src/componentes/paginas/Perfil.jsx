@@ -52,7 +52,7 @@ function Perfil(props){
     // fim postar foto    
     
     const imagemGet = async()=>{        
-        if(!imageUrl){            
+        if(!imageUrl && (localStorage.getItem('tokens') != null)){            
             await axios.get(userUrl, 
             {          
                 headers: {          
