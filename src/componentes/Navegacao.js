@@ -29,6 +29,9 @@ const Navegacao = () => {
                             <li>
                                 <Link to="/Login" className="nav-link">Login</Link>
                             </li>
+                            <li>
+                                <Link to="/PainelMestre" className="nav-link">Gerenciamento</Link>
+                            </li>                            
                         </div>
                     </ul>
                 </div>
