@@ -20,7 +20,6 @@ function PainelMestre(){
     ); 
 
     async function adicionarolePost(nomerol, admin) {        
-
         try {
             // Dine para qual usuario vai dar a permissão
             permissao.username = nomerol
@@ -48,16 +47,21 @@ function PainelMestre(){
 
 
     const artigoGet = async()=>{
-      await axios.get(baseUrlExternoListagem, 
-        { headers: {          
-            Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+        if (localStorage.getItem('tokens') == null ) {
+            alert("Usuário não possui permissões de administrador.")
+            history.push({ pathname: '/' })
+        } else {
+            await axios.get(baseUrlExternoListagem, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(response => {
+            setData(response.data);
+            }).catch(error=> {
+            console.log(error);
+            })
         }
-      })
-      .then(response => {
-        setData(response.data);
-      }).catch(error=> {
-        console.log(error);
-      })
     }
 
     useEffect(()=>{
