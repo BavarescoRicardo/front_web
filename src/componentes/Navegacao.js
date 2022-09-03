@@ -24,9 +24,6 @@ const Navegacao = () => {
                                 <Link to="/" className="nav-link">Home</Link>
                             </li>
                             <li>
-                                <Link to="/Artigo" className="nav-link">Publicações</Link>
-                            </li>
-                            <li>
                                 <Link to="/Perfil" className="nav-link">Perfil</Link>
                             </li>
                             <li>
