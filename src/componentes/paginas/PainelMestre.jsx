@@ -81,7 +81,7 @@ function PainelMestre(){
                     <table className="table table-bordered">
                         <thead>
                             <tr>
-                            <th>Código</th> <th>Nome</th> <th>Permissão</th> <th>Alterar</th>
+                            <th>Código</th> <th>Nome</th> <th>Permissão</th> <th>Alterar</th> <th>Alterar</th> <th>Participa do artigos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,6 +92,14 @@ function PainelMestre(){
                                 <td> {login.roles.length}</td>
                                 <td><button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button></td>
                                 <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
+                                <td>
+                                <select name="artigosel" id="artigosel">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                                </td>
                             </tr>
                             ))}
                         </tbody>
