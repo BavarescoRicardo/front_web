@@ -6,10 +6,11 @@ import axios from 'axios';
 const SelecaoArtigo = props => {  
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
-    //const [dados, setDados]=useState([]);    
-    let opcoes = [
+    const [dados, setDados]=useState([]);    
+    
+    const opcoes = [
         {value: 0, label: "Selecione o artigo"}
-    ];
+    ]
 
     const artigoGet = async()=>{
         await axios.get(baseUrlExterno)
@@ -25,15 +26,18 @@ const SelecaoArtigo = props => {
         })
     }    
 
+    const handleSelect = () => {
+        console.log(dados);
+    };
     
     useEffect(async ()=>{      
-        console.log("Seleciona dados");      
         await artigoGet();
     }, []); 
 
     return(        
     <div className="selecao">        
-        <Select options={opcoes} isMulti />        
+        <Select options={opcoes} isMulti onChange={(sel) => setDados(sel)} />        
+        <button onClick={handleSelect}> Confirmar</button>
     </div>
     );    
     
