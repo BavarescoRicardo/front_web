@@ -44,7 +44,7 @@ function PainelMestre(){
         } catch (error) {
             console.log(error);
         }
-      }   
+    }   
 
 
     const artigoGet = async()=>{
@@ -95,22 +95,11 @@ function PainelMestre(){
                                 <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
                                 <td>
                                     <SelecaoArtigo/>
-                                    {/* <select name="artigosel" id="artigosel">
-                                        <option value="volvo">Volvo</option>
-                                        <option value="saab">Saab</option>
-                                        <option value="mercedes">Mercedes</option>
-                                        <option value="audi">Audi</option>
-                                    </select> */}
                                 </td>
                             </tr>
                             ))}
                         </tbody>
                     </table>
-                </div>
-                
-                <div className="div">
-                    {/* <button className="btn btn-danger" onClick={postarNovo}> Publicar novo </button> */}
-                    <Link to="/Publicar" className="btn btn-info" >Publicar novo</Link>
                 </div>
 
             </div>

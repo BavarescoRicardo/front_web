@@ -6,7 +6,13 @@ import axios from 'axios';
 const SelecaoArtigo = props => {  
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
-    const [dados, setDados]=useState([]);    
+
+    const [dados, setDados]=useState(
+        {
+          idArtigo: 0,
+          idUsuario: 0
+        }
+    );
     
     const opcoes = [
         {value: 0, label: "Selecione o artigo"}
@@ -24,11 +30,32 @@ const SelecaoArtigo = props => {
         }).catch(error=> {
             console.log(error);
         })
-    }    
+    }
 
-    const handleSelect = () => {
-        console.log(dados);
-    };
+    async function confirmarParticipant(artigo, usuario) {        
+        try {            
+            dados.idArtigo = artigo;
+            dados.idUsuario = usuario;
+
+            console.log("Dados artigo idArtigo: ");
+            console.log(usuario);
+            await axios.post('http://localhost:3033/adiconaparticipante', dados, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(async response => {
+                if(response.data){
+                }else{
+                    console.log("error ao publicar");    
+                }
+            }).catch(error=> {
+              console.log("Erro " + error);
+            })            
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+    }   
     
     useEffect(async ()=>{      
         await artigoGet();
@@ -36,8 +63,8 @@ const SelecaoArtigo = props => {
 
     return(        
     <div className="selecao">        
-        <Select options={opcoes} isMulti onChange={(sel) => setDados(sel)} />        
-        <button class="btn btn-secondary" onClick={handleSelect}> Confirmar</button>
+        <Select options={opcoes} isMulti onClick={(sel)=> confirmarParticipant(5, 10)} />        
+        <button class="btn btn-secondary" onClick={confirmarParticipant}> Confirmar</button>
     </div>
     );    
     
