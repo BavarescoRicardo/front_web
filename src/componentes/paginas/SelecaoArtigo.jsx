@@ -37,7 +37,7 @@ const SelecaoArtigo = props => {
     return(        
     <div className="selecao">        
         <Select options={opcoes} isMulti onChange={(sel) => setDados(sel)} />        
-        <button onClick={handleSelect}> Confirmar</button>
+        <button class="btn btn-secondary" onClick={handleSelect}> Confirmar</button>
     </div>
     );    
     
