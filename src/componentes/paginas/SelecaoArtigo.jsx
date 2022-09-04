@@ -7,16 +7,11 @@ const SelecaoArtigo = props => {
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
 
-    const [dados, setDados]=useState(
-        {
-          idArtigo: 0,
-          idUsuario: 0
-        }
-    );
+    const [dados, setDados]=useState([]);
     
     const opcoes = [
         {value: 0, label: "Selecione o artigo"}
-    ]
+    ]    
 
     const artigoGet = async()=>{
         await axios.get(baseUrlExterno)
@@ -36,6 +31,10 @@ const SelecaoArtigo = props => {
         try {            
             dados.idArtigo = artigo;
             dados.idUsuario = usuario;
+
+            // controle
+            if((artigo <= 0) || (usuario < 0))
+                return;
 
             console.log("Dados artigo idArtigo: ");
             console.log(usuario);
@@ -61,10 +60,15 @@ const SelecaoArtigo = props => {
         await artigoGet();
     }, []); 
 
+    const handleSelect = () => {
+        console.log(dados[0].value);
+    };
+
     return(        
     <div className="selecao">        
-        <Select options={opcoes} isMulti onClick={(sel)=> confirmarParticipant(5, 10)} />        
-        <button class="btn btn-secondary" onClick={confirmarParticipant}> Confirmar</button>
+        <Select options={opcoes} isMulti onChange={(sel) => setDados(sel)} />    
+
+        <button class="btn btn-secondary" onClick={handleSelect}> Confirmar</button>
     </div>
     );    
     
