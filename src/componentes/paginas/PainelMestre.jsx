@@ -3,6 +3,7 @@ import	{ useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import SelecaoArtigo from './SelecaoArtigo';
 
 function PainelMestre(){
 
@@ -93,12 +94,13 @@ function PainelMestre(){
                                 <td><button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button></td>
                                 <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
                                 <td>
-                                <select name="artigosel" id="artigosel">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                </select>
+                                    <SelecaoArtigo/>
+                                    {/* <select name="artigosel" id="artigosel">
+                                        <option value="volvo">Volvo</option>
+                                        <option value="saab">Saab</option>
+                                        <option value="mercedes">Mercedes</option>
+                                        <option value="audi">Audi</option>
+                                    </select> */}
                                 </td>
                             </tr>
                             ))}
