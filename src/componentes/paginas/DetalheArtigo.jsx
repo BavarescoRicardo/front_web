@@ -26,6 +26,7 @@ function Detalhe(){
                 console.log(response.data)
                 if(response.data){
                     alert("Usuário pode editar este artigo");
+                    setPermit(true);
                 }else{
                     console.log("error ao publicar");    
                 }
@@ -34,28 +35,6 @@ function Detalhe(){
             })            
         } catch (error) {
             console.log("Erro " + error);
-        }
-    }  
-
-    const usuarioGet = async()=>{        
-        if((permit == null) && (localStorage.getItem('tokens') != null)){            
-            await axios.get(userUrl, 
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
-                }
-            }
-            )
-            .then(response => {                          
-            if (response.data.login != null){
-                setPermit(true);
-            }else{
-                alert("Não existe usuário cadastrado para este login.")                
-            }
-            
-            }).catch(error=> {
-                console.log(error);
-            })
         }
     }
 
