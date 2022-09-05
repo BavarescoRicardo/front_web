@@ -52,7 +52,6 @@ function Detalhe(){
       await axios.post(baseUrl, formData)
       .then(response => {
         setArtigos(response.data);
-        usuarioGet();
       }).catch(error=> {
         console.log(error);
       })
@@ -62,8 +61,8 @@ function Detalhe(){
         if(artigos.length > 0)
             return;
         
-        // await detalhrGet();  
-        // setEfeito(true);
+        await detalhrGet();  
+        setEfeito(true);
         verificaParticipante();
       }, [])
 
