@@ -10,6 +10,32 @@ function Detalhe(){
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
     const userUrl ="http://45.191.187.35:3033/selusuario/";
+  
+
+    async function verificaParticipante() {        
+        try {
+            const formData = new FormData();
+            formData.append('idArtigo', id);
+            await axios.post('http://localhost:3033/verificaparticipante/', formData, 
+            { 
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+                }
+            })
+            .then(async response => {
+                console.log(response.data)
+                if(response.data){
+                    alert("Usuário pode editar este artigo");
+                }else{
+                    console.log("error ao publicar");    
+                }
+            }).catch(error=> {
+              console.log("Erro " + error);
+            })            
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+    }  
 
     const usuarioGet = async()=>{        
         if((permit == null) && (localStorage.getItem('tokens') != null)){            
@@ -22,7 +48,6 @@ function Detalhe(){
             )
             .then(response => {                          
             if (response.data.login != null){
-                console.log('existe usuario pode editar '+response.data.login);
                 setPermit(true);
             }else{
                 alert("Não existe usuário cadastrado para este login.")                
@@ -58,19 +83,17 @@ function Detalhe(){
         if(artigos.length > 0)
             return;
         
-        await detalhrGet();  
-        setEfeito(true);
+        // await detalhrGet();  
+        // setEfeito(true);
+        verificaParticipante();
       }, [])
 
       function decodifImagem(imagem, codigo){
         // Se ja existe um indice para a imagem entao apenas retorna
         if ((codImagem.indexOf(codigo) > 0) || (imagem == undefined)) {
-            console.log("Ja existe este codigo retornar")
             return;
         } else {
             // Decodifica a imagem do banco de dados
-            console.log("Setou o codigo para: " + codigo)
-            console.log("Setou o foto eh..: " + imagem)
             setImageUrl(imageUrl => [...imageUrl, ('data:image/jpeg;base64,' + imagem)])
             setCodImagem(codImagem => [...codImagem, codigo])
 
