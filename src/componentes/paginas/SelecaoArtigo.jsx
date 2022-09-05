@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select'
 import axios from 'axios';
 
-const SelecaoArtigo = props => {  
+const SelecaoArtigo = (props) => {  
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
 
@@ -66,7 +66,7 @@ const SelecaoArtigo = props => {
         console.log(dados[0].label);
 
         selecionado.idArtigo = dados[0].value;
-        selecionado.idUsuario = 1;
+        selecionado.idUsuario = props.cod;
 
         confirmarParticipant();
     };
@@ -74,7 +74,7 @@ const SelecaoArtigo = props => {
     return(        
     <div className="selecao">        
         <Select options={opcoes} isMulti onChange={(sel) => setDados(sel)} />    
-
+        
         <button class="btn btn-secondary" onClick={handleSelect}> Confirmar</button>
     </div>
     );    

@@ -94,7 +94,7 @@ function PainelMestre(){
                                 <td><button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button></td>
                                 <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
                                 <td>
-                                    <SelecaoArtigo/>
+                                    <SelecaoArtigo cod={login.id}/>
                                 </td>
                             </tr>
                             ))}
