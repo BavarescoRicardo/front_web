@@ -11,7 +11,14 @@ const SelecaoArtigo = props => {
     
     const opcoes = [
         {value: 0, label: "Selecione o artigo"}
-    ]    
+    ]  
+    
+    const [selecionado, setSelecionado]=useState(
+        {
+          idArtigo: 0,
+          idUsuario: 0
+        }
+    );  
 
     const artigoGet = async()=>{
         await axios.get(baseUrlExterno)
@@ -27,18 +34,12 @@ const SelecaoArtigo = props => {
         })
     }
 
-    async function confirmarParticipant(artigo, usuario) {        
-        try {            
-            dados.idArtigo = artigo;
-            dados.idUsuario = usuario;
-
-            // controle
-            if((artigo <= 0) || (usuario < 0))
-                return;
-
-            console.log("Dados artigo idArtigo: ");
-            console.log(usuario);
-            await axios.post('http://localhost:3033/adiconaparticipante', dados, 
+    async function confirmarParticipant() {        
+        try {
+            
+            console.log("Dados artigo selecionado: ");
+            console.log(selecionado);
+            await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -63,6 +64,11 @@ const SelecaoArtigo = props => {
     const handleSelect = () => {
         console.log(dados[0].value);
         console.log(dados[0].label);
+
+        selecionado.idArtigo = dados[0].value;
+        selecionado.idUsuario = 1;
+
+        confirmarParticipant();
     };
 
     return(        
