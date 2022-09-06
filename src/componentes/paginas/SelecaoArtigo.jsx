@@ -48,7 +48,7 @@ const SelecaoArtigo = (props) => {
                 if(response.data){
                     alert("Adicionado participante ao artigo");
                 }else{
-                    console.log("error ao publicar");    
+                    console.log("error ao publicar");
                 }
             }).catch(error=> {
               console.log("Erro " + error);

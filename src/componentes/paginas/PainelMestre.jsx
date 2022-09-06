@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import SelecaoArtigo from './SelecaoArtigo';
+import ParticipanteArtigo from './ParticipanteArtigo';
 
 function PainelMestre(){
 
@@ -44,8 +45,7 @@ function PainelMestre(){
         } catch (error) {
             console.log(error);
         }
-    }   
-
+    }
 
     const artigoGet = async()=>{
         if (localStorage.getItem('tokens') == null ) {
@@ -53,20 +53,22 @@ function PainelMestre(){
             history.push({ pathname: '/' })
         } else {
             await axios.get(baseUrlExternoListagem, 
-            { headers: {          
-                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
-            }
+            { 
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+                }
             })
             .then(response => {
-            setData(response.data);
+                setData(response.data);
+                
             }).catch(error=> {
-            console.log(error);
+                console.log(error);
             })
         }
     }
 
     useEffect(()=>{
-        artigoGet()
+        artigoGet()        
         console.log('Interval triggered');
     }, 1000);      
 
@@ -86,10 +88,13 @@ function PainelMestre(){
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map(login=> (
+                            {data.map(login=> (                                
                                 <tr key={login.id}>
-                                <td> {login.id }</td>
-                                <td> {login.username }</td>
+                                <td>
+                                    <ParticipanteArtigo idUsuario={login.id}/>
+                                </td>
+                                <td> {login.id}</td>
+                                <td> {login.username} </td>
                                 <td> {login.roles.length}</td>
                                 <td><button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button></td>
                                 <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
