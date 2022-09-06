@@ -137,7 +137,7 @@ function Detalhe(){
                                         <div className="textoDetalhe">
                                             <p> Título: {titulo}  </p>
                                             <p> Descrição: {descricao} </p>
-                                            <p><button onClick={artigoDetalheRemover(0)}>Remover</button></p>
+                                            <p><button onClick={() => {artigoDetalheRemover(codigo) }}>Remover</button></p>
                                         </div>
                                     </div>
                                 </div>
