@@ -23,7 +23,7 @@ const ParticipanteArtigo = (props) => {
             })
             .then(async response => {                    
                 if(response.data){
-                    setDadoParticipa(response.data+" ");
+                    setDadoParticipa(response.data.split(" - ", 3));
                 }else{
                     console.log("error ao publicar");    
                 }
