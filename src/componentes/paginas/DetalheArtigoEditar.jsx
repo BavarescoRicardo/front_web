@@ -17,7 +17,7 @@ function EditarDetalhe(){
 
     const baseUrl ="http://localhost:3033/artigo/foto";
     const baseUrlExterno ="http://localhost:3033/artigo/foto";
-    const baseUrlArtigoExterno ="http://localhost:3033/artigo/salvardetalhe";
+    const baseUrlArtigoDetal ="http://localhost:3033/artigo/salvardetalhe";
     const { id } = useParams()
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -78,7 +78,7 @@ function EditarDetalhe(){
 
         try {
             detalheArtigo.codArtigo = id;
-            await axios.post(baseUrlArtigoExterno, detalheArtigo, 
+            await axios.post(baseUrlArtigoDetal, detalheArtigo, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }

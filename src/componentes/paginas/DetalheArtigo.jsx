@@ -10,6 +10,7 @@ function Detalhe(){
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
     const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const baseUrlArtigoDetal ="http://localhost:3033/artigo/removerdetalhe/";
   
 
     async function verificaParticipante() {        
@@ -37,6 +38,31 @@ function Detalhe(){
             console.log("Erro " + error);
         }
     }
+
+    const artigoDetalheRemover = async(id)=>{        
+
+        try {
+            console.log("tentando selecionar participantes id dos artigo");
+            const formData = new FormData();
+            formData.append('idArtigo', id);
+
+            await axios.post(baseUrlArtigoDetal, formData, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(async response => {
+              if(response.data){
+                alert("Removido com sucesso !");
+              }
+            }).catch(error=> {
+              console.log(error);
+            })
+                       
+        } catch (error) {
+            console.log(error);
+        }
+      } 
 
     const baseUrl ="http://localhost:3033/artigo/artigodettalhe";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigodettalhe";
@@ -111,7 +137,7 @@ function Detalhe(){
                                         <div className="textoDetalhe">
                                             <p> Título: {titulo}  </p>
                                             <p> Descrição: {descricao} </p>
-                                            <p><Link to={`/DetalheArtigo/${codArtigo}`}  className="btn btn"> Ver: {codigo}</Link></p>
+                                            <p><button onClick={artigoDetalheRemover(0)}>Remover</button></p>
                                         </div>
                                     </div>
                                 </div>

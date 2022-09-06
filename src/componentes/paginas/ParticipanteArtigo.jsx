@@ -23,7 +23,7 @@ const ParticipanteArtigo = (props) => {
             })
             .then(async response => {                    
                 if(response.data){
-                    setDadoParticipa(response.data.split(" - ", 3));
+                    setDadoParticipa(response.data);
                 }else{
                     console.log("error ao publicar");    
                 }
@@ -42,7 +42,9 @@ const ParticipanteArtigo = (props) => {
 
     return(        
     <div className="selecao">        
-        {dadoParticipa}
+        {
+            dadoParticipa.map( (number) => <li>{ number }</li>)
+        }
     </div>
     );    
     
