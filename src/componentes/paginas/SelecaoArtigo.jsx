@@ -46,7 +46,7 @@ const SelecaoArtigo = (props) => {
             })
             .then(async response => {
                 if(response.data){
-                    alert("Adicionado participante ao artigo");
+                    alert("Adicionado participante ao artigo");                    
                 }else{
                     console.log("error ao publicar");
                 }
