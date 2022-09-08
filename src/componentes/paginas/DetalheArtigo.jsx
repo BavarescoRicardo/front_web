@@ -138,7 +138,7 @@ function Detalhe(){
                                         <div className="textoDetalhe">
                                             <p> Título: {titulo}  </p>
                                             <p> Descrição: {descricao} </p>
-                                            <p><button onClick={() => {artigoDetalheRemover(codigo) }}>Remover</button></p>
+                                            <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none">Remover</button></p>
                                         </div>
                                     </div>
                                 </div>
