@@ -39,6 +39,22 @@ function NovoArtigo(){
         }
     }
 
+    async function removeArtigo(idArtigo) {        
+        try {
+            console.log("removendo o artigo de  id: "+idArtigo);
+            const formData = new FormData();
+            formData.append('idArtigo', idArtigo);
+            await axios.post('http://localhost:3033/artigo/remover/', formData, 
+            { 
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+                }
+            })          
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+    }
+
     return(
         <div>
             <div className="container">
@@ -61,8 +77,10 @@ function NovoArtigo(){
                                 <div className="texto">
                                     <p> Título: {titulo}  </p>
                                     <p> Descrição: {descricao} </p>
-                                    <p><Link to={`/DetalheArtigo/${codigo}`}  className="link-dark text-decoration-none"> Ver </Link>
-                                    <Link to={`/DetalheArtigo/${codigo}`}  className="link-danger text-decoration-none"> Remover </Link></p>
+                                    <p>
+                                        <Link to={`/DetalheArtigo/${codigo}`}  className="link-dark text-decoration-none"> Ver </Link>
+                                        <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> Remover</button>
+                                    </p>
                                 </div>
                             </div>
                         </article>
