@@ -154,10 +154,9 @@ function EditarDetalhe(){
 
             </section>
         
-            <section>
-                rodape
+            <section>                
                 <div className="btn-fim-editar">
-                    <button onClick={() => artigoDetalhePost} type="button" class="btn btn-secondary">Confirmar</button>
+                    <button onClick={() => artigoDetalhePost()} type="button" class="btn btn-secondary">Confirmar</button>
                 </div>
             </section>
             

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import	{ useHistory } from 'react-router-dom';
-import { useParams } from 'react-router-dom'
 import '../estilos/Publicar.css'
 import api from '../../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -147,7 +146,7 @@ function Publicar(){
                         </label>
                         </div>
                         <div className="row">
-                            <button onClick={postarFoto} type="button" class="btn btn-secondary">Publicar imagem</button>
+                            <button onClick={() => postarFoto} type="button" class="btn btn-secondary">Publicar imagem</button>
                         </div>
 
                     <div className="col">

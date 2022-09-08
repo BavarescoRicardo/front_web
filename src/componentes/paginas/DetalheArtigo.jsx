@@ -54,6 +54,7 @@ function Detalhe(){
             .then(async response => {
               if(response.data){
                 alert("Removido com sucesso !");
+                window.location.reload();
               }
             }).catch(error=> {
               console.log(error);

@@ -49,7 +49,9 @@ function NovoArtigo(){
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
                 }
-            })          
+            }).then(response => {
+                window.location.reload();
+            });
         } catch (error) {
             console.log("Erro " + error);
         }
