@@ -40,7 +40,7 @@ function Publicar(){
                 })
                 .then(res => {
                         alert("Imagem salva com sucesso.")
-                        history.push('/Artigo');
+                        history.push('/');
                 })
             
         } catch (error) {
@@ -72,6 +72,7 @@ function Publicar(){
     
     const artigoPost = async()=>{        
         delete artigo.codigo;
+        console.log("Postando artigo novo")
 
         try {
             await api.post('http://45.191.187.35:3033/artigo/salvarartigo', artigo, 
@@ -146,7 +147,7 @@ function Publicar(){
                         </label>
                         </div>
                         <div className="row">
-                            <button onClick={() => postarFoto} type="button" class="btn btn-secondary">Publicar imagem</button>
+                            <button onClick={() => postarFoto()} type="button" class="btn btn-secondary">Publicar imagem</button>
                         </div>
 
                     <div className="col">
