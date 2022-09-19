@@ -81,7 +81,10 @@ function NovoArtigo(){
                                     <p> Descrição: {descricao} </p>
                                     <p>
                                         <Link to={`/DetalheArtigo/${codigo}`}  className="link-dark text-decoration-none"> Ver </Link>
-                                        <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> Remover</button>
+                                        {!permit  
+                                            ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> Remover</button>
+                                            : <h1> </h1>
+                                        }                                        
                                     </p>
                                 </div>
                             </div>
