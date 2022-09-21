@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 function Publicar(){
 
     const history = useHistory();
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/imagem";
+    const baseUrlExterno ="http://localhost:3033/artigo/imagem";
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
@@ -75,7 +75,7 @@ function Publicar(){
         console.log("Postando artigo novo")
 
         try {
-            await api.post('http://45.191.187.35:3033/artigo/salvarartigo', artigo, 
+            await api.post('http://localhost:3033/artigo/salvarartigo', artigo, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }

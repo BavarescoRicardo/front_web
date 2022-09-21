@@ -7,8 +7,8 @@ import Button from '@material-ui/core/Button';
 
 function Perfil(){ 
     const baseUrl ="http://localhost:3033/salvausuario";
-    const baseUrlExterno ="http://45.191.187.35:3033/salvausuario";
-    const baseUrlExternoft ="http://45.191.187.35:3033/postaFt";
+    const baseUrlExterno ="http://localhost:3033/salvausuario";
+    const baseUrlExternoft ="http://localhost:3033/postaFt";
     const [selectedImage, setSelectedImage] = useState(null); 
     const history = useHistory();        
     const [imageUrl, setImageUrl] = useState(null);

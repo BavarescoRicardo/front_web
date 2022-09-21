@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const ParticipanteArtigo = (props) => {  
     const baseUrl ="http://localhost:3033/artigo/artigolista";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
+    const baseUrlExterno ="http://localhost:3033/artigo/artigolista";
 
     const [dadoParticipa, setDadoParticipa]=useState([]);    
     

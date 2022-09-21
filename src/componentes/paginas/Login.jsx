@@ -18,7 +18,7 @@ const Login = props => {
         }
     );
     const url = 'http://localhost:3033/blog/login'
-    const urlex = 'http://45.191.187.35:3033/blog/login'
+    const urlex = 'http://localhost:3033/blog/login'
     
 
     const handleChange = e=> 

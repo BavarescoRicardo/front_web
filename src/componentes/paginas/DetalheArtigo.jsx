@@ -9,7 +9,7 @@ function Detalhe(){
     
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrl ="http://localhost:3033/selusuario/";
     const baseUrlArtigoDetal ="http://localhost:3033/artigo/removerdetalhe/";
   
 
@@ -66,7 +66,7 @@ function Detalhe(){
       } 
 
     const baseUrl ="http://localhost:3033/artigo/artigodettalhe";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigodettalhe";
+    const baseUrlExterno ="http://localhost:3033/artigo/artigodettalhe";
 
     const formData = new FormData();
     formData.append('idArtigo', id);

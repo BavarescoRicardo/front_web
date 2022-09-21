@@ -9,10 +9,10 @@ import Button from '@material-ui/core/Button';
 function Perfil(props){    
     const history = useHistory();  
 
-    const getUserUrl ="http://45.191.187.35:3033/getusuario/";
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const getUserUrl ="http://localhost:3033/getusuario/";
+    const userUrl ="http://localhost:3033/selusuario/";
     const baseUrl ="http://localhost:3033/userPostaFt";
-    const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
+    const baseUrlExterno ="http://localhost:3033/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);

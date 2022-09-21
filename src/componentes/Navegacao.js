@@ -16,7 +16,7 @@ import axios from 'axios';
 
 const Navegacao = () => {
 
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrl ="http://localhost:3033/selusuario/";
     const [permissao, setPermissao] = useState(false);
 
     const verificarPermissao = async()=>{   

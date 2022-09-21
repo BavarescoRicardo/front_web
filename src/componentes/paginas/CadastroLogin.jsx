@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function CadLogin(){
 
     const baseUrl ="http://localhost:3033/salvaloginapi";
-    const baseUrlExterno ="http://45.191.187.35:3033/salvaloginapi";
+    const baseUrlExterno ="http://localhost:3033/salvaloginapi";
     const history = useHistory();
 
     // const [data, setData]=useState([]);
