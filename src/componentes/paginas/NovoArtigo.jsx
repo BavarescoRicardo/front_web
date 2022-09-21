@@ -73,7 +73,7 @@ function NovoArtigo(){
                         <article key={codigo}>
                             <div className="artigo">
                                 <div className="foto">
-                                    {(imagem && img && dados.length > 1)? decodifImagem(imagem, codigo) : null}
+                                    {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
                                     {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
                                 </div>
                                 <div className="texto">
