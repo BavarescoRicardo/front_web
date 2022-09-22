@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './paginas/DetalheArtigo';
 import EditarDetalhe from './paginas/DetalheArtigoEditar';
-
 import axios from 'axios';
 
 const Navegacao = () => {
@@ -19,7 +18,8 @@ const Navegacao = () => {
     const userUrl ="http://45.191.187.35:3033/selusuario/";
     const [permissao, setPermissao] = useState(false);
 
-    const verificarPermissao = async()=>{   
+    const verificarPermissao = async()=>{  
+        console.log("Verificando a permissão para o usuario ") 
         if(localStorage.getItem('tokens') != null){  
             await axios.get(userUrl, 
             {          

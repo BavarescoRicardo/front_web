@@ -19,10 +19,9 @@ const Login = props => {
     );
     const url = 'http://localhost:3033/blog/login'
     const urlex = 'http://45.191.187.35:3033/blog/login'
-    
 
     const handleChange = e=> 
-    {
+    {       
         // Montar objeto usuario
         const {name, value}=e.target;
         setUsuariolog(
@@ -41,6 +40,7 @@ const Login = props => {
             .then(async response => {
                 console.log(response.data)
                 if(response.data){
+
                     localStorage.setItem('tokens', response.data.access_token)                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
                   }else{
