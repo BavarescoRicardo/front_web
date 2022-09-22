@@ -16,7 +16,6 @@ function NovoArtigo(){
     const userUrl ="http://45.191.187.35:3033/selusuario/";
 
     const verificarPermissao = async()=>{   
-        console.log('Verificando permissoes! ')     
         if(localStorage.getItem('tokens') != null){  
             await axios.get(userUrl, 
             {          
@@ -28,22 +27,16 @@ function NovoArtigo(){
             .then(response => {                          
             
             if (response.data.login != null){
-                console.log('permissoes:  ');
-                console.log(response.data.login.roles);
-
-                console.log(response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN'));
-
                 setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
 
             }else {
                 setPermissao(false);
             }          
             }).catch(error=> {
-            console.log(error);
+                console.log(error);
             })
         }
         else {
-            console.log('não tem.. permissoes:  ');
             setPermissao(false);
         }  
     }
@@ -77,7 +70,6 @@ function NovoArtigo(){
 
     async function removeArtigo(idArtigo) {        
         try {
-            console.log("removendo o artigo de  id: "+idArtigo);
             const formData = new FormData();
             formData.append('idArtigo', idArtigo);
             await axios.post('http://localhost:3033/artigo/remover/', formData, 
