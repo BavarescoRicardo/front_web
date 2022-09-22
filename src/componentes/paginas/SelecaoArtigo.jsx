@@ -6,8 +6,6 @@ import axios from 'axios';
 const SelecaoArtigo = (props) => {  
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
-
-    const [dados, setDados]=useState([]);
     
     const opcoes = [
         {value: 0, label: "Selecione o artigo"}
