@@ -7,7 +7,7 @@ const SelecaoArtigo = (props) => {
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
     
-    const opcoes = [
+    var opcoes = [
         {value: 0, label: "Selecione o artigo"}
     ]  
     
@@ -20,8 +20,7 @@ const SelecaoArtigo = (props) => {
 
     const artigoGet = async()=>{
         await axios.get(baseUrlExterno)
-        .then(response => {            
-
+        .then(response => {
             response.data.forEach((item) => {                
               opcoes.push({value: item.codigo, label: item.titulo})              
             });
@@ -72,7 +71,10 @@ const SelecaoArtigo = (props) => {
 
     return(        
     <div className="selecao">        
-        <Select options={opcoes} isMulti onChange={(sel) => handleSelect(sel)} />    
+        <Select options={opcoes} 
+            isMulti
+            hideSelectedOptions={false}
+            onChange={(sel) => handleSelect(sel)} />    
         
         <button class="btn btn-secondary" onClick={confirmarParticipant}> Confirmar</button>
     </div>
