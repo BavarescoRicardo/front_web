@@ -29,13 +29,13 @@ function Detalhe(){
                     alert("Usuário pode editar este artigo");
                     setPermit(true);
                 }else{
-                    console.log("error ao publicar");    
+                    console.log("error ao verificar permit");    
                 }
             }).catch(error=> {
-              console.log("Erro " + error);
+              // console.log("Erro " + error);
             })            
         } catch (error) {
-            console.log("Erro " + error);
+            // console.log("Erro " + error);
         }
     }
 
@@ -84,10 +84,7 @@ function Detalhe(){
       })
     }
 
-    useEffect(async ()=>{
-        if(artigos.length > 0)
-            return;
-        
+    useEffect(async ()=>{        
         await detalhrGet();  
         setEfeito(true);
         verificaParticipante();
@@ -95,7 +92,8 @@ function Detalhe(){
 
       function decodifImagem(imagem, codigo){
         // Se ja existe um indice para a imagem entao apenas retorna
-        if ((codImagem.indexOf(codigo) > 0) || (imagem == undefined)) {
+        if (imagem == undefined) {
+            console.log("Tentou decodificar img da lista de detalhes artigo")
             return;
         } else {
             // Decodifica a imagem do banco de dados
@@ -130,7 +128,7 @@ function Detalhe(){
                                 <div className="row">                                    
                                     <div className="col">
                                         <div className="informacoes" style={{height: '250px'}}>
-                                            {(codImagem.indexOf(codigo) > 0) && (!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
+                                            {(!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
                                             <img style={{ width: "95%", height: "85%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
                                         </div>                                    
                                     </div>
