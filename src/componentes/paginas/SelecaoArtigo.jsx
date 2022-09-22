@@ -39,6 +39,7 @@ const SelecaoArtigo = (props) => {
             
             console.log("Dados artigo selecionado: ");
             console.log(selecionado);
+
             await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -63,8 +64,11 @@ const SelecaoArtigo = (props) => {
     }, []); 
 
     const handleSelect = () => {
-        selecionado.idArtigo = dados[0].value;
-        selecionado.idUsuario = props.cod;
+        setSelecionado(selecionado => ({
+            ...selecionado,
+            idArtigo: dados[0].value,
+            idUsuario: props.cod
+         }));
 
         confirmarParticipant();
     };
