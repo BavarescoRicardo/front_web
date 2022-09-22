@@ -41,8 +41,7 @@ const Navegacao = () => {
     }
 
     useEffect(() => {   
-        verificarPermissao();     
-        
+        verificarPermissao();        
       }, []);
 
     return (
