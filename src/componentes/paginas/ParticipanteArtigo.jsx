@@ -8,8 +8,36 @@ const ParticipanteArtigo = (props) => {
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
 
     const [dadoParticipa, setDadoParticipa]=useState([]);    
+
+    const [selecionado, setSelecionado]=useState(
+        {
+          idArtigo: 0,
+          idUsuario: 0
+        }
+    ); 
     
-    
+    async function removeArtigo(idArtigo) {        
+        try {
+            console.log("removendo o artigo de  id: "+idArtigo);
+            console.log("removendo o usuario de  id: "+props.idUsuario);
+
+            selecionado.idArtigo = idArtigo;
+            selecionado.idUsuario = props.idUsuario;
+
+            await axios.post('http://localhost:3033/participanteremover/', selecionado, 
+            { 
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+                }
+            }).then(response => {
+                window.location.reload();
+            });
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+    }
+
+
     async function artigosParticipa(idUsuario) {        
         try {
             console.log("tentando selecionar participantes id dos artigo");
@@ -43,7 +71,12 @@ const ParticipanteArtigo = (props) => {
     return(        
     <div className="selecao">        
         {
-            dadoParticipa.map( (number) => <li>{ number }</li>)
+            dadoParticipa.map( 
+                (number) => <li>
+                    { number }
+                    <button onClick={()=> removeArtigo(number)} className="btn btn-link link-danger text-decoration-none"> Remover </button>
+                </li>
+            )
         }
     </div>
     );    

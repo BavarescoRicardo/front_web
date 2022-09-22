@@ -84,7 +84,7 @@ function PainelMestre(){
                     <table className="table table-bordered">
                         <thead>
                             <tr>
-                            <th>Participa dos artigos</th> <th>Nome</th> <th>Permissão</th> <th>Alterar</th> <th>Alterar</th> <th></th>
+                            <th>Participa dos artigos</th> <th>Código</th> <th>Nome</th> <th>Alterar</th> <th>Alterar</th> <th></th>
                             </tr>
                         </thead>
                         <tbody>
