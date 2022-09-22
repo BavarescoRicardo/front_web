@@ -91,7 +91,7 @@ function Detalhe(){
       }, [])
 
       function decodifImagem(imagem, codigo){
-        // Se ja existe um indice para a imagem entao apenas retorna
+        // Se se artigo não contém imagem entao apenas retorna
         if (imagem == undefined) {
             console.log("Tentou decodificar img da lista de detalhes artigo")
             return;
