@@ -63,9 +63,6 @@ const SelecaoArtigo = (props) => {
     }, []); 
 
     const handleSelect = () => {
-        console.log(dados[0].value);
-        console.log(dados[0].label);
-
         selecionado.idArtigo = dados[0].value;
         selecionado.idUsuario = props.cod;
 
