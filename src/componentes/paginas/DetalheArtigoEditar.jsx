@@ -43,7 +43,7 @@ function EditarDetalhe(){
       }, [selectedImage]);
 
     // codigo para postar foto inicio
-    function postarFoto () {
+    function postarFoto (codigoDetal) {
         console.log("Caiu na func postar foto")
         console.log(selectedImage)
         if (!selectedImage) {
@@ -52,7 +52,7 @@ function EditarDetalhe(){
         console.log("Imagem selecionada okei, tentando postar.. ")
         let formData = new FormData();
         try {
-            formData.append('detalheArtigo', id);
+            formData.append('detalheArtigo', codigoDetal);
             formData.append('image', selectedImage);
             // Requisicao para postar imagem
             axios.post(baseUrlExterno, formData,
@@ -86,7 +86,7 @@ function EditarDetalhe(){
             .then(async response => {
               if(response.data){
                 console.log("Agora tenta postar a foto! ");
-                postarFoto();
+                postarFoto(response.data.codigo);
               }else{
                 console.log("error ao publicar");    
               }

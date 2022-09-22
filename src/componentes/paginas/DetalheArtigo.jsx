@@ -29,7 +29,7 @@ function Detalhe(){
                     alert("Usuário pode editar este artigo");
                     setPermit(true);
                 }else{
-                    console.log("error ao verificar permit");    
+                    console.log("error ao verificar");    
                 }
             }).catch(error=> {
               // console.log("Erro " + error);
@@ -84,14 +84,14 @@ function Detalhe(){
       })
     }
 
-    useEffect(async ()=>{        
+    useEffect(async ()=>{
         await detalhrGet();  
         setEfeito(true);
         verificaParticipante();
       }, [])
 
       function decodifImagem(imagem, codigo){
-        // Se se artigo não contém imagem entao apenas retorna
+        // Se artigo nao contem imagem entao apenas retorna
         if (imagem == undefined) {
             console.log("Tentou decodificar img da lista de detalhes artigo")
             return;

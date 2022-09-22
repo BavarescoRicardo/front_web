@@ -63,21 +63,20 @@ const SelecaoArtigo = (props) => {
         await artigoGet();
     }, []); 
 
-    const handleSelect = () => {
+    const handleSelect = (s) => {
         setSelecionado(selecionado => ({
             ...selecionado,
-            idArtigo: dados[0].value,
+            idArtigo: s[0].value,
             idUsuario: props.cod
          }));
 
-        confirmarParticipant();
     };
 
     return(        
     <div className="selecao">        
-        <Select options={opcoes} isMulti onChange={(sel) => setDados(sel)} />    
+        <Select options={opcoes} isMulti onChange={(sel) => handleSelect(sel)} />    
         
-        <button class="btn btn-secondary" onClick={handleSelect}> Confirmar</button>
+        <button class="btn btn-secondary" onClick={confirmarParticipant}> Confirmar</button>
     </div>
     );    
     
