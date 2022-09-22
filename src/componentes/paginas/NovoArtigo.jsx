@@ -5,7 +5,6 @@ import '../estilos/Artigo.css'
 import axios from 'axios';
 
 function NovoArtigo(){
-    const permit = localStorage.getItem('tokens') == null
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
     const [dados, setDados]=useState([]);    
@@ -13,10 +12,47 @@ function NovoArtigo(){
     const [imageUrl, setImageUrl] = useState([]);
     const [codImagem, setCodImagem] = useState([]);
 
+    const [permissao, setPermissao] = useState(false);
+    const userUrl ="http://45.191.187.35:3033/selusuario/";
+
+    const verificarPermissao = async()=>{   
+        console.log('Verificando permissoes! ')     
+        if(localStorage.getItem('tokens') != null){  
+            await axios.get(userUrl, 
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            }
+            )
+            .then(response => {                          
+            
+            if (response.data.login != null){
+                console.log('permissoes:  ');
+                console.log(response.data.login.roles);
+
+                console.log(response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN'));
+
+                setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
+
+            }else {
+                setPermissao(false);
+            }          
+            }).catch(error=> {
+            console.log(error);
+            })
+        }
+        else {
+            console.log('não tem.. permissoes:  ');
+            setPermissao(false);
+        }  
+    }
+
     const artigoGet = async()=>{
         await axios.get(baseUrlExterno)
         .then(response => {
             setDados(response.data);
+            verificarPermissao();
         }).catch(error=> {
             console.log(error);
         })
@@ -81,7 +117,7 @@ function NovoArtigo(){
                                     <p> Descrição: {descricao} </p>
                                     <p>
                                         <Link to={`/DetalheArtigo/${codigo}`}  className="link-dark text-decoration-none"> Ver </Link>
-                                        {!permit  
+                                        {permissao  
                                             ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> Remover</button>
                                             : <h1> </h1>
                                         }                                        
@@ -96,9 +132,9 @@ function NovoArtigo(){
                 </div>
 
                 <div className="div">
-                    {!permit  
+                    {permissao  
                         ? <Link to="/Publicar" className="btn btn-info"> Publicar novo</Link>
-                        : <h1>Usuario não possui permissões</h1>
+                        : <h1> </h1>
                     }
                 </div>
 

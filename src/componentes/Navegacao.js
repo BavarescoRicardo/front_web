@@ -20,7 +20,6 @@ const Navegacao = () => {
     const [permissao, setPermissao] = useState(false);
 
     const verificarPermissao = async()=>{   
-        console.log('Verificando permissoes! ')     
         if(localStorage.getItem('tokens') != null){  
             await axios.get(userUrl, 
             {          
@@ -29,19 +28,12 @@ const Navegacao = () => {
                 }
             }
             )
-            .then(response => {                          
-            
-            if (response.data.login != null){
-                console.log('permissoes:  ');
-                console.log(response.data.login.roles);
-
-                console.log(response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN'));
-
-                setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
-
-            }else {
-                setPermissao(false);
-            }          
+            .then(response => {                                   
+                if (response.data.login != null){
+                    setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
+                }else {
+                    setPermissao(false);
+                }          
             }).catch(error=> {
             console.log(error);
             })
