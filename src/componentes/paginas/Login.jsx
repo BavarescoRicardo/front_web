@@ -19,6 +19,7 @@ const Login = props => {
     );
     const url = 'http://localhost:3033/blog/login'
     const urlex = 'http://45.191.187.35:3033/blog/login'
+    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/blog/login";
 
     const handleChange = e=> 
     {       
@@ -36,7 +37,7 @@ const Login = props => {
         try {
             const datau = qs.stringify(usuariolog)
 
-            await axios.post(urlex, datau)
+            await axios.post(baseUrlHeroku, datau)
             .then(async response => {
                 console.log(response.data)
                 if(response.data){
