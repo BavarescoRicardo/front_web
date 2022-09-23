@@ -11,7 +11,7 @@ function PainelMestre(){
     const history = useHistory();
 
     const baseUrlListagem ="http://localhost:3033/loginsapi";
-    const baseUrlExternoListagem ="http://45.191.187.35:3033/loginsapi";
+    const baseUrlExternoListagem ="https://tcc-spring-back-end.herokuapp.com/loginsapi";
     const [data, setData]=useState([]);    
     
     const [permissao, setPermissao]=useState(
@@ -27,8 +27,8 @@ function PainelMestre(){
             permissao.username = nomerol
 
             await axios.post(admin ? 
-                'http://45.191.187.35:3033/adicionaroleapi' : 
-                'http://45.191.187.35:3033/removerroleapi', permissao, 
+                'https://tcc-spring-back-end.herokuapp.com/adicionaroleapi' : 
+                'https://tcc-spring-back-end.herokuapp.com/removerroleapi', permissao, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }

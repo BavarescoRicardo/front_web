@@ -24,7 +24,7 @@ const ParticipanteArtigo = (props) => {
             selecionado.idArtigo = idArtigo;
             selecionado.idUsuario = props.idUsuario;
 
-            await axios.post('http://localhost:3033/participanteremover/', selecionado, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/participanteremover/', selecionado, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -43,7 +43,7 @@ const ParticipanteArtigo = (props) => {
             console.log("tentando selecionar participantes id dos artigo");
             const formData = new FormData();
             formData.append('idUsuario', idUsuario);
-            await axios.post('http://localhost:3033/selparticipantes/', formData, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/selparticipantes/', formData, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 

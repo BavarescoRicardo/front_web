@@ -9,6 +9,12 @@ function Publicar(){
 
     const history = useHistory();
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/imagem";
+    const baseUrlArtigo = 'http://45.191.187.35:3033/artigo/salvarartigo';
+    const baseUrlArtigoHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo";
+
+    const baseUrlHerokuImg ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
+
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
@@ -31,7 +37,7 @@ function Publicar(){
             formData.append('artigo', codigoArtigo);
             formData.append('image', selectedImage);
             // Requisicao para postar imagem
-            api.post(baseUrlExterno, formData,
+            api.post(baseUrlHerokuImg, formData,
                 {          
                     headers: {          
                         Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
@@ -75,7 +81,7 @@ function Publicar(){
         console.log("Postando artigo novo")
 
         try {
-            await api.post('http://45.191.187.35:3033/artigo/salvarartigo', artigo, 
+            await api.post(baseUrlArtigoHeroku, artigo, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
