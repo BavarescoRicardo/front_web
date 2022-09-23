@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function NovoArtigo(){
     const baseUrl ="http://localhost:3033/artigo/artigolista";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
 
     const [dados, setDados]=useState([]);    

@@ -7,10 +7,10 @@ import Button from '@material-ui/core/Button';
 
 function Perfil(){ 
     const baseUrl ="http://localhost:3033/salvausuario";
-    const baseUrlExterno ="http://45.191.187.35:3033/salvausuario";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
 
-    const baseUrlExternoft ="http://45.191.187.35:3033/postaFt";
+    const baseUrlExternoft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
     const baseUrlHerokuft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
 
     const [selectedImage, setSelectedImage] = useState(null); 

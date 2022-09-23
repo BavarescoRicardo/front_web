@@ -9,7 +9,7 @@ function Detalhe(){
     
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
-    const userUrl ="http://45.191.187.35:3033/verificaparticipante/";
+    const userUrl ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const baseUrlArtigoDetal ="http://localhost:3033/artigo/removerdetalhe/";
     const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/removerdetalhe/";
@@ -68,7 +68,7 @@ function Detalhe(){
       } 
 
     const baseUrl ="http://localhost:3033/artigo/artigodettalhe";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigodettalhe";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
     
 

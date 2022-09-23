@@ -15,7 +15,7 @@ import axios from 'axios';
 
 const Navegacao = () => {
 
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrl ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
     const [permissao, setPermissao] = useState(false);
 

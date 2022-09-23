@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button';
 function Publicar(){
 
     const history = useHistory();
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/imagem";
-    const baseUrlArtigo = 'http://45.191.187.35:3033/artigo/salvarartigo';
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
+    const baseUrlArtigo = 'https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo';
     const baseUrlArtigoHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo";
 
     const baseUrlHerokuImg ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
