@@ -9,10 +9,12 @@ import Button from '@material-ui/core/Button';
 function Perfil(props){    
     const history = useHistory();  
 
-    const getUserUrl ="http://45.191.187.35:3033/getusuario/";
     const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrlHeroku ="https://api-conclusao-backend.herokuapp.com/selusuario";
+
     const baseUrl ="http://localhost:3033/userPostaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
+    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -39,7 +41,7 @@ function Perfil(props){
 
         const formData = new FormData();
         formData.append('image', selectedImage);
-        axios.post(baseUrlExterno, formData,
+        axios.post(baseUrlHeroku, formData,
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
@@ -53,7 +55,7 @@ function Perfil(props){
     
     const imagemGet = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){            
-            await axios.get(userUrl, 
+            await axios.get(userUrlHeroku, 
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            

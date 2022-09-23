@@ -8,7 +8,11 @@ import Button from '@material-ui/core/Button';
 function Perfil(){ 
     const baseUrl ="http://localhost:3033/salvausuario";
     const baseUrlExterno ="http://45.191.187.35:3033/salvausuario";
+    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/salvausuario";
+
     const baseUrlExternoft ="http://45.191.187.35:3033/postaFt";
+    const baseUrlHerokuft ="https://api-conclusao-backend.herokuapp.com/postaFt";
+
     const [selectedImage, setSelectedImage] = useState(null); 
     const history = useHistory();        
     const [imageUrl, setImageUrl] = useState(null);
@@ -52,7 +56,7 @@ function Perfil(){
     
             const formData = new FormData();
             formData.append('image', selectedImage);
-            api.post(baseUrlExternoft, formData,
+            api.post(baseUrlHerokuft, formData,
                 {          
                     headers: {          
                         Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
@@ -67,7 +71,7 @@ function Perfil(){
     async function usuarioEdita(){                
 
         try {
-            await api.post(baseUrl, usuariolog, 
+            await api.post(baseUrlHeroku, usuariolog, 
                 { headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
                 }

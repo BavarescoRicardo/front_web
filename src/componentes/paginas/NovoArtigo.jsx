@@ -7,17 +7,19 @@ import axios from 'axios';
 function NovoArtigo(){
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
+    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/artigo/artigolista";
+
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
     const [imageUrl, setImageUrl] = useState([]);
     const [codImagem, setCodImagem] = useState([]);
 
     const [permissao, setPermissao] = useState(false);
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrlHeroku ="https://api-conclusao-backend.herokuapp.com/selusuario";
 
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  
-            await axios.get(userUrl, 
+            await axios.get(userUrlHeroku, 
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
@@ -25,7 +27,7 @@ function NovoArtigo(){
             }
             )
             .then(response => {                          
-            
+            console.log(response.data)
             if (response.data.login != null){
                 setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
 
@@ -42,7 +44,7 @@ function NovoArtigo(){
     }
 
     const artigoGet = async()=>{
-        await axios.get(baseUrlExterno)
+        await axios.get(baseUrlHeroku)
         .then(response => {
             setDados(response.data);
             verificarPermissao();
