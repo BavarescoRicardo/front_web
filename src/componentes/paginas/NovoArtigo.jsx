@@ -7,7 +7,7 @@ import axios from 'axios';
 function NovoArtigo(){
     const baseUrl ="http://localhost:3033/artigo/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
-    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/artigo/artigolista";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
 
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
@@ -15,7 +15,7 @@ function NovoArtigo(){
     const [codImagem, setCodImagem] = useState([]);
 
     const [permissao, setPermissao] = useState(false);
-    const userUrlHeroku ="https://api-conclusao-backend.herokuapp.com/selusuario";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
 
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  

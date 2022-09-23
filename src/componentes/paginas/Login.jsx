@@ -19,7 +19,7 @@ const Login = props => {
     );
     const url = 'http://localhost:3033/blog/login'
     const urlex = 'http://45.191.187.35:3033/blog/login'
-    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/blog/login";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/blog/login";
 
     const handleChange = e=> 
     {       

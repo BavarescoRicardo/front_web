@@ -10,11 +10,11 @@ function Perfil(props){
     const history = useHistory();  
 
     const userUrl ="http://45.191.187.35:3033/selusuario/";
-    const userUrlHeroku ="https://api-conclusao-backend.herokuapp.com/selusuario";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
 
     const baseUrl ="http://localhost:3033/userPostaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
-    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/postaFt";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);

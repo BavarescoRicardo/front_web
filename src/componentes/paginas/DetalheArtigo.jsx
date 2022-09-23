@@ -10,7 +10,7 @@ function Detalhe(){
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
     const userUrl ="http://45.191.187.35:3033/selusuario/";
-    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/selusuario/";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
     const baseUrlArtigoDetal ="http://localhost:3033/artigo/removerdetalhe/";
   
 
