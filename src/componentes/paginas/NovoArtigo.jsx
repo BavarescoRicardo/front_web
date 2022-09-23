@@ -44,6 +44,7 @@ function NovoArtigo(){
     const artigoGet = async()=>{
         await axios.get(baseUrlExterno)
         .then(response => {
+            console.log(response.data);
             setDados(response.data);
             verificarPermissao();
         }).catch(error=> {

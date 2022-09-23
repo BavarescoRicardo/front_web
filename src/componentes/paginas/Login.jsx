@@ -37,7 +37,7 @@ const Login = props => {
         try {
             const datau = qs.stringify(usuariolog)
 
-            await axios.post(baseUrlHeroku, datau)
+            await axios.post(urlex, datau)
             .then(async response => {
                 console.log(response.data)
                 if(response.data){
