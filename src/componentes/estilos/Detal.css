@@ -1,6 +1,9 @@
 .btn-fim-editar {
-    position: absolute;
+    /* position: absolute; */
+    display: flex;
+    justify-content: flex-end;
     bottom: 10%;
+    padding-right: 50px;
     right: 10px;
     margin-top: 5%;
 }

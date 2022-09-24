@@ -162,7 +162,7 @@ function Detalhe(){
                 <div className="btn-fim-editar">
                     {permit  
                         ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
-                        : <h1>Sem permissões</h1>
+                        : <p>Sem permissões</p>
                     }
                 </div>
             </section>
