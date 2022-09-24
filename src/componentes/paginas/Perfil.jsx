@@ -101,43 +101,43 @@ function Perfil(props){
                 </div>                       
               
                 <div className="informacoes">
-                <div className="row">
-                        <div className="col">
-                            <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
+                    <div className="row">
+                            <div className="col">
+                                <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
+                            </div>
                         </div>
-                    </div>
 
+                        <div className="row">
+                            <div className="col">
+                                <h2>Bio: {usuarioData? usuarioData.bio : null} </h2>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <h2>Observações: {usuarioData? usuarioData.observacao : null} </h2>
+                            </div>
+                        </div>
+
+                    </div>
                     <div className="row">
                         <div className="col">
-                            <h2>Bio: {usuarioData? usuarioData.bio : null} </h2>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h2>Observações: {usuarioData? usuarioData.observacao : null} </h2>
-                        </div>
-                    </div>
-
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <input
-                            accept="image/*"
-                            type="file"
-                            id="select-image"
-                            style={{ display: 'none' }}
-                            onChange={e => setSelectedImage(e.target.files[0])}
-                        />
-                        <label htmlFor="select-image">
-                            <Button variant="contained" size='small' color="secondary" component="span">
-                                Buscar foto
-                            </Button>
-                        </label>
-                        </div>
-                        <div className="col">
-                        <button onClick={postarFoto} >
-                            Postar foto
-                        </button>
+                            <input
+                                accept="image/*"
+                                type="file"
+                                id="select-image"
+                                style={{ display: 'none' }}
+                                onChange={e => setSelectedImage(e.target.files[0])}
+                            />
+                            <label htmlFor="select-image">
+                                <Button variant="contained" size='small' color="secondary" component="span">
+                                    Buscar foto
+                                </Button>
+                            </label>
+                            </div>
+                            <div className="col">
+                            <button onClick={postarFoto} >
+                                Postar foto
+                            </button>
                     </div>
                 </div>
                 <div className="row">
