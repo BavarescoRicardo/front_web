@@ -30,9 +30,10 @@
 .textoDetalhe {
     margin-left: 10%;
     width: 100%;
-    background-color: #a6a5a7;
+    background-color: #e2f2f191;
     color: rgb(39, 38, 38);
     border-radius: 5px  10px 25px 10px;
+    padding-right: 5px;
 }
 
 .textoDetalhe img {
@@ -48,7 +49,7 @@
 
 .informacoes {
     margin-top: 0;
-    background-color: #93909b;
+    background-color: #f1eff7;
     color: aliceblue;
     border-radius: 5px  10px 25px 10px;
     margin-bottom: 15px;
