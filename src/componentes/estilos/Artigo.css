@@ -18,6 +18,7 @@
 
 
 .texto {
+    z-index: +1;
     margin-top: -10%;
     margin-left: 15%;
     background-color: #a6a5a7;
