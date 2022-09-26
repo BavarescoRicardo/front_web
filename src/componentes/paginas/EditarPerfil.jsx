@@ -6,12 +6,12 @@ import api from '../../servicos/api'
 import Button from '@material-ui/core/Button';
 
 function Perfil(){ 
-    const baseUrl ="http://localhost:3033/salvausuario";
-    const baseUrlExterno ="http://localhost:3033/salvausuario";
-    const baseUrlHeroku ="http://localhost:3033/salvausuario";
+    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
 
-    const baseUrlExternoft ="http://localhost:3033/postaFt";
-    const baseUrlHerokuft ="http://localhost:3033/postaFt";
+    const baseUrlExternoft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
+    const baseUrlHerokuft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
 
     const [selectedImage, setSelectedImage] = useState(null); 
     const history = useHistory();        

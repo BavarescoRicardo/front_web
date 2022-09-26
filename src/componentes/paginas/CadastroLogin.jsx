@@ -5,9 +5,9 @@ import api from '../../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function CadLogin(){
 
-    const baseUrl ="http://localhost:3033/salvaloginapi";
-    const baseUrlExterno ="http://localhost:3033/salvaloginapi";
-    const baseUrlHeroku ="http://localhost:3033/salvaloginapi";
+    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
     const history = useHistory();
 
     // const [data, setData]=useState([]);
