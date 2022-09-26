@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import Login from './paginas/Login';
-import NovoArtigo from './paginas/NovoArtigo';
+import ListaArtigos from './paginas/ListaArtigos';
 import PainelMestre from './paginas/PainelMestre';
 import Publicar from './paginas/PublicarArtigo';
 import Perfil from './paginas/Perfil';
@@ -73,9 +73,9 @@ const Navegacao = () => {
             </nav>
 
             <Switch>
-                <Route exact path="/"> <NovoArtigo/>                                         </Route>
+                <Route exact path="/"> <ListaArtigos/>                                         </Route>
                 <Route path="/Login"> <Login/>                                          </Route>
-                <Route path="/NovoArtigo"> <NovoArtigo/>                                </Route>
+                <Route path="/ListaArtigos"> <ListaArtigos/>                                </Route>
                 <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                      </Route>
                 <Route exact path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>          </Route>
                 <Route path="/Publicar"> <Publicar/>                                    </Route>

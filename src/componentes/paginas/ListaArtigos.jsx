@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
 import axios from 'axios';
 
-function NovoArtigo(){
+function ListaArtigos(){
     const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
@@ -140,4 +140,4 @@ function NovoArtigo(){
 }
 
 
-export default NovoArtigo;
+export default ListaArtigos;
