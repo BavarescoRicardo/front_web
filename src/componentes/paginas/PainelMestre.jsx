@@ -57,21 +57,20 @@ function PainelMestre(){
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
             })
-
-            // formDataUser.append('idLogin', idUser);
-            // await axios.post( 
-            //     'https://tcc-spring-back-end.herokuapp.com/removerloginapi', formDataUser, 
-            // { headers: {          
-            //     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
-            // }
-            // })
             .then(async response => {
                 if(response.data){
                 }else{
                     console.log("error ao publicar");    
                 }
-            }).catch(error=> {
-              console.log(error);
+            }).catch(async error=> {
+                // Caso o servidor não posso remover um usuario manda requisicao para remover login
+                formDataUser.append('idLogin', idLogin);
+                await axios.post( 
+                    'https://tcc-spring-back-end.herokuapp.com/removerloginapi', formDataUser, 
+                { headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+                }
+                })                
             })            
         } catch (error) {
             console.log(error);
