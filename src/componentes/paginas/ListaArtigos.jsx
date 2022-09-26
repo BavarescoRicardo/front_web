@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
+import { FaInfoCircle } from "@react-icons/all-files/fa/FaInfoCircle";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
 import axios from 'axios';
@@ -111,21 +113,18 @@ function ListaArtigos(){
                                     <p> Título: {titulo}  </p>
                                     <p> Descrição: {descricao} </p>
                                     <p>
-                                        <Link to={`/DetalheArtigo/${codigo}`}  className="link-dark text-decoration-none"> Ver </Link>
+                                        <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none">  <FaInfoCircle /> </Link>
                                         {permissao  
-                                            ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> Remover</button>
+                                            ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" /> </button>
                                             : <h1> </h1>
                                         }                                        
                                     </p>
                                 </div>
                             </div>
                         </article>
-                    ))}
-                    
-                    
+                    ))}                    
 
                 </div>
-
                 <div className="div">
                     {permissao  
                         ? <Link to="/Publicar" className="btn btn-info"> Publicar novo</Link>

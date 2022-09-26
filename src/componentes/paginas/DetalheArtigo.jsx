@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import axios from 'axios';
 import '../estilos/Detal.css';
 
@@ -141,7 +142,7 @@ function Detalhe(){
                                             <p> Título: {titulo}  </p>
                                             <p> Descrição: {descricao} </p>
                                             {permit  
-                                                ? <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none">Remover</button></p>
+                                                ? <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none"><FaTrash color="black" /></button></p>
                                                 : <h1></h1>
                                             }
                                         </div>
