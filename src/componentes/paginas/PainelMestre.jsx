@@ -50,16 +50,23 @@ function PainelMestre(){
     async function removerLogin(idUser) {        
         try {
             const formDataUser = new FormData();
-            formDataUser.append('idUser', idUser);
+            formDataUser.append('idLogin', idUser);
             await axios.post( 
-                'http://localhost:3033/removerloginapi', formDataUser, 
+                'http://localhost:3033/removeusuariopelologin', formDataUser, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
             })
+
+            // formDataUser.append('idLogin', idUser);
+            // await axios.post( 
+            //     'http://localhost:3033/removerloginapi', formDataUser, 
+            // { headers: {          
+            //     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            // }
+            // })
             .then(async response => {
                 if(response.data){
-                // history.push('/PainelMestre');
                 }else{
                     console.log("error ao publicar");    
                 }
