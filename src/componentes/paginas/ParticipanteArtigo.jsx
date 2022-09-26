@@ -37,6 +37,20 @@ const ParticipanteArtigo = (props) => {
         }
     }
 
+    function formataNumero(numero){
+        var zeros = '0';
+        if (numero < 1000){
+            zeros += '0';
+        }
+        if (numero < 100){
+            zeros += '0';
+        }
+        if (numero < 10){
+            zeros += '0';
+        }
+        numero = zeros+numero;
+        return numero;
+    }
 
     async function artigosParticipa(idUsuario) {        
         try {
@@ -70,9 +84,9 @@ const ParticipanteArtigo = (props) => {
     return(        
     <div className="selecao">        
         {
-            dadoParticipa.map( 
+            dadoParticipa.map(
                 (number) => <li>
-                    { number }
+                    {number = formataNumero(number)}
                     <button onClick={()=> removeArtigo(number)} className="btn btn-link link-danger text-decoration-none"> <FaTrash /> </button>
                 </li>
             )
