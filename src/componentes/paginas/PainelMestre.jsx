@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import	{ useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import SelecaoArtigo from './SelecaoArtigo';
@@ -131,7 +131,7 @@ function PainelMestre(){
                                 </td>
                                 <td>
                                     <button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button>
-                                    <button onClick={()=> removerLogin(login.id)} className="btn btn-link link-danger text-decoration-none"> Remover: {login.id} </button>
+                                    <button onClick={()=> removerLogin(login.id)} className="btn btn-link link-danger text-decoration-none"> <FaTrash /> {login.id} </button>
                                 </td>
                                 <td>
                                     <SelecaoArtigo cod={login.id}/>
