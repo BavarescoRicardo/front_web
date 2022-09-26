@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseUrl : "https://tcc-spring-back-end.herokuapp.com",
+    baseUrl : "http://localhost:3033",
 })
 
 export default api;

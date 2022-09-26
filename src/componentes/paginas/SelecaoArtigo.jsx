@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const SelecaoArtigo = (props) => {  
     const baseUrl ="http://localhost:3033/artigo/artigolista";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const baseUrlExterno ="http://localhost:3033/artigo/artigolista";
     
     var opcoes = [
         {value: 0, label: "Selecione o artigo"}
@@ -37,7 +37,7 @@ const SelecaoArtigo = (props) => {
             console.log("Dados artigo selecionado: ");
             console.log(selecionado);
 
-            await axios.post('https://tcc-spring-back-end.herokuapp.com/adiconaparticipante', selecionado, 
+            await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
