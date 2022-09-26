@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Select from 'react-select'
+import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import axios from 'axios';
 
 const ParticipanteArtigo = (props) => {  
@@ -63,7 +63,6 @@ const ParticipanteArtigo = (props) => {
         }
     }
 
-
     useEffect(async ()=>{      
         await artigosParticipa(props.idUsuario);
     }, []); 
@@ -74,7 +73,7 @@ const ParticipanteArtigo = (props) => {
             dadoParticipa.map( 
                 (number) => <li>
                     { number }
-                    <button onClick={()=> removeArtigo(number)} className="btn btn-link link-danger text-decoration-none"> Remover </button>
+                    <button onClick={()=> removeArtigo(number)} className="btn btn-link link-danger text-decoration-none"> <FaTrash /> </button>
                 </li>
             )
         }
