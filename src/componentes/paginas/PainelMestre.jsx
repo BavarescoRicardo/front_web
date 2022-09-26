@@ -64,7 +64,7 @@ function PainelMestre(){
                 }
             }).catch(async error=> {
                 // Caso o servidor não posso remover um usuario manda requisicao para remover login
-                formDataUser.append('idLogin', idLogin);
+                formDataUser.append('idUser', idUser);
                 await axios.post( 
                     'https://tcc-spring-back-end.herokuapp.com/removerloginapi', formDataUser, 
                 { headers: {          
