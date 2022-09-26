@@ -9,15 +9,17 @@ function Detalhe(){
     
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrl ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const baseUrlArtigoDetal ="http://localhost:3033/artigo/removerdetalhe/";
+    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/removerdetalhe/";
   
 
     async function verificaParticipante() {        
         try {
             const formData = new FormData();
             formData.append('idArtigo', id);
-            await axios.post('http://localhost:3033/verificaparticipante/', formData, 
+            await axios.post(userUrlHeroku, formData, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -46,7 +48,7 @@ function Detalhe(){
             const formData = new FormData();
             formData.append('idArtigo', id);
 
-            await axios.post(baseUrlArtigoDetal, formData, 
+            await axios.post(userUrlHerokuArtigo, formData, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -66,7 +68,9 @@ function Detalhe(){
       } 
 
     const baseUrl ="http://localhost:3033/artigo/artigodettalhe";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigodettalhe";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
+    
 
     const formData = new FormData();
     formData.append('idArtigo', id);
@@ -76,7 +80,7 @@ function Detalhe(){
     const [efeito, setEfeito] = useState(false); 
     
     const detalhrGet = async()=>{        
-      await axios.post(baseUrl, formData)
+      await axios.post(baseUrlHeroku, formData)
       .then(response => {
         setArtigos(response.data);
       }).catch(error=> {
@@ -127,9 +131,9 @@ function Detalhe(){
                             <article>
                                 <div className="row">                                    
                                     <div className="col">
-                                        <div className="informacoes" style={{height: '250px'}}>
+                                        <div className="informacoes" style={{height: '230px'}}>
                                             {(!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
-                                            <img style={{ width: "95%", height: "85%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
+                                            <img style={{ marginLeft: "1%", width: "95%", height: "95%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
                                         </div>                                    
                                     </div>
                                     <div className="col-md-6">
@@ -158,7 +162,7 @@ function Detalhe(){
                 <div className="btn-fim-editar">
                     {permit  
                         ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
-                        : <h1>Sem permissões</h1>
+                        : <p>Sem permissões</p>
                     }
                 </div>
             </section>

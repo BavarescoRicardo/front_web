@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function CadLogin(){
 
     const baseUrl ="http://localhost:3033/salvaloginapi";
-    const baseUrlExterno ="http://45.191.187.35:3033/salvaloginapi";
-    const baseUrlHeroku ="https://api-conclusao-backend.herokuapp.com/salvaloginapi";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
     const history = useHistory();
 
     // const [data, setData]=useState([]);

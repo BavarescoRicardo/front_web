@@ -9,10 +9,12 @@ import Button from '@material-ui/core/Button';
 function Perfil(props){    
     const history = useHistory();  
 
-    const getUserUrl ="http://45.191.187.35:3033/getusuario/";
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrl ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+
     const baseUrl ="http://localhost:3033/userPostaFt";
-    const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/postaFt";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -39,7 +41,7 @@ function Perfil(props){
 
         const formData = new FormData();
         formData.append('image', selectedImage);
-        axios.post(baseUrlExterno, formData,
+        axios.post(baseUrlHeroku, formData,
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
@@ -53,7 +55,7 @@ function Perfil(props){
     
     const imagemGet = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){            
-            await axios.get(userUrl, 
+            await axios.get(userUrlHeroku, 
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
@@ -99,43 +101,43 @@ function Perfil(props){
                 </div>                       
               
                 <div className="informacoes">
-                <div className="row">
-                        <div className="col">
-                            <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
+                    <div className="row">
+                            <div className="col">
+                                <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
+                            </div>
                         </div>
-                    </div>
 
+                        <div className="row">
+                            <div className="col">
+                                <h2>Bio: {usuarioData? usuarioData.bio : null} </h2>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <h2>Observações: {usuarioData? usuarioData.observacao : null} </h2>
+                            </div>
+                        </div>
+
+                    </div>
                     <div className="row">
                         <div className="col">
-                            <h2>Bio: {usuarioData? usuarioData.bio : null} </h2>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h2>Observações: {usuarioData? usuarioData.observacao : null} </h2>
-                        </div>
-                    </div>
-
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <input
-                            accept="image/*"
-                            type="file"
-                            id="select-image"
-                            style={{ display: 'none' }}
-                            onChange={e => setSelectedImage(e.target.files[0])}
-                        />
-                        <label htmlFor="select-image">
-                            <Button variant="contained" size='small' color="secondary" component="span">
-                                Buscar foto
-                            </Button>
-                        </label>
-                        </div>
-                        <div className="col">
-                        <button onClick={postarFoto} >
-                            Postar foto
-                        </button>
+                            <input
+                                accept="image/*"
+                                type="file"
+                                id="select-image"
+                                style={{ display: 'none' }}
+                                onChange={e => setSelectedImage(e.target.files[0])}
+                            />
+                            <label htmlFor="select-image">
+                                <Button variant="contained" size='small' color="secondary" component="span">
+                                    Buscar foto
+                                </Button>
+                            </label>
+                            </div>
+                            <div className="col">
+                            <button onClick={postarFoto} >
+                                Postar foto
+                            </button>
                     </div>
                 </div>
                 <div className="row">

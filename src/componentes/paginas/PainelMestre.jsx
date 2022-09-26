@@ -11,7 +11,7 @@ function PainelMestre(){
     const history = useHistory();
 
     const baseUrlListagem ="http://localhost:3033/loginsapi";
-    const baseUrlExternoListagem ="http://45.191.187.35:3033/loginsapi";
+    const baseUrlExternoListagem ="https://tcc-spring-back-end.herokuapp.com/loginsapi";
     const [data, setData]=useState([]);    
     
     const [permissao, setPermissao]=useState(
@@ -27,8 +27,32 @@ function PainelMestre(){
             permissao.username = nomerol
 
             await axios.post(admin ? 
-                'http://45.191.187.35:3033/adicionaroleapi' : 
-                'http://45.191.187.35:3033/removerroleapi', permissao, 
+                'https://tcc-spring-back-end.herokuapp.com/adicionaroleapi' : 
+                'https://tcc-spring-back-end.herokuapp.com/removerroleapi', permissao, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(async response => {
+                if(response.data){
+                // history.push('/PainelMestre');
+                }else{
+                    console.log("error ao publicar");    
+                }
+            }).catch(error=> {
+              console.log(error);
+            })            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function removerLogin(idUser) {        
+        try {
+            const formDataUser = new FormData();
+            formDataUser.append('idUser', idUser);
+            await axios.post( 
+                'https://tcc-spring-back-end.herokuapp.com/removerloginapi', formDataUser, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -96,8 +120,13 @@ function PainelMestre(){
                                 <td> {login.id}</td>
                                 <td> {login.username} </td>
                                 <td> {login.roles.length}</td>
-                                <td><button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button></td>
-                                <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
+                                <td>
+                                    <button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button>
+                                </td>
+                                <td>
+                                    <button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button>
+                                    <button onClick={()=> removerLogin(login.id)} className="btn btn-link link-danger text-decoration-none"> Remover: {login.id} </button>
+                                </td>
                                 <td>
                                     <SelecaoArtigo cod={login.id}/>
                                 </td>

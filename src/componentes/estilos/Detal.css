@@ -1,6 +1,9 @@
 .btn-fim-editar {
-    position: absolute;
+    /* position: absolute; */
+    display: flex;
+    justify-content: flex-end;
     bottom: 10%;
+    padding-right: 50px;
     right: 10px;
     margin-top: 5%;
 }
@@ -26,10 +29,11 @@
 
 .textoDetalhe {
     margin-left: 10%;
-    width: 200%;
-    background-color: #a6a5a7;
+    width: 100%;
+    background-color: #e2f2f191;
     color: rgb(39, 38, 38);
     border-radius: 5px  10px 25px 10px;
+    padding-right: 5px;
 }
 
 .textoDetalhe img {
@@ -45,9 +49,9 @@
 
 .informacoes {
     margin-top: 0;
-    background-color: #93909b;
-    color: aliceblue;
-    border-radius: 5px  10px 55px 10px;
+    background-color: #f1eff7;
+    color: rgb(28, 28, 29);
+    border-radius: 5px  10px 25px 10px;
     margin-bottom: 15px;
 }
 

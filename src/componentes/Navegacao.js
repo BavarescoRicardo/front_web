@@ -15,13 +15,14 @@ import axios from 'axios';
 
 const Navegacao = () => {
 
-    const userUrl ="http://45.191.187.35:3033/selusuario/";
+    const userUrl ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
     const [permissao, setPermissao] = useState(false);
 
     const verificarPermissao = async()=>{  
         console.log("Verificando a permissão para o usuario ") 
         if(localStorage.getItem('tokens') != null){  
-            await axios.get(userUrl, 
+            await axios.get(userUrlHeroku, 
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
