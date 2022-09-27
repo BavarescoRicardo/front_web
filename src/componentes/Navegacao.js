@@ -56,8 +56,8 @@ const Navegacao = () => {
                             <li>
                                 <HiAcademicCap size={50} />
                             </li>
-                            <li className='navbar-brand mb-0' >
-                                <p>Divulgação de Trabalhos Acadêmicos</p>
+                            <li>
+                                <p>Divulgação</p>
                             </li>  
                             <li>
                                 <Link to="/" className="nav-link">Home</Link>

@@ -95,7 +95,7 @@ function ListaArtigos(){
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <h1> A Nova  lista de Artigos  </h1>
+                    <h1>Divulgação de Trabalhos Acadêmicos</h1>
                     </div>
                 </div>
                 <div className="row">
