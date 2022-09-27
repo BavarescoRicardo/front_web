@@ -131,9 +131,9 @@ function Detalhe(){
                             <article>
                                 <div className="row">                                    
                                     <div className="col">
-                                        <div className="informacoes" style={{height: '60%', width: "60%"}}>
+                                        <div className="informacoes" style={{height: '60%', width: "80%"}}>
                                             {(!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
-                                            <img style={{ marginLeft: "5%", width: "90%", height: "95%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
+                                            <img style={{ marginLeft: "10%", width: "80%", height: "90%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
                                         </div>                                    
                                     </div>
                                 </div>

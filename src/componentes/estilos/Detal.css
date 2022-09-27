@@ -29,8 +29,8 @@
 
 .textoDetalhe {
     margin-left: 10%;
-    width: 90%;
-    background-color: #e2f2f191;
+    width: 80%;
+    background-color: #cae3f0;
     color: rgb(39, 38, 38);
     border-radius: 5px  10px 5px 10px;
     padding-right: 5px;
@@ -52,7 +52,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    background-color: #f1eff7;
+    background-color: #e4edf2;
     color: rgb(28, 28, 29);
     border-radius: 5px  10px 25px 10px;
 }
