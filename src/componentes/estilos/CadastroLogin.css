@@ -64,12 +64,13 @@ form button {
 
 .card {
     display: flex;
-    background-color: lightgray;
+    background-color: rgb(220, 229, 231);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-    max-width: 30%;
+    max-width: 40%;
     max-height: 10%;
     transition: 0.3s;
-    padding: 2%;
+    padding: 1%;
+    padding-left: 2%;
     border-radius: 5px;
     margin-left: 70%;
     font-size: 13px;
