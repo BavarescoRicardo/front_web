@@ -66,7 +66,7 @@ form button {
     display: flex;
     background-color: rgb(220, 229, 231);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-    max-width: 25rem;
+    max-width: 20rem;
     max-height: 10%;
     transition: 0.3s;
     padding: 1%;
