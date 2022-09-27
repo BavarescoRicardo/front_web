@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './paginas/DetalheArtigo';
 import EditarDetalhe from './paginas/DetalheArtigoEditar';
 import axios from 'axios';
+import { HiAcademicCap } from 'react-icons/hi';
 
 const Navegacao = () => {
 
@@ -52,6 +53,12 @@ const Navegacao = () => {
                 <div  className="container">
                     <ul className="navbar-nav">
                         <div className="navbar-nav">
+                            <li>
+                                <HiAcademicCap size={50} />
+                            </li>
+                            <li className='navbar-brand mb-0' >
+                                <p>Divulgação de Trabalhos Acadêmicos</p>
+                            </li>  
                             <li>
                                 <Link to="/" className="nav-link">Home</Link>
                             </li>
