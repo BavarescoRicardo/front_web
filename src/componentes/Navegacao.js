@@ -57,7 +57,7 @@ const Navegacao = () => {
                                 <HiAcademicCap size={50} />
                             </li>
                             <li>
-                                <p>Divulgação</p>
+                                <p style={{marginTop: '9px'}}>Divulgação</p>
                             </li>  
                             <li>
                                 <Link to="/" className="nav-link">Home</Link>
