@@ -95,45 +95,37 @@ function NovoListaArtigos(){
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <h1>A Nova </h1>
                         <h1>Divulgação de Trabalhos Acadêmicos</h1>
-                        <h1>Usar cards?!</h1>
                     </div>
                 </div>
-                <div className="row">
-                    <hr />                    
-                    {dados.map(({ codigo, titulo, descricao, imagem }) => (
-                        <article key={codigo}>
-                            <div className="artigo">
-                                <div className="foto">
-                                    {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
-                                    {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
-                                </div>
-                                <div className="texto">
-                                    <p> {titulo}  </p>
-                                    <p> {descricao} </p>
-                                    <p>
-                                        <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none">  <FaInfoCircle /> </Link>
-                                        {permissao  
-                                            ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" /> </button>
-                                            : <h1> </h1>
-                                        }                                        
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    ))}                    
+                <hr /> 
+            </div>                   
+            {dados.map(({ codigo, titulo, descricao, imagem }) => (
+                <article key={codigo}>
+                    <div className="card mb-3" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
+                        {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
+                        {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
+                        <div className="card-body">
+                            <h5 className="card-title">{titulo}</h5>
+                            <p className="card-text">{descricao}</p>
+                            <p>
+                                <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none">  <FaInfoCircle /> </Link>
+                                {permissao  
+                                    ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" /> </button>
+                                    : <h1> </h1>
+                                }                                        
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            ))}                    
 
-                </div>
-                <div className="div">
-                    {permissao  
-                        ? <Link to="/Publicar" className="btn btn-info"> Publicar novo</Link>
-                        : <h1> </h1>
-                    }
-                </div>
-
+            <div className="div">
+                {permissao  
+                    ? <Link to="/Publicar" className="btn btn-info"> Publicar novo</Link>
+                    : <h1> </h1>
+                }
             </div>
-
         </div>
     );    
 }
