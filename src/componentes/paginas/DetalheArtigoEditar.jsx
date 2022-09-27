@@ -124,7 +124,7 @@ function EditarDetalhe(){
                     <div className="row">
                         <div className="col">
                             <label htmlFor="descricao">Descrição</label>
-                            <textarea style={{width: '100%'}} name="descricao" onChange={handleChange} cols="30" rows="5"></textarea>
+                            <textarea style={{width: '90%'}} name="descricao" onChange={handleChange} cols="30" rows="5"></textarea>
                         </div>
                     </div> 
                 </div>
