@@ -110,8 +110,8 @@ function ListaArtigos(){
                                     {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
                                 </div>
                                 <div className="texto">
-                                    <p> Título: {titulo}  </p>
-                                    <p> Descrição: {descricao} </p>
+                                    <p> {titulo}  </p>
+                                    <p> {descricao} </p>
                                     <p>
                                         <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none">  <FaInfoCircle /> </Link>
                                         {permissao  
