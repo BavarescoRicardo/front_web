@@ -32,8 +32,9 @@
     width: 90%;
     background-color: #e2f2f191;
     color: rgb(39, 38, 38);
-    border-radius: 5px  10px 25px 10px;
+    border-radius: 5px  10px 5px 10px;
     padding-right: 5px;
+    margin-bottom: 120px;
 }
 
 .textoDetalhe img {
@@ -42,27 +43,24 @@
     background-color: #a6a5a7;
     color: rgb(39, 38, 38);
     border-radius: 5px  10px 55px 10px;
-    margin-bottom: 15px;
 }
 
 
 
 .informacoes {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #f1eff7;
     color: rgb(28, 28, 29);
     border-radius: 5px  10px 25px 10px;
-    margin-bottom: 15px;
-}
-
-.informacoes h2 {
-    margin-left: 5%;    
 }
 
 .foto {
     background-color: whitesmoke;
 	border: 1px solid black;
 	height: 120px;
-	width: 150px;	margin: 10px;
+	width: 150px;
 	border-radius: 5px  10px 5px 10px;	
 	box-shadow: 2px 3px 10px black;    
 }

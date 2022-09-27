@@ -98,7 +98,6 @@ function Detalhe(){
       function decodifImagem(imagem, codigo){
         // Se artigo nao contem imagem entao apenas retorna
         if (imagem == undefined) {
-            console.log("Tentou decodificar img da lista de detalhes artigo")
             return;
         } else {
             // Decodifica a imagem do banco de dados
@@ -115,7 +114,7 @@ function Detalhe(){
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                        <h1> Detalhe do artigo Cabecalho </h1>
+                            <h1> Detalhes do artigo {id} </h1>
                         </div>
                     </div>
                 </div>                
@@ -132,15 +131,18 @@ function Detalhe(){
                             <article>
                                 <div className="row">                                    
                                     <div className="col">
-                                        <div className="informacoes" style={{height: '90%'}}>
+                                        <div className="informacoes" style={{height: '60%', width: "60%"}}>
                                             {(!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
-                                            <img style={{ marginLeft: "8%", width: "80%", height: "95%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
+                                            <img style={{ marginLeft: "5%", width: "90%", height: "95%" }} src={imageUrl[codImagem.indexOf(codigo)]} />
                                         </div>                                    
                                     </div>
-                                    <div className="col-md-6">
+                                </div>
+                                <div className="row" style={{ marginTop: "-12%"}}>
+                                    <div className="col">
                                         <div className="textoDetalhe">
-                                            <p> Título: {titulo}  </p>
-                                            <p> Descrição: {descricao} </p>
+                                            <p> {titulo} </p>
+                                            <b/>
+                                            <p> {descricao} </p>
                                             {permit  
                                                 ? <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none"><FaTrash color="black" /></button></p>
                                                 : <h1></h1>
