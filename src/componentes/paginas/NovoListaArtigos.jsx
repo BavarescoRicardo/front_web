@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
 import axios from 'axios';
 
-function ListaArtigos(){
+function NovoListaArtigos(){
     const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
@@ -95,7 +95,9 @@ function ListaArtigos(){
             <div className="container">
                 <div className="row">
                     <div className="col">
+                        <h1>A Nova </h1>
                         <h1>Divulgação de Trabalhos Acadêmicos</h1>
+                        <h1>Usar cards?!</h1>
                     </div>
                 </div>
                 <div className="row">
@@ -137,4 +139,4 @@ function ListaArtigos(){
 }
 
 
-export default ListaArtigos;
+export default NovoListaArtigos;
