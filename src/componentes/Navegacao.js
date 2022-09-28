@@ -57,16 +57,16 @@ const Navegacao = () => {
                                 <HiAcademicCap size={50} />
                             </li>
                             <li>
-                                <p style={{marginTop: '9px'}}>Divulgação</p>
+                                <p style={{marginTop: '9px', marginLeft: '-30%'}}>Divulgação</p>
                             </li>  
                             <li>
-                                <Link to="/" className="nav-link">Home</Link>
+                                <Link to="/" className="nav-link" style={{color: '#4f7279'}}>Home</Link>
                             </li>
                             <li>
-                                <Link to="/Perfil" className="nav-link">Perfil</Link>
+                                <Link to="/Perfil" className="nav-link" style={{color: '#4f7279'}}>Perfil</Link>
                             </li>
                             <li>
-                                <Link to="/Login" className="nav-link">Login</Link>
+                                <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>
                             </li>
                             <li>                               
                                 {permissao  
