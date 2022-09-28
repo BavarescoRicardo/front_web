@@ -118,40 +118,23 @@ function Detalhe(){
                         </div>
                     </div>
                 </div>                
-            </section>
-            <section>
-                <div className="container">
-                    <div className="row">
-                        <div className="col">
+            </section>                    
+            {artigos.map(({ codigo, codArtigo, titulo, descricao, fotoPublicacao }) => (
+                <article key={codigo}>
+                    <div className="card mb-3" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
+                        {(!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
+                        <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} />                                    
+                        <div className="card-body">
+                            <h5 className="card-title">{titulo}</h5>                                
+                            <p className="card-text">{descricao}</p>
+                                {permit  
+                                    ? <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none"><FaTrash color="black" /></button></p>
+                                    : <p></p>
+                                }
                         </div>
-                    </div>                    
-                    
-                    {artigos.map(({ codigo, codArtigo, titulo, descricao, fotoPublicacao }) => (
-                        <tr key={codigo}>
-                            <article>
-                                <div className="card mb-3" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
-                                    {(!efeito)  && (fotoPublicacao) ? null  : decodifImagem(fotoPublicacao, codigo)}
-                                    <img style={{ marginLeft: "10%", width: "80%", height: "90%" }} src={imageUrl[codImagem.indexOf(codigo)]} />                                    
-                                    <div className="card-body">
-                                        <h5 className="card-title">{titulo}</h5>
-                                        
-                                        <p className="card-text">{descricao}</p>
-                                            {permit  
-                                                ? <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none"><FaTrash color="black" /></button></p>
-                                                : <h1></h1>
-                                            }
-                                        </div>
-                                </div>
-                            </article>
-                        </tr>                        
-                    ))}
-
-
-
-
-             
-                </div>
-            </section>
+                    </div>
+                </article>
+            ))}             
         
             <section>
                 <div className="btn-fim-editar">
