@@ -12,10 +12,9 @@
 .menupublicar {
     display: flex;
     height: 95%;
-    width: 50%;    
-    background-color: #949191;
+    width: 90%;    
+    background-color: #6f7b81;
     border: 3px solida white;
-    margin-top: 2%;    
     margin-left: 5%;
     margin-bottom: 10%;
     margin-top: 1%;
@@ -24,7 +23,7 @@
 }
 
 .menupublicar h2 {
-    margin-left: 10ch;
+    margin-left: 5ch;
 }
 
 .camposcad {    
@@ -44,7 +43,7 @@
 .formulario input {    
     margin-left: 10%;
     margin-right: 10%;    
-    max-width: 50%;
+    max-width: 60%;
     margin-bottom: 5%;
     border: 1px solid #555;
     border-radius: 5px;
