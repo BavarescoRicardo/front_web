@@ -1,23 +1,24 @@
 .publica {
     display: flex;
     flex-direction: column;
-    /* background-color: rgb(245, 138, 138); */
+    max-width: 90%;
     background-color: #354259;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 1%;
     margin-bottom: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 .menupublicar {
-    display: block;
+    display: flex;
     height: 95%;
-    width: 90%;    
+    width: 50%;    
     background-color: #949191;
     border: 3px solida white;
     margin-top: 2%;    
     margin-left: 5%;
     margin-bottom: 10%;
+    margin-top: 1%;
     color: whitesmoke;
     border-radius: 7px;    
 }
@@ -34,7 +35,7 @@
 .formulario {    
     margin-left: 5%;
     margin-right: 10%;
-    margin-top: 5%;
+    padding-top: 25%;
     margin-bottom: 0;
     margin-bottom: 2%;
 
@@ -42,8 +43,7 @@
 
 .formulario input {    
     margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 1%;
+    margin-right: 10%;    
     max-width: 50%;
     margin-bottom: 5%;
     border: 1px solid #555;
@@ -58,11 +58,11 @@ form button {
 }
 
 .image {
-    display: flex;
     background-color: whitesmoke;
 	border: 1px solid black;
-	height: 320px;
-	width: 350px;	margin-left: 70%;
+	height: 150px;
+    width: 220px;
+    align-self: center;
     margin-top: -5%;
 	border-radius: 5px  10px 5px 10px;	
 	box-shadow: 2px 3px 10px black;    
