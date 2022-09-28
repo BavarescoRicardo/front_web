@@ -111,7 +111,7 @@ function ListaArtigos(){
                             <p>
                                 <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none"> Ver Detalhes <FaInfoCircle /> </Link>
                                 {permissao  
-                                    ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> Excluir <FaTrash color="black" /> </button>
+                                    ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" /> </button>
                                     : <h1> </h1>
                                 }                                        
                             </p>
