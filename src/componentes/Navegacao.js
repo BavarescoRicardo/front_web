@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './paginas/DetalheArtigo';
 import EditarDetalhe from './paginas/DetalheArtigoEditar';
-import CadastroLoginMui from './paginas/CadastroLoginMui';
 import axios from 'axios';
 import { HiAcademicCap } from 'react-icons/hi';
 
@@ -93,7 +92,6 @@ const Navegacao = () => {
                 <Route path="/PainelMestre"> <PainelMestre/>                            </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
                 <Route path="/PublicarArtigoNovo"> <PublicarArtigoNovo/>                </Route>
-                <Route path="/CadastroLoginMui"> <CadastroLoginMui/>                    </Route>
             </Switch>
         </div>
         </Router>

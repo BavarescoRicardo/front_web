@@ -91,7 +91,7 @@ function ListaArtigos(){
     }
 
     return(
-        <div>
+        <div className='lista-artigo'>
             <div className="container">
                 <div className="row">
                     <div className="col">

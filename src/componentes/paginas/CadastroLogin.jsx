@@ -53,44 +53,35 @@ function CadLogin(){
         }
       }    
     
-    return(        
-        <div className="cadstrolog">            
-            <div className="menucad">
-                <h1>Cadastro</h1>
-                <h2>Login</h2>
-            </div>
-            <div className="formulario">
-                <div className="camposcad">
-                    <div className="row">
-                        <div className="col">
-                            <label>Nome</label>
-                            <input type="text" name="nome" onChange={handleChange} />
+    return(   
+    <div>
+        <div className="card mb-3" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
+            <div className="card-body">
+            <h5 className="card-title">Cadastro de Login</h5>
+                        <div className="form-group col-8 mb-3">
+                            <label for="nome" >Nome</label>
+                            <input type="text" name="nome" className="form-control" id="nome" onChange={handleChange}/>
                         </div>
+
+                    <div className="form-group col-8 mb-3">
+                            <label for="apelido" className="form-label">Apelido</label>
+                            <input type="text" name="apelido" className="form-control" id="apelido" onChange={handleChange}/>
                     </div>
-                    <div className="row">
-                        <div className="col">
-                            <label>Apelido</label>
+
+
+                    <div className="form-group col-8 mb-3">
+                            <label for="senha" className="form-label">Senha</label>
+                            <input type="text" name="senha" className="form-control" id="senha" onChange={handleChange}/>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <input type="text" name="nomelogin" onChange={handleChange} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                        <label>Senha</label>
-                            <input type="password" name="senhalogin" onChange={handleChange} />
-                        </div>
-                    </div>
+
                     <div className="row">
                         <div className="col">
                             <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> usuarioPost()}>Cadastrar</button>
                         </div>
                     </div>
-                </div>                
-            </div>            
+            </div>
         </div>
+    </div>
     );    
 }
 
