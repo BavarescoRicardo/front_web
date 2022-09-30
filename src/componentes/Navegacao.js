@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './paginas/DetalheArtigo';
 import EditarDetalhe from './paginas/DetalheArtigoEditar';
+import CadastroLoginMui from './paginas/CadastroLoginMui';
 import axios from 'axios';
 import { HiAcademicCap } from 'react-icons/hi';
 
@@ -81,9 +82,9 @@ const Navegacao = () => {
             </nav>
 
             <Switch>
-                <Route exact path="/"> <ListaArtigos/>                                         </Route>
+                <Route exact path="/"> <ListaArtigos/>                                  </Route>
                 <Route path="/Login"> <Login/>                                          </Route>
-                <Route path="/ListaArtigos"> <ListaArtigos/>                                </Route>
+                <Route path="/ListaArtigos"> <ListaArtigos/>                            </Route>
                 <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                      </Route>
                 <Route exact path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>          </Route>
                 <Route path="/Publicar"> <Publicar/>                                    </Route>
@@ -91,7 +92,8 @@ const Navegacao = () => {
                 <Route path="/CadLogin"> <CadastroLogin/>                               </Route>
                 <Route path="/PainelMestre"> <PainelMestre/>                            </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
-        <Route path="/PublicarArtigoNovo"> <PublicarArtigoNovo/>                         </Route>
+                <Route path="/PublicarArtigoNovo"> <PublicarArtigoNovo/>                </Route>
+                <Route path="/CadastroLoginMui"> <CadastroLoginMui/>                    </Route>
             </Switch>
         </div>
         </Router>
