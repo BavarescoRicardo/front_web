@@ -54,29 +54,29 @@ function CadLogin(){
       }    
     
     return(   
-    <div>
-        <div className="card mb-3" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
+    <div className='cad-login'>
+        <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
             <div className="card-body">
             <h5 className="card-title">Cadastro de Login</h5>
-                        <div className="form-group col-8 mb-3">
+                        <div className="form-group col-10 mb-3">
                             <label for="nome" >Nome</label>
                             <input type="text" name="nome" className="form-control" id="nome" onChange={handleChange}/>
                         </div>
 
-                    <div className="form-group col-8 mb-3">
+                    <div className="form-group col-10 mb-3">
                             <label for="apelido" className="form-label">Apelido</label>
                             <input type="text" name="apelido" className="form-control" id="apelido" onChange={handleChange}/>
                     </div>
 
 
-                    <div className="form-group col-8 mb-3">
+                    <div className="form-group col-10 mb-3">
                             <label for="senha" className="form-label">Senha</label>
                             <input type="text" name="senha" className="form-control" id="senha" onChange={handleChange}/>
                         </div>
 
                     <div className="row">
                         <div className="col">
-                            <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> usuarioPost()}>Cadastrar</button>
+                            <button style={{float: 'right', marginLeft: '2%'}} type="button" className="btn btn-secondary" onClick={()=> usuarioPost()}>Cadastrar</button>
                         </div>
                     </div>
             </div>

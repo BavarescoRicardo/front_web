@@ -109,7 +109,7 @@ function Detalhe(){
     }
 
       return(
-        <div>
+        <div className='lista-artigo'>
             <section>
                 <div className="container">
                     <div className="row">
