@@ -54,7 +54,7 @@ function CadLogin(){
       }    
     
     return(   
-    <div className='cad-login'>
+    <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
         <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
             <div className="card-body">
             <h5 className="card-title">Cadastro de Login</h5>
