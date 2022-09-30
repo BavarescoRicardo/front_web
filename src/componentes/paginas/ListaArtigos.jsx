@@ -102,7 +102,7 @@ function ListaArtigos(){
             </div>                   
             {dados.map(({ codigo, titulo, descricao, imagem }) => (
                 <article key={codigo}>
-                    <div className="card mb-3" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
+                    <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
                         {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
                         {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
                         <div className="card-body">
@@ -122,7 +122,7 @@ function ListaArtigos(){
 
             <div className="div">
                 {permissao  
-                    ? <Link to="/Publicar" className="btn btn-info"> Publicar novo</Link>
+                    ? <Link to="/Publicar" className="btn btn-info" style={{float: 'right', marginRight: '2%'}}> Publicar novo</Link>
                     : <h1> </h1>
                 }
             </div>

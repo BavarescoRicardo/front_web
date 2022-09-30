@@ -76,7 +76,7 @@ function CadLogin(){
 
                     <div className="row">
                         <div className="col">
-                            <button style={{float: 'right', marginLeft: '2%'}} type="button" className="btn btn-secondary" onClick={()=> usuarioPost()}>Cadastrar</button>
+                            <button style={{float: 'right', marginRight: '2%'}} type="button" className="btn btn-secondary" onClick={()=> usuarioPost()}>Cadastrar</button>
                         </div>
                     </div>
             </div>
