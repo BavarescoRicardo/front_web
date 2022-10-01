@@ -1,15 +1,15 @@
-.publica {
+.publica-artigo {
     display: flex;
     flex-direction: column;
     max-width: 90%;
-    background-color: #354259;
+    background-color: #576988;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1%;
     margin-bottom: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
-.menupublicar {
+.menupublicar-artigo {
     display: flex;
     height: 95%;
     width: 90%;    
@@ -26,24 +26,23 @@
     margin-left: 5ch;
 }
 
-.camposcad {    
+.camposcad-artigo {    
     margin-top: 5%;
     margin-bottom: 5ch;  
 }
 
-.formulario {    
+.formulario-artigo {    
     margin-left: 5%;
     margin-right: 10%;
-    padding-top: 25%;
-    margin-bottom: 0;
+    margin-top: -2%;
     margin-bottom: 2%;
 
 }
 
-.formulario input {    
+.formulario-artigo input {    
     margin-left: 10%;
     margin-right: 10%;    
-    max-width: 60%;
+    min-width: 80%;
     margin-bottom: 5%;
     border: 1px solid #555;
     border-radius: 5px;

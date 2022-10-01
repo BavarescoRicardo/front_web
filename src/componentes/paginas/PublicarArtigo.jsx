@@ -104,16 +104,16 @@ function Publicar(){
       }    
     
     return(        
-        <div className="publica">            
-            <div className="menupublicar">
+        <div className="publica-artigo">            
+            <div className="menupublicar-artigo">
                 <h1>Publicar</h1>
                 <h2>Artigo</h2>
             </div>
             <div className="image">                            
                     {selectedImage? <img src={imageUrl} /> : null}
             </div>
-            <div className="formulario" style={{marginTop:'-10%'}}>
-                <div className="camposcad">
+            <div className="formulario-artigo">
+                <div className="camposcad-artigo">
                     <div className="row">
                         <div className="col">
                             <label>Observação</label>
