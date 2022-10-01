@@ -133,21 +133,6 @@ function Perfil(){
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col" style={{marginLeft: '25%'}}>
-                                <input
-                                    accept="image/*"
-                                    type="file"
-                                    id="select-image"
-                                    style={{ display: 'none' }}
-                                    onChange={e => setSelectedImage(e.target.files[0])}/>
-                                <label htmlFor="select-image">
-                                    <Button variant="contained" size='small' color="secondary" component="span">
-                                        Buscar foto
-                                    </Button>
-                                </label>                                                        
-                            </div>
-                        </div>
-                        <div className="row">
                             <div className="col">
                                 <h2>Observação:  </h2>
                                 <input type="text" name="observacao" onChange={handleChange} />
@@ -161,10 +146,23 @@ function Perfil(){
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row" style={{marginTop: '3%'}}>
                             <div className="col">
-                                <button onClick={()=> usuarioEdita()} >Salvar</button>
+                                <input
+                                    accept="image/*"
+                                    type="file"
+                                    id="select-image"
+                                    style={{ display: 'none' }}
+                                    onChange={e => setSelectedImage(e.target.files[0])}/>
+                                <label htmlFor="select-image">
+                                    <Button variant="contained" size='small' color="secondary" component="span" style={{width: '120px', height: '35px'}}>
+                                        Buscar foto
+                                    </Button>
+                                </label>                                                        
                             </div>
+                            <div className="col">
+                                <button style={{width: '120px', height: '35px'}} className='btn btn-secondary' onClick={()=> usuarioEdita()} >Salvar</button>
+                            </div>                            
                         </div>
                     </div>
             </div>            
