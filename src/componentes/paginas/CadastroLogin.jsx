@@ -64,14 +64,14 @@ function CadLogin(){
                         </div>
 
                     <div className="form-group col-10 mb-3">
-                            <label for="apelido" className="form-label">Apelido</label>
-                            <input type="text" name="apelido" className="form-control" id="apelido" onChange={handleChange}/>
+                            <label for="nomelogin" className="form-label">Apelido</label>
+                            <input type="text" name="nomelogin" className="form-control" id="nomelogin" onChange={handleChange}/>
                     </div>
 
 
                     <div className="form-group col-10 mb-3">
-                            <label for="senha" className="form-label">Senha</label>
-                            <input type="text" name="senha" className="form-control" id="senha" onChange={handleChange}/>
+                            <label for="senhalogin" className="form-label">Senha</label>
+                            <input type="text" name="senhalogin" className="form-control" id="senhalogin" onChange={handleChange}/>
                         </div>
 
                     <div className="row">
