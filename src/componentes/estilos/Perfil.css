@@ -2,6 +2,7 @@
     margin-top: 0;
     background-color: #f8f7f7;
     margin-top: 5%;
+    max-width: 90%;
     border-radius: 20px  5px 20px 20px;
 }
 .cabecalho {    
@@ -14,12 +15,13 @@
 }
 
 
-.informacoes {
+.informacoes-perfil {
     margin-top: 0;
-    background-color: #93909b;
+    background-color: #d1e5ec;
     color: #2d2e2f;
     border-radius: 5px  10px 55px 10px;
     margin-bottom: 15px;
+    max-width: 90%;
 }
 
 .informacoes h2 {

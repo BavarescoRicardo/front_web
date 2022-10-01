@@ -100,7 +100,7 @@ function Perfil(props){
                     </div>
                 </div>                       
               
-                <div className="informacoes">
+                <div className="informacoes-perfil">
                     <div className="row">
                             <div className="col">
                                 <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
