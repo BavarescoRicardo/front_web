@@ -93,37 +93,35 @@ function Perfil(){
       
 
     return(
-        <div>
-            <div className="cabecalho">
+        <div className='editar-perfil'>
+            <div className="cabecalho-perfil">
                 <h1>Perfil usuário </h1>
             </div>
-            <div className="container">
-
-                <div className="informacoes">
+            <div className="foto-perfil">
+                {selectedImage? <img style={{ width: "90%", height: "85%", margin: "10px"}} src={imageUrl} /> : null}
+            </div>                   
+            <div>
+                <div className="informacoes-perfil-editar">
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col">
                             <h2>Nome: </h2>
                             <input type="text" name="nomeCompleto" onChange={handleChange} />
                         </div>
-                        <div className="col-md-6">
-                            <h2>Bio: </h2>
-                            <input type="text" name="bio" onChange={handleChange} />
-                        </div>
                     </div>                    
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col">
                                 <h2>Bio:  </h2>
                                 <input type="text" name="bio" onChange={handleChange} />
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col">
                                 <h2>Descrição:  </h2>
                                 <input type="text" name="descricao" onChange={handleChange} />
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col">
                                 <h2>Curso:  </h2>
                                 <select style={{marginLeft: "50px"}} name='curso' onChange={handleChange}>
                                     <option value="">Selecione o curso </option>
@@ -133,6 +131,8 @@ function Perfil(){
                                     <option value="meca">Eng. Mecanica </option>
                                 </select>
                             </div>
+                        </div>
+                        <div className="row">
                             <div className="col" style={{marginLeft: '25%'}}>
                                 <input
                                     accept="image/*"
@@ -148,29 +148,25 @@ function Perfil(){
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col">
                                 <h2>Observação:  </h2>
                                 <input type="text" name="observacao" onChange={handleChange} />
                             </div>
                         </div>                
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col">
                                 <div className="contato">
                                     <h2>contato: </h2>
                                     <input type="text" name="grau" onChange={handleChange} />
                                 </div>
                             </div>
+                        </div>
+                        <div className="row">
                             <div className="col">
                                 <button onClick={()=> usuarioEdita()} >Salvar</button>
                             </div>
                         </div>
                     </div>
-                <div className='container'>
-                        <div className="foto" style={
-                            { display: 'flex', marginLeft: '75%', marginTop: '-35%'}}>
-                            {selectedImage? <img style={{ width: "90%", height: "85%", margin: "10px" }} src={imageUrl} /> : null}
-                        </div>       
-                </div>       
             </div>            
         </div>
     );    

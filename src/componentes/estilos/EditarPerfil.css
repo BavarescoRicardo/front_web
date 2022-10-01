@@ -1,4 +1,15 @@
-.cabecalho {    
+.editar-perfil {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;  
+    background-color: #cedae2;
+    color: aliceblue;
+    border-radius: 5px  10px 5px 10px;
+    margin-bottom: 15px;
+    max-width: 60ch;
+}
+
+.cabecalho-perfil {    
     display: inline-flex;
     font-size: 14px;
     color: black;    
@@ -8,23 +19,24 @@
 }
 
 
-.informacoes {
-    margin-top: 0;
-    background-color: #2f2f31;
-    color: aliceblue;
-    border-radius: 5px  10px 55px 10px;
+.informacoes-perfil-editar {
+    padding-left: 5%;
+    color: rgb(22, 25, 27);
+    border-radius: 5px  10px 5px 10px;
     margin-bottom: 15px;
+    background-color: #eef6fb;
 }
 
 .informacoes h2 {
     margin-left: 5%;    
 }
 
-.foto {
+.foto-perfil {
     background-color: whitesmoke;
-	border: 1px solid black;
+	border: 1px solid black;    
 	height: 120px;
-	width: 150px;	margin: 10px;
+	width: 150px;
+    margin-left: auto;
 	border-radius: 5px  10px 5px 10px;	
 	box-shadow: 2px 3px 10px black;    
 }
