@@ -105,61 +105,63 @@ function Publicar(){
     
     return(        
         <div className="publica-artigo">            
-            <div className="menupublicar-artigo">
-                <h1>Publicar</h1>
-                <h2>Artigo</h2>
-            </div>
-            <div className="image">                            
-                    {selectedImage? <img src={imageUrl} /> : null}
-            </div>
-            <div className="formulario-artigo">
-                <div className="camposcad-artigo">
-                    <div className="row">
-                        <div className="col">
-                            <label>Observação</label>
-                            <input type="text" name="nome" onChange={handleChange} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <label>Titulo</label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <input type="text" name="titulo" onChange={handleChange} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                        <label>Descriçao</label>
-                            <input type="text" name="descricao" onChange={handleChange} />
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                        <div className="row">
-                        <input
-                            accept="image/*"
-                            type="file"
-                            id="select-image"
-                            style={{ display: 'none' }}
-                            onChange={e => setSelectedImage(e.target.files[0])}
-                        />
-                        <label htmlFor="select-image">
-                            <Button variant="contained" size='small' color="secondary" component="span">
-                                Buscar foto
-                            </Button>
-                        </label>
-                        </div>
-                        <div className="row">
-                            
+            <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
+                <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
+                    <div className="card-body">
+                        <h5 className="card-title">Publicar Artigo</h5>
+                        <div className="image">                            
+                            {selectedImage? <img src={imageUrl} /> : null}
                         </div>
 
-                    <div className="col">
-                        <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoPost()}>Cadastrar</button>
-                    </div>
-                </div>                                
+                        <div className="formulario-artigo">
+                            <div className="camposcad-artigo">
+                                <div className="row">
+                                    <div className="col">
+                                        <label>Observação</label>
+                                        <input type="text" name="nome" onChange={handleChange} />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <label>Titulo</label>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <input type="text" name="titulo" onChange={handleChange} />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                    <label>Descriçao</label>
+                                        <input type="text" name="descricao" onChange={handleChange} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                            <div className="row">
+                                    <div className="row">
+                                    <input
+                                        accept="image/*"
+                                        type="file"
+                                        id="select-image"
+                                        style={{ display: 'none' }}
+                                        onChange={e => setSelectedImage(e.target.files[0])}
+                                    />
+                                    <label htmlFor="select-image">
+                                        <Button variant="contained" size='small' color="secondary" component="span">
+                                            Buscar foto
+                                        </Button>
+                                    </label>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoPost()}>Cadastrar</button>
+                                </div>
+                            </div>
+                        </div>
             </div>            
         </div>
     );    
