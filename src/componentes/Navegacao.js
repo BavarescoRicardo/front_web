@@ -21,6 +21,7 @@ const Navegacao = () => {
     const userUrl ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
     const [permissao, setPermissao] = useState(false);
+    const [logado, setLogado] = useState(false);
 
     const vary = [ 'Info', 'Secondary' ]; 
 
@@ -34,7 +35,8 @@ const Navegacao = () => {
                 }
             }
             )
-            .then(response => {                                   
+            .then(response => { 
+                setLogado(true)                                  ;
                 if (response.data.login != null){
                     setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
                 }else {
@@ -79,6 +81,8 @@ const Navegacao = () => {
                                 } 
                             </li>
                             <li>
+                            {logado  
+                                ?
                                 <Dropdown>
                                     <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
                                         <BsPersonCircle size={25} />
@@ -89,7 +93,8 @@ const Navegacao = () => {
                                         <Dropdown.Item href="/PainelMestre">Gerenciamento</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-
+                                : <h1> </h1>
+                            }
                             </li>
                         </div>
                     </ul>
