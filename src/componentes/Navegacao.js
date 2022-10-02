@@ -81,7 +81,7 @@ const Navegacao = () => {
                                 } 
                             </li>
                             <li>
-                            {logado  
+                            {logado
                                 ?
                                 <Dropdown>
                                     <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
