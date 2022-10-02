@@ -13,6 +13,7 @@ import Detalhe from './paginas/DetalheArtigo';
 import EditarDetalhe from './paginas/DetalheArtigoEditar';
 import axios from 'axios';
 import { HiAcademicCap } from 'react-icons/hi';
+import { BsPersonCircle } from 'react-icons/bs';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Navegacao = () => {
@@ -80,7 +81,7 @@ const Navegacao = () => {
                             <li>
                                 <Dropdown>
                                     <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                                        <HiAcademicCap size={25} />
+                                        <BsPersonCircle size={25} />
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
