@@ -85,8 +85,8 @@ const Navegacao = () => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Perfil</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Gerenciamento</Dropdown.Item>
+                                        <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
+                                        <Dropdown.Item href="/PainelMestre">Gerenciamento</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
 
