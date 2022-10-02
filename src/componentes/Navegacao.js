@@ -13,12 +13,15 @@ import Detalhe from './paginas/DetalheArtigo';
 import EditarDetalhe from './paginas/DetalheArtigoEditar';
 import axios from 'axios';
 import { HiAcademicCap } from 'react-icons/hi';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Navegacao = () => {
 
     const userUrl ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
     const [permissao, setPermissao] = useState(false);
+
+    const vary = [ 'Info', 'Secondary' ]; 
 
     const verificarPermissao = async()=>{  
         console.log("Verificando a permissão para o usuario ") 
@@ -73,7 +76,20 @@ const Navegacao = () => {
                                     ? <Link to="/PainelMestre" className="nav-link">Gerenciamento</Link>
                                     : <h1> </h1>
                                 } 
-                            </li>                            
+                            </li>
+                            <li>
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                        <HiAcademicCap size={25} />
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">Perfil</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">Gerenciamento</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
+                            </li>
                         </div>
                     </ul>
                 </div>
