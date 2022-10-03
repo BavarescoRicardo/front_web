@@ -33,15 +33,13 @@ const Login = props => {
     }   
     
     async function usuarioPost(event) {
-
         try {
             const datau = qs.stringify(usuariolog)
 
             await axios.post(urlex, datau)
             .then(async response => {
-                console.log(response.data)
-                if(response.data){
-
+                if(response.data){                    
+                    verificarLogado()
                     localStorage.setItem('tokens', response.data.access_token)                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
                   }else{
@@ -55,7 +53,13 @@ const Login = props => {
             console.log('catch erro '+error);
             alert("Login não encontrado.")
         }
-      }  
+    }
+    
+    const verificarLogado = () =>{        
+        props.setLogado(true);
+        console.log('Login verificado')       
+    }
+
     return(        
     <div className="login">
         <div className="imagemlogin img-fluid">

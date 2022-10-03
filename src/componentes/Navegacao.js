@@ -23,8 +23,6 @@ const Navegacao = () => {
     const [permissao, setPermissao] = useState(false);
     const [logado, setLogado] = useState(false);
 
-    const vary = [ 'Info', 'Secondary' ]; 
-
     const verificarPermissao = async()=>{  
         console.log("Verificando a permissão para o usuario ") 
         if(localStorage.getItem('tokens') != null){  
@@ -36,7 +34,7 @@ const Navegacao = () => {
             }
             )
             .then(response => { 
-                setLogado(true)                                  ;
+                setLogado(true)
                 if (response.data.login != null){
                     setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
                 }else {
@@ -102,15 +100,15 @@ const Navegacao = () => {
             </nav>
 
             <Switch>
-                <Route exact path="/"> <ListaArtigos/>                                  </Route>
-                <Route path="/Login"> <Login/>                                          </Route>
-                <Route path="/ListaArtigos"> <ListaArtigos/>                            </Route>
-                <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                      </Route>
-                <Route exact path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>          </Route>
-                <Route path="/Publicar"> <Publicar/>                                    </Route>
-                <Route path="/Perfil"> <Perfil/>                                        </Route>
-                <Route path="/CadLogin"> <CadastroLogin/>                               </Route>
-                <Route path="/PainelMestre"> <PainelMestre/>                            </Route>
+                <Route exact path="/"> <ListaArtigos/>                                               </Route>
+                <Route path="/Login"> <Login setLogado={setLogado} setPermissao = {setPermissao}/>  </Route>
+                <Route path="/ListaArtigos"> <ListaArtigos/>                                         </Route>
+                <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                                   </Route>
+                <Route exact path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>                       </Route>
+                <Route path="/Publicar"> <Publicar/>                                                 </Route>
+                <Route path="/Perfil"> <Perfil/>                                                     </Route>
+                <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>
+                <Route path="/PainelMestre"> <PainelMestre/>                                         </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>
