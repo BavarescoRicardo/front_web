@@ -72,12 +72,6 @@ const Navegacao = () => {
                             <li>
                                 <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>
                             </li>
-                            <li>                               
-                                {permissao  
-                                    ? <Link to="/PainelMestre" className="nav-link">Gerenciamento</Link>
-                                    : <h1> </h1>
-                                } 
-                            </li>
                             <li>
                             {logado
                                 ?
@@ -88,7 +82,11 @@ const Navegacao = () => {
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
-                                        <Dropdown.Item href="/PainelMestre">Gerenciamento</Dropdown.Item>
+                                        
+                                        {permissao  
+                                            ? <Dropdown.Item href="/PainelMestre">Gerenciamento</Dropdown.Item>
+                                            : <h1> </h1>
+                                        }
                                     </Dropdown.Menu>
                                 </Dropdown>
                                 : <h1> </h1>
