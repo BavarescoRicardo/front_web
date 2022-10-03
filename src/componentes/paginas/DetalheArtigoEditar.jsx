@@ -118,7 +118,7 @@ function EditarDetalhe(){
                     <div className="row">
                         <div className="col">
                             <label htmlFor="titulo">Título</label>
-                            <input type="text" name='titulo' style={{marginTop: "-2%"}} onChange={handleChange}/>
+                            <input type="text" name='titulo' style={{marginLeft: '3%', marginTop: "-2%", width: '90%'}} onChange={handleChange}/>
                         </div>
                     </div>                    
                     <div className="row">
