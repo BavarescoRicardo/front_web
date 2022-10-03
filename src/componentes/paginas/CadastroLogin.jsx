@@ -71,7 +71,7 @@ function CadLogin(){
 
                     <div className="form-group col-10 mb-3">
                             <label for="senhalogin" className="form-label">Senha</label>
-                            <input type="text" name="senhalogin" className="form-control" id="senhalogin" onChange={handleChange}/>
+                            <input type="password" name="senhalogin" className="form-control" id="senhalogin" onChange={handleChange}/>
                         </div>
 
                     <div className="row">
