@@ -103,11 +103,6 @@ function ListaArtigos(){
         { value: 'prod', label: 'Produção' }
     ]
 
-    const styles = {
-        fontSize: 14,
-        height: 35,
-      }
-
     const customStyles = {
         option: (provided, state) => ({
           ...provided,
@@ -115,10 +110,9 @@ function ListaArtigos(){
         }),
         control: () => ({
           // none of react-select's styles are passed to <Control />
-          width: 100,
+          width: 115,
           height: 25,
-          minWidth: 120,
-          marginTop: -5
+          marginTop: -5          
         }),
         singleValue: (provided, state) => {
       
@@ -145,11 +139,12 @@ function ListaArtigos(){
                             styles={customStyles}
                             options={options} 
                             isMulti={false}
-                            hideSelectedOptions={false}                        
+                            hideSelectedOptions={false}
+                            placeholder = 'Cursos'                       
                             // onChange={(sel) => handleSelect(sel)}
                             /> 
                     </div>
-                        <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{width: '130px', minWidth: '90px'}} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
+                        <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{ minWidth: '90px'}} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
                     </div>
                     </div>
                 </div>
