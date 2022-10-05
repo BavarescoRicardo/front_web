@@ -50,8 +50,8 @@ function ListaArtigos(){
         }  
     }
 
-    const artigoGet = async()=>{
-        await axios.get(baseUrlHeroku)
+    const artigoGet = async(pg)=>{
+        await axios.get(baseUrlHeroku+"?pg="+pg)
         .then(response => {
             console.log(response.data);
             setDados(response.data);
@@ -62,7 +62,7 @@ function ListaArtigos(){
     }    
 
     useEffect(async ()=>{            
-        await artigoGet();      
+        await artigoGet(1);      
         console.log('Invocou use efeito');
         setImg(true)
     }, []); 
@@ -185,13 +185,13 @@ function ListaArtigos(){
                         <a className="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#">1</a>
+                        <a className="page-link" href="#" onClick={() => artigoGet(1)}>1</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#">2</a></li>
+                        <a className="page-link" href="#" onClick={() => artigoGet(2)}>2</a></li>
                     <li className="page-item">
 
-                        <a className="page-link" href="#">3</a></li>
+                        <a className="page-link" href="#" onClick={() => artigoGet(3)}>3</a></li>
                     <li className="page-item">
                         
                         <a className="page-link" href="#">Next</a>
