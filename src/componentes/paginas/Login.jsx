@@ -48,6 +48,7 @@ const Login = props => {
                   }
             }).catch(error=> {
               console.log(error);
+              alert("Login não encontrado.")
             })            
         } catch (error) {
             console.log('catch erro '+error);
