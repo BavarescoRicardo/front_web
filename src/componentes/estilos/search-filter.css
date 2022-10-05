@@ -1,6 +1,13 @@
 .searchFilter {
     margin-bottom: 15px;
   }
+
+  .searchFilter input {
+    background-color: #fdfdfd;
+    color: rgb(36, 34, 34);
+    border: 1px solid #948c8c;  
+  }
+
   .searchFilter button, .searchFilter input {
     height: 35px;
   }
@@ -29,7 +36,10 @@
     color: #fff;
     border: 1px solid #00aced;
   }
-  .searchFilter button {
+  .searchFilter-selecao {
+    background-color: #fdfdfd;
     color: rgb(36, 34, 34);
-    border: 1px solid #726c6c;  
+    height: 35px;
+    text-align: center;    
+    border: 1px solid #948c8c;  
   }

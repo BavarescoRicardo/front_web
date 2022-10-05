@@ -4,7 +4,7 @@ import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import { FaInfoCircle } from "@react-icons/all-files/fa/FaInfoCircle";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
-import Dropdown from 'react-bootstrap/Dropdown';
+import Select from 'react-select'
 
 import "../estilos/search-filter.css"
 
@@ -95,6 +95,37 @@ function ListaArtigos(){
         }
     }
 
+    const options = [
+        { value: 'comp', label: 'Computação' },
+        { value: 'elet', label: 'Elétrica' },
+        { value: 'civi', label: 'Civil' },
+        { value: 'meca', label: 'Mecânica' },
+        { value: 'prod', label: 'Produção' }
+    ]
+
+    const styles = {
+        fontSize: 14,
+        height: 35,
+      }
+
+    const customStyles = {
+        option: (provided, state) => ({
+          ...provided,
+          height: 35,
+        }),
+        control: () => ({
+          // none of react-select's styles are passed to <Control />
+          width: 100,
+          height: 25,
+          minWidth: 120,
+          marginTop: -5
+        }),
+        singleValue: (provided, state) => {
+      
+          return { ...provided };
+        }
+      }
+
     return(
         <div className='lista-artigo'>
             <div className="container">
@@ -104,25 +135,20 @@ function ListaArtigos(){
                     </div>
                 </div>
                 <hr />              
-
+                
                 <div className="row searchFilter" >
                     <div className="col-sm-12" >
                     <div className="input-group" >
                     <input id="table_filter" placeholder='Filtrar por:  Título, Conteúdo' type="text" className="form-control" aria-label="Text input with segmented button dropdown" />
-
-                        <Dropdown>
-                            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                                <span> Cursos </span>
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
-                                
-                                <Dropdown.Item href="/PainelMestre">Gerenciamento</Dropdown.Item>
-
-                            </Dropdown.Menu>
-                            </Dropdown>
-
+                    <div className='searchFilter-selecao'>
+                        <Select 
+                            styles={customStyles}
+                            options={options} 
+                            isMulti={false}
+                            hideSelectedOptions={false}                        
+                            // onChange={(sel) => handleSelect(sel)}
+                            /> 
+                    </div>
                         <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{width: '130px', minWidth: '90px'}} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
                     </div>
                     </div>
