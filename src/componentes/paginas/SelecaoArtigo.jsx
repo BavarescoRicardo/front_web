@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const SelecaoArtigo = (props) => {  
     const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolistaparticipante";
     
     var opcoes = [
         {value: 0, label: "Selecione o artigo"}
@@ -19,9 +19,14 @@ const SelecaoArtigo = (props) => {
     );  
 
     const artigoGet = async()=>{
-        await axios.get(baseUrlExterno)
+        await axios.get(baseUrlExterno,
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }})
         .then(response => {
-            response.data.forEach((item) => {                
+            // console.log("Requisitados artigos dto");
+            console.log(response.data);
+            response.data.forEach((item) => {
               opcoes.push({value: item.codigo, label: item.titulo})              
             });
 
@@ -33,10 +38,6 @@ const SelecaoArtigo = (props) => {
 
     async function confirmarParticipant() {        
         try {
-            
-            console.log("Dados artigo selecionado: ");
-            console.log(selecionado);
-
             await axios.post('https://tcc-spring-back-end.herokuapp.com/adiconaparticipante', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 

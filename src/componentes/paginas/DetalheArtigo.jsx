@@ -45,7 +45,7 @@ function Detalhe(){
     const artigoDetalheRemover = async(id)=>{        
 
         try {
-            console.log("tentando selecionar participantes id dos artigo");
+            console.log("tentando remover id dos artigo do participante");
             const formData = new FormData();
             formData.append('idArtigo', id);
 
@@ -139,7 +139,12 @@ function Detalhe(){
             <section>
                 <div className="btn-fim-editar">
                     {permit  
-                        ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
+                        ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta artigo: {id}</Link>
+                        : <p>Sem permissões</p>
+                    }
+
+                    {permit  
+                        ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Adicionar detalhe a esta publicação: {id}</Link>
                         : <p>Sem permissões</p>
                     }
                 </div>
