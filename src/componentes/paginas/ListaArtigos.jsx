@@ -4,6 +4,11 @@ import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import { FaInfoCircle } from "@react-icons/all-files/fa/FaInfoCircle";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
+import Dropdown from 'react-bootstrap/Dropdown';
+
+import "../estilos/search-filter.css"
+
+
 import axios from 'axios';
 
 function ListaArtigos(){
@@ -98,8 +103,32 @@ function ListaArtigos(){
                         <h1>Divulgação de Trabalhos Acadêmicos</h1>
                     </div>
                 </div>
-                <hr /> 
-            </div>                   
+                <hr />              
+
+                <div className="row searchFilter" >
+                    <div className="col-sm-12" >
+                    <div className="input-group" >
+                    <input id="table_filter" placeholder='Filtrar por:  Título, Conteúdo' type="text" className="form-control" aria-label="Text input with segmented button dropdown" />
+
+                        <Dropdown>
+                            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                <span> Cursos </span>
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
+                                
+                                <Dropdown.Item href="/PainelMestre">Gerenciamento</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                            </Dropdown>
+
+                        <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{width: '130px', minWidth: '90px'}} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
             {dados.map(({ codigo, titulo, descricao, imagem }) => (
                 <article key={codigo}>
                     <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>

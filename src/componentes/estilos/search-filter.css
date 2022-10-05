@@ -1,0 +1,35 @@
+.searchFilter {
+    margin-bottom: 15px;
+  }
+  .searchFilter button, .searchFilter input {
+    height: 35px;
+  }
+   .searchFilter.btn {
+      display: inline-block;
+      font-weight: 300;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: .3rem 1rem;
+      font-size: 14px;
+      border-radius: .25rem;
+      height: 50px;
+      min-width: 20px;
+  }
+  
+  .searchFilter .btn-search {
+    background-color: #347288;
+    color: #fff;
+    border: 1px solid #00aced;
+  }
+  .searchFilter button {
+    color: rgb(36, 34, 34);
+    border: 1px solid #726c6c;  
+  }
