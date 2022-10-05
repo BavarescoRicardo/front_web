@@ -62,7 +62,7 @@ function ListaArtigos(){
     }    
 
     useEffect(async ()=>{            
-        await artigoGet(1);      
+        await artigoGet(0);      
         console.log('Invocou use efeito');
         setImg(true)
     }, []); 
@@ -185,13 +185,13 @@ function ListaArtigos(){
                         <a className="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#" onClick={() => artigoGet(1)}>1</a>
+                        <a className="page-link" href="#" onClick={() => artigoGet(0)}>1</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#" onClick={() => artigoGet(2)}>2</a></li>
+                        <a className="page-link" href="#" onClick={() => artigoGet(1)}>2</a></li>
                     <li className="page-item">
 
-                        <a className="page-link" href="#" onClick={() => artigoGet(3)}>3</a></li>
+                        <a className="page-link" href="#" onClick={() => artigoGet(2)}>3</a></li>
                     <li className="page-item">
                         
                         <a className="page-link" href="#">Next</a>
