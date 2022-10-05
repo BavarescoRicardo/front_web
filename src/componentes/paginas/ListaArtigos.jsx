@@ -176,6 +176,29 @@ function ListaArtigos(){
                     : <h1> </h1>
                 }
             </div>
+
+
+
+            <nav style={{backgroundColor: 'whitesmoke', padding: '0', maxWidth: '10%', marginLeft: 'auto', marginRight: 'auto'}}>
+                <ul className="pagination pagination-sm" style={{backgroundColor: 'whitesmoke', margin: '2px', maxWidth: '90%'}}>
+                    <li className="page-item disabled">
+                        <a className="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li className="page-item">
+                        <a className="page-link" href="#">1</a>
+                    </li>
+                    <li className="page-item">
+                        <a className="page-link" href="#">2</a></li>
+                    <li className="page-item">
+
+                        <a className="page-link" href="#">3</a></li>
+                    <li className="page-item">
+                        
+                        <a className="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
     );    
 }

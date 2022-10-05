@@ -1,4 +1,4 @@
-nav{
+.navbar-nav nav{
     display: relative;    
     justify-content: left;    
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -7,7 +7,7 @@ nav{
 
 }
 
-li {
+.navbar-nav li {
     border: 3px solida white;
     flex-direction: column;
     justify-content: flex-start;
