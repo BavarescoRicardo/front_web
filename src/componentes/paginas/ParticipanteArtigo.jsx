@@ -54,7 +54,6 @@ const ParticipanteArtigo = (props) => {
 
     async function artigosParticipa(idUsuario) {        
         try {
-            console.log("tentando selecionar participantes id dos artigo");
             const formData = new FormData();
             formData.append('idUsuario', idUsuario);
             await axios.post('https://tcc-spring-back-end.herokuapp.com/selparticipantes/', formData, 

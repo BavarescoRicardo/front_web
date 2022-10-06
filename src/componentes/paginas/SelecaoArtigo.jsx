@@ -24,7 +24,7 @@ const SelecaoArtigo = (props) => {
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }})
         .then(response => {
-            // console.log("Requisitados artigos dto");
+            console.log("Requisitados artigos dto");
             console.log(response.data);
             response.data.forEach((item) => {
               opcoes.push({value: item.codigo, label: item.titulo})              
