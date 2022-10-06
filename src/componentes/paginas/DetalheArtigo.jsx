@@ -140,12 +140,12 @@ function Detalhe(){
                 <div className="btn-fim-editar">
                     {permit  
                         ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta artigo: {id}</Link>
-                        : <p>Sem permissões</p>
+                        : <p> </p>
                     }
 
                     {permit  
                         ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Adicionar detalhe a esta publicação: {id}</Link>
-                        : <p>Sem permissões</p>
+                        : <p> </p>
                     }
                 </div>
             </section>
