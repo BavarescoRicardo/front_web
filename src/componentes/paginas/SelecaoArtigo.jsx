@@ -27,7 +27,7 @@ const SelecaoArtigo = (props) => {
             
             // console.log(response.data);
             response.data.forEach((item) => {
-              console.log(item.codigo)
+              console.log('laco dados request')
               if(!item.codigo > 0)
                 return;
               opcoes.push({value: item.codigo, label: item.titulo})              
@@ -62,7 +62,7 @@ const SelecaoArtigo = (props) => {
     
     useEffect(async ()=>{      
         await artigoGet();
-    }, []); 
+    }, [opcoes]); 
 
     const handleSelect = (s) => {
         setSelecionado(selecionado => ({
@@ -77,6 +77,7 @@ const SelecaoArtigo = (props) => {
     <div className="selecao">        
         <Select options={opcoes} 
             isMulti
+            label="Selecionar"
             hideSelectedOptions={false}
             onChange={(sel) => handleSelect(sel)} />    
         
