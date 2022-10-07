@@ -28,15 +28,15 @@ function Perfil(){
         }
     );
     useEffect(async () => {
-        await selecionaUsuario().then(() => {
-            if (usuariolog && (imageUrl == null)) {
-                //console.log("esperou e carregou dados")
-                setImageUrl('data:image/jpeg;base64,' + usuariolog.fotoPerfil)
-            }       
-        })
+        selecionaUsuario();        
 
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));                        
+        }
+
+        if (usuariolog && (imageUrl == null)) {
+            console.log('definindo imagem')
+            setImageUrl('data:image/jpeg;base64,' + usuariolog.fotoPerfil)
         }
       }, [selectedImage]);
 
@@ -50,12 +50,13 @@ function Perfil(){
                 }
             }
             )
-            .then(response => {                          
+            .then(async response => {                          
             // console.log(response.data);
             if (response.data.login != null){
-
-                setUsuariolog(response.data);
                 console.log('edicao perf.. usuario setado  ');
+                setUsuariolog(response.data)
+                console.log(response.data.fotoPerfil)
+                setImageUrl('data:image/jpeg;base64,' + response.data.fotoPerfil)
             }            
             }).catch(error=> {
                 console.log(error);
@@ -125,7 +126,7 @@ function Perfil(){
                 <h1>Perfil usuário </h1>
             </div>
             <div className="foto-perfil">
-                {selectedImage? <img style={{ width: "90%", height: "85%", margin: "10px"}} src={imageUrl} /> : null}
+                {imageUrl? <img style={{ width: "90%", height: "85%", margin: "10px"}} src={imageUrl} /> : null}
             </div>                   
             <div>
                 <div className="informacoes-perfil-editar">
