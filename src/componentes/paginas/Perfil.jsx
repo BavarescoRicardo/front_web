@@ -132,17 +132,6 @@ function Perfil(props){
                                 style={{ display: 'none' }}
                                 onChange={e => setSelectedImage(e.target.files[0])}
                             />
-                            <label htmlFor="select-image">
-                                <Button variant="contained" size='small' color="secondary" component="span">
-                                    Buscar foto
-                                </Button>
-                            </label>
-                            </div>
-                            <div className="col">
-                            <button type="button" class="btn btn-outline-dark" onClick={postarFoto} >
-                                Postar foto
-                            </button>
-
                             <button type="button" class="btn btn-outline-dark" onClick={redirecionarParaEdicao} >
                                 Editar Perfil
                             </button>
