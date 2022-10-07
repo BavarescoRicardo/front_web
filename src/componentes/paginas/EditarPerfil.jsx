@@ -51,11 +51,9 @@ function Perfil(){
             }
             )
             .then(async response => {                          
-            // console.log(response.data);
+            // Definindo usuario e foto 
             if (response.data.login != null){
-                console.log('edicao perf.. usuario setado  ');
                 setUsuariolog(response.data)
-                console.log(response.data.fotoPerfil)
                 setImageUrl('data:image/jpeg;base64,' + response.data.fotoPerfil)
             }            
             }).catch(error=> {
@@ -126,7 +124,7 @@ function Perfil(){
                 <h1>Perfil usuário </h1>
             </div>
             <div className="foto-perfil">
-                {imageUrl? <img style={{ width: "90%", height: "85%", margin: "10px"}} src={imageUrl} /> : null}
+                {(selectedImage ||usuariolog.fotoPerfil)? <img style={{ width: "90%", height: "85%", margin: "10px"}} src={imageUrl} /> : null}
             </div>                   
             <div>
                 <div className="informacoes-perfil-editar">
@@ -170,7 +168,7 @@ function Perfil(){
                             <div className="col">
                                 <div className="contato">
                                     <h2>contato: </h2>
-                                    <input type="text" name="grau" value={usuariolog.contato} onChange={handleChange} />
+                                    <input type="text" name="grau" value={usuariolog.grau} onChange={handleChange} />
                                 </div>
                             </div>
                         </div>
