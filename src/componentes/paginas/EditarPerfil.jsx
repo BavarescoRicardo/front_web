@@ -5,25 +5,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../../servicos/api'
 import Button from '@material-ui/core/Button';
 
-function Perfil(){ 
-    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
+function Perfil(){
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
-
-    const baseUrlExternoft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
     const baseUrlHerokuft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
 
     const [selectedImage, setSelectedImage] = useState(null); 
     const history = useHistory();        
     const [imageUrl, setImageUrl] = useState(null);
 
-    const formData = new FormData();    
-    useEffect(() => {   
-        if (selectedImage) {
-            setImageUrl(URL.createObjectURL(selectedImage));                        
-        }
-        
-      }, [selectedImage]);
+    const formData = new FormData();
+    
     // Modelo do usuario a ser salvo
     const [usuariolog, setUsuariolog]=useState(
         {
@@ -35,7 +26,43 @@ function Perfil(){
           observacao: '',
           grau: ''
         }
-    );  
+    );
+    useEffect(async () => {
+        await selecionaUsuario().then(() => {
+            if (usuariolog && (imageUrl == null)) {
+                //console.log("esperou e carregou dados")
+                setImageUrl('data:image/jpeg;base64,' + usuariolog.fotoPerfil)
+            }       
+        })
+
+        if (selectedImage) {
+            setImageUrl(URL.createObjectURL(selectedImage));                        
+        }
+      }, [selectedImage]);
+
+
+      const selecionaUsuario = async()=>{        
+        if(!imageUrl && (localStorage.getItem('tokens') != null)){            
+            await api.get("https://tcc-spring-back-end.herokuapp.com/selusuario", 
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            }
+            )
+            .then(response => {                          
+            // console.log(response.data);
+            if (response.data.login != null){
+
+                setUsuariolog(response.data);
+                console.log('edicao perf.. usuario setado  ');
+            }            
+            }).catch(error=> {
+                console.log(error);
+            })
+        }
+    }       
+
     
     const handleChange = e=> 
     {
@@ -105,19 +132,19 @@ function Perfil(){
                     <div className="row">
                         <div className="col">
                             <h2>Nome: </h2>
-                            <input type="text" name="nomeCompleto" onChange={handleChange} />
+                            <input type="text" name="nomeCompleto" value={usuariolog.nomeCompleto} onChange={handleChange} />
                         </div>
                     </div>                    
                         <div className="row">
                             <div className="col">
                                 <h2>Bio:  </h2>
-                                <input type="text" name="bio" onChange={handleChange} />
+                                <input type="text" name="bio" value={usuariolog.bio} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
                                 <h2>Descrição:  </h2>
-                                <input type="text" name="descricao" onChange={handleChange} />
+                                <input type="text" name="descricao" value={usuariolog.descricao} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="row">
@@ -135,14 +162,14 @@ function Perfil(){
                         <div className="row">
                             <div className="col">
                                 <h2>Observação:  </h2>
-                                <input type="text" name="observacao" onChange={handleChange} />
+                                <input type="text" name="observacao" value={usuariolog.observacao} onChange={handleChange} />
                             </div>
                         </div>                
                         <div className="row">
                             <div className="col">
                                 <div className="contato">
                                     <h2>contato: </h2>
-                                    <input type="text" name="grau" onChange={handleChange} />
+                                    <input type="text" name="grau" value={usuariolog.contato} onChange={handleChange} />
                                 </div>
                             </div>
                         </div>

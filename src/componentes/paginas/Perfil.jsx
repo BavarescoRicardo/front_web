@@ -20,6 +20,10 @@ function Perfil(props){
     const [selectedImage, setSelectedImage] = useState(null);
     var [usuarioData, setUsuarioData] = useState(null);
     
+    function redirecionarParaEdicao(){
+        history.push({ pathname: '/EditarPerfil' })
+    }
+
     useEffect(() => {   
         imagemGet();     
         if (selectedImage) {
@@ -135,8 +139,12 @@ function Perfil(props){
                             </label>
                             </div>
                             <div className="col">
-                            <button onClick={postarFoto} >
+                            <button type="button" class="btn btn-outline-dark" onClick={postarFoto} >
                                 Postar foto
+                            </button>
+
+                            <button type="button" class="btn btn-outline-dark" onClick={redirecionarParaEdicao} >
+                                Editar Perfil
                             </button>
                     </div>
                 </div>
