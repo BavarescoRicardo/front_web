@@ -27,15 +27,13 @@ function EditarArtigo(props) {
         }
     );
 
-    useEffect(() => {
+    useEffect(async () => {
         artigoGet();
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
         }        
         
-        if (artigo && (imageUrl == null)) {
-            console.log('definindo imagem')
-            console.log(artigo.imagem)
+        if ((artigo.codigo > 0) && (imageUrl == null)) {
             setImageUrl('data:image/jpeg;base64,' + artigo.imagem)
         }
       }, [selectedImage]);
@@ -54,12 +52,6 @@ function EditarArtigo(props) {
             })
         .then(response => {
             setArtigo(response.data);
-            console.log('Dados de resposta.. ');
-            console.log(response.data.imagem)
-
-            console.log('Dados do artigo.. ');
-            console.log(artigo.imagem)
-
         }).catch(error=> {
             console.log(error);
         })
@@ -142,7 +134,7 @@ function EditarArtigo(props) {
                     <div className="card-body">
                         <h5 className="card-title" style={{marginBottom: '15px'}}>Editar Artigo</h5>
                         <div className="image">                            
-                            {selectedImage? <img src={imageUrl} /> : null}
+                            {(selectedImage ||artigo.imagem)? <img src={imageUrl} /> : null}
                         </div>
 
                         <div className="formulario-artigo">
