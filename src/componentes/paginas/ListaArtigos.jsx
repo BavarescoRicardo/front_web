@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import { FaInfoCircle } from "@react-icons/all-files/fa/FaInfoCircle";
+import { BiEdit } from "@react-icons/all-files/bi/BiEdit";
+import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
 import Select from 'react-select'
@@ -12,6 +14,7 @@ import "../estilos/search-filter.css"
 import axios from 'axios';
 
 function ListaArtigos(){
+    const history = useHistory();
     const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
@@ -34,7 +37,6 @@ function ListaArtigos(){
             }
             )
             .then(response => {                          
-            console.log(response.data)
             if (response.data.login != null){
                 setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
 
@@ -53,7 +55,6 @@ function ListaArtigos(){
     const artigoGet = async(pg)=>{
         await axios.get(baseUrlHeroku+"?pg="+pg)
         .then(response => {
-            console.log(response.data);
             setDados(response.data);
             verificarPermissao();
         }).catch(error=> {
@@ -95,6 +96,14 @@ function ListaArtigos(){
         }
     }
 
+    async function editarArtigo(idArtigo) {        
+        try {
+            history.push({ pathname: '/EditarArtigo',  idArtigo: idArtigo })
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+    }
+
     const options = [
         { value: 'comp', label: 'Computação' },
         { value: 'elet', label: 'Elétrica' },
@@ -109,7 +118,6 @@ function ListaArtigos(){
           height: 35,
         }),
         control: () => ({
-          // none of react-select's styles are passed to <Control />
           width: 115,
           height: 25,
           marginTop: -5          
@@ -161,9 +169,13 @@ function ListaArtigos(){
                             <p>
                                 <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none"> Ver Detalhes <FaInfoCircle /> </Link>
                                 {permissao  
-                                    ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" /> </button>
+                                    ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" size={15} /> </button>
                                     : <h1> </h1>
-                                }                                        
+                                }
+                                 {permissao  
+                                    ? <button onClick={()=> editarArtigo(codigo)} className="btn btn-link link-dark text-decoration-none"> Editar <BiEdit color="black" size={20} /> </button>
+                                    : <h1> </h1>
+                                }
                             </p>
                         </div>
                     </div>

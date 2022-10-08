@@ -13,7 +13,7 @@ function Detalhe(){
     const userUrl ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const baseUrlArtigoDetal ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";
-    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/removerdetalhe/";
+    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/removerdetalhe/";    
   
 
     async function verificaParticipante() {        
@@ -68,10 +68,7 @@ function Detalhe(){
         }
       } 
 
-    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
-    
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";    
 
     const formData = new FormData();
     formData.append('idArtigo', id);

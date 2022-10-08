@@ -6,6 +6,7 @@ import Publicar from './paginas/PublicarArtigo';
 import Perfil from './paginas/Perfil';
 import CadastroLogin from './paginas/CadastroLogin'
 import EditarPerfil from './paginas/EditarPerfil'
+import EditarArtigo from './paginas/EditarArtigo'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -107,6 +108,7 @@ const Navegacao = () => {
                 <Route path="/Perfil"> <Perfil/>                                                     </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>
                 <Route path="/PainelMestre"> <PainelMestre/>                                         </Route>
+                <Route path="/EditarArtigo"> <EditarArtigo/>                                         </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>
