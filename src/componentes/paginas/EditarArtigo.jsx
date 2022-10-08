@@ -22,7 +22,8 @@ function EditarArtigo(props) {
         {
           codigo: 0,
           titulo: '',
-          descricao: ''
+          descricao: '',
+          observacao: ''
         }
     );
 

@@ -61,7 +61,8 @@ function Publicar(){
         {
           codigo: 0,
           titulo: '',
-          descricao: ''
+          descricao: '',
+          observacao: ''
         }
     );  
     
@@ -118,7 +119,7 @@ function Publicar(){
                                 <div className="row">
                                     <div className="col">
                                         <label>Observação</label>
-                                        <input type="text" name="nome" onChange={handleChange} />
+                                        <input type="text" name="observacao" onChange={handleChange} />
                                     </div>
                                 </div>
                                 <div className="row">
