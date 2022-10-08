@@ -33,6 +33,11 @@ function EditarArtigo(props) {
             setImageUrl(URL.createObjectURL(selectedImage));
         }        
         
+        if (artigo && (imageUrl == null)) {
+            console.log('definindo imagem')
+            console.log(artigo.imagem)
+            setImageUrl('data:image/jpeg;base64,' + artigo.imagem)
+        }
       }, [selectedImage]);
 
     const artigoGet = async()=>{
@@ -48,8 +53,13 @@ function EditarArtigo(props) {
                 }
             })
         .then(response => {
-            console.log(response.data);
             setArtigo(response.data);
+            console.log('Dados de resposta.. ');
+            console.log(response.data.imagem)
+
+            console.log('Dados do artigo.. ');
+            console.log(artigo.imagem)
+
         }).catch(error=> {
             console.log(error);
         })
@@ -130,7 +140,7 @@ function EditarArtigo(props) {
             <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
                 <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
                     <div className="card-body">
-                        <h5 className="card-title">Editar Artigo</h5>
+                        <h5 className="card-title" style={{marginBottom: '15px'}}>Editar Artigo</h5>
                         <div className="image">                            
                             {selectedImage? <img src={imageUrl} /> : null}
                         </div>
