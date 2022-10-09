@@ -21,13 +21,6 @@ function PainelMestre(){
         }
     );
 
-    const [senhaNova, setSenhaNova]=useState(
-        {
-            idLogin: 0,
-            senhaNova: 'senha'
-        }
-    );
-
     async function adicionarolePost(nomerol, admin) {        
         try {
             // Dine para qual usuario vai dar a permissão
@@ -56,10 +49,13 @@ function PainelMestre(){
 
     async function mudarSenha(nomerol) {        
         try {
-            // Dine para qual usuario vai trocar a senha
-            senhaNova.idLogin = nomerol
+            // Define para qual usuario vai trocar a senha
+            const formDataUser = new FormData();
+            formDataUser.append('idLogin', nomerol);
+            formDataUser.append('senhaNova', "senha");
+            
 
-            await axios.post('https://tcc-spring-back-end.herokuapp.com/mudarsenhalogin', senhaNova, 
+            await axios.post('http://localhost:3033/mudarsenhalogin', formDataUser, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
