@@ -10,9 +10,9 @@ function EditarArtigo(props) {
     const history = useHistory();
     const location = useLocation();
 
-    const baseUrlArtigoHeroku ="http://localhost:3033/artigo/salvarartigo";
-    const editarUrlHeroku ="http://localhost:3033/artigo/artigo";
-    const baseUrlHerokuImg ="http://localhost:3033/artigo/imagem";
+    const baseUrlArtigoHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo";
+    const editarUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigo";
+    const baseUrlHerokuImg ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
     
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);
