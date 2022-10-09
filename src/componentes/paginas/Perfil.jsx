@@ -9,12 +9,12 @@ import Button from '@material-ui/core/Button';
 function Perfil(props){    
     const history = useHistory();  
 
-    const userUrl ="https://tcc-spring-back-end.herokuapp.com/selusuario/";
-    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+    const userUrl ="http://localhost:3033/selusuario/";
+    const userUrlHeroku ="http://localhost:3033/selusuario";
 
-    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/userPostaFt";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/postaFt";
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/postaFt";
+    const baseUrl ="http://localhost:3033/userPostaFt";
+    const baseUrlExterno ="http://localhost:3033/postaFt";
+    const baseUrlHeroku ="http://localhost:3033/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);

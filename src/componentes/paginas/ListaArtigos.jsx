@@ -15,9 +15,9 @@ import axios from 'axios';
 
 function ListaArtigos(){
     const history = useHistory();
-    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const baseUrl ="http://localhost:3033/artigo/artigolista";
+    const baseUrlExterno ="http://localhost:3033/artigo/artigolista";
+    const baseUrlHeroku ="http://localhost:3033/artigo/artigolista";
 
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
@@ -25,7 +25,7 @@ function ListaArtigos(){
     const [codImagem, setCodImagem] = useState([]);
 
     const [permissao, setPermissao] = useState(false);
-    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+    const userUrlHeroku ="http://localhost:3033/selusuario";
 
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  
@@ -83,7 +83,7 @@ function ListaArtigos(){
         try {
             const formData = new FormData();
             formData.append('idArtigo', idArtigo);
-            await axios.post('https://tcc-spring-back-end.herokuapp.com/artigo/remover/', formData, 
+            await axios.post('http://localhost:3033/artigo/remover/', formData, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
