@@ -19,7 +19,14 @@ function PainelMestre(){
           username: 'jos',
           roleName: 'ROLE_ADMIN'
         }
-    ); 
+    );
+
+    const [senhaNova, setSenhaNova]=useState(
+        {
+            idLogin: 0,
+            senhaNova: 'senha'
+        }
+    );
 
     async function adicionarolePost(nomerol, admin) {        
         try {
@@ -29,6 +36,30 @@ function PainelMestre(){
             await axios.post(admin ? 
                 'http://localhost:3033/adicionaroleapi' : 
                 'http://localhost:3033/removerroleapi', permissao, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(async response => {
+                if(response.data){
+                // history.push('/PainelMestre');
+                }else{
+                    console.log("error ao publicar");    
+                }
+            }).catch(error=> {
+              console.log(error);
+            })            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function mudarSenha(nomerol) {        
+        try {
+            // Dine para qual usuario vai trocar a senha
+            senhaNova.idLogin = nomerol
+
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/mudarsenhalogin', senhaNova, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -128,6 +159,7 @@ function PainelMestre(){
                                 <td> {login.roles.length}</td>
                                 <td>
                                     <button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button>
+                                    <button onClick={()=> mudarSenha(login.id)} className="btn btn"> Mudar Senha: {login.id} </button>
                                 </td>
                                 <td>
                                     <button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button>
