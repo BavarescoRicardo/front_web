@@ -126,7 +126,7 @@ function Detalhe(){
                             <h5 className="card-title">{titulo}</h5>                                
                             <p className="card-text">{descricao}</p>
                                 {permit  
-                                    ? <Link to={`/DetalheArtigoEditar/${codigo}`}  className="btn btn"><GrEdit/> Editar </Link>
+                                    ? <Link to={`/DetalheArtigoNovo/${codigo}`}  className="btn btn"><GrEdit/> Editar </Link>
                                     : <p> </p>
                                 }
 
@@ -142,7 +142,7 @@ function Detalhe(){
             <section>
                 <div className="btn-fim-editar">
                     {permit  
-                        ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Adicionar detalhe a esta publicação: {id}</Link>
+                        ? <Link to={`/DetalheArtigoNovo/${id}`}  className="btn btn"> Adicionar detalhe a esta publicação: {id}</Link>
                         : <p> </p>
                     }
                 </div>
