@@ -18,10 +18,26 @@ function EditarDetalhe(){
     const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/foto";
     const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/foto";
     const baseUrlArtigoDetal ="https://tcc-spring-back-end.herokuapp.com/artigo/salvardetalhe";
+    const baseUrlEditarHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/dettalheedicao";
     const { id } = useParams()
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
+
+    const detalheGet = async()=>{
+        const formData = new FormData();
+        formData.append('idDetalhe', id);
+
+        await axios.post(baseUrlEditarHeroku, formData, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }})
+        .then(response => {
+            setDetalheArtigo(response.data);
+        }).catch(error=> {
+          console.log(error);
+        })
+      }
 
     const handleChange = e=> 
     {
@@ -35,6 +51,7 @@ function EditarDetalhe(){
     }
 
     useEffect(() => {   
+        detalheGet();
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
             
@@ -118,13 +135,13 @@ function EditarDetalhe(){
                     <div className="row">
                         <div className="col">
                             <label htmlFor="titulo">Título</label>
-                            <input type="text" name='titulo' style={{marginLeft: '3%', marginTop: "-2%", width: '90%'}} onChange={handleChange}/>
+                            <input type="text" name='titulo' style={{marginLeft: '3%', marginTop: "-2%", width: '90%'}} onChange={handleChange} value={detalheArtigo.titulo}/>
                         </div>
                     </div>                    
                     <div className="row">
                         <div className="col">
                             <label htmlFor="descricao">Descrição</label>
-                            <textarea style={{width: '90%'}} name="descricao" onChange={handleChange} cols="30" rows="5"></textarea>
+                            <textarea style={{width: '90%'}} name="descricao" onChange={handleChange} value={detalheArtigo.descricao} cols="30" rows="5"></textarea>
                         </div>
                     </div> 
                 </div>

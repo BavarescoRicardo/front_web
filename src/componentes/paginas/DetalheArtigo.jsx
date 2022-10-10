@@ -69,7 +69,7 @@ function Detalhe(){
         }
       } 
 
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";    
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
 
     const formData = new FormData();
     formData.append('idArtigo', id);
@@ -126,7 +126,7 @@ function Detalhe(){
                             <h5 className="card-title">{titulo}</h5>                                
                             <p className="card-text">{descricao}</p>
                                 {permit  
-                                    ? <Link to={`/DetalheArtigoNovo/${codigo}`}  className="btn btn"><GrEdit/> Editar </Link>
+                                    ? <Link to={`/DetalheArtigoEditar/${codigo}`}  className="btn btn"><GrEdit/> Editar </Link>
                                     : <p> </p>
                                 }
 
