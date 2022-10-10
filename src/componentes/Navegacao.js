@@ -11,7 +11,7 @@ import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './paginas/DetalheArtigo';
-import EditarDetalhe from './paginas/DetalheArtigoNovo';
+import NovoDetalhe from './paginas/DetalheArtigoNovo';
 import axios from 'axios';
 import { HiAcademicCap } from 'react-icons/hi';
 import { BsPersonCircle } from 'react-icons/bs';
@@ -103,7 +103,7 @@ const Navegacao = () => {
                 <Route path="/Login"> <Login setLogado={setLogado} setPermissao = {setPermissao}/>  </Route>
                 <Route path="/ListaArtigos"> <ListaArtigos/>                                         </Route>
                 <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                                   </Route>
-                <Route exact path="/DetalheArtigoNovo/:id"> <EditarDetalhe/>                       </Route>
+                <Route exact path="/DetalheArtigoNovo/:id"> <NovoDetalhe/>                       </Route>
                 <Route path="/Publicar"> <Publicar/>                                                 </Route>
                 <Route path="/Perfil"> <Perfil/>                                                     </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>

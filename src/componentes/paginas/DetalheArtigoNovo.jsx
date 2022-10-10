@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../estilos/Detal.css';
 import Button from '@material-ui/core/Button';
 
-function EditarDetalhe(){
+function NovoDetalhe(){
     const [detalheArtigo, setDetalheArtigo] =
     useState(
         {
@@ -164,4 +164,4 @@ function EditarDetalhe(){
     );    
 }
 
-export default EditarDetalhe;
+export default NovoDetalhe;
