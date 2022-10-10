@@ -17,6 +17,7 @@ function EditarArtigo(props) {
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
+    const [atualizar, setAtualizar] = useState(0);
 
     const [artigo, setArtigo]=useState(
         {
@@ -33,10 +34,17 @@ function EditarArtigo(props) {
             setImageUrl(URL.createObjectURL(selectedImage));
         }        
         
-        if ((artigo.codigo > 0) && (imageUrl == null)) {
+        if ((artigo.codigo > 0) && (selectedImage == null)) {
             setImageUrl('data:image/jpeg;base64,' + artigo.imagem)
-        }
-      }, [selectedImage]);
+        }        
+        componentatualiza();
+      }, [selectedImage, atualizar]);
+
+      function componentatualiza(){
+        setTimeout(() => {
+            setAtualizar(atualizar+1)
+        }, 1000);
+      }
 
     const artigoGet = async()=>{
 
@@ -51,7 +59,7 @@ function EditarArtigo(props) {
                 }
             })
         .then(response => {
-            setArtigo(response.data);
+            setArtigo(response.data)            
         }).catch(error=> {
             console.log(error);
         })
@@ -142,7 +150,7 @@ function EditarArtigo(props) {
                                 <div className="row">
                                     <div className="col">
                                         <label>Observação</label>
-                                        <input type="text" name="nome" onChange={handleChange} value={artigo.observacao} />
+                                        <input type="text" name="observacao" onChange={handleChange} value={artigo.observacao} />
                                     </div>
                                 </div>
                                 <div className="row">
