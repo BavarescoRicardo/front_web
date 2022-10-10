@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
+import { GrEdit } from "@react-icons/all-files/gr/GrEdit";
 import axios from 'axios';
 import '../estilos/Detal.css';
 
@@ -125,7 +126,12 @@ function Detalhe(){
                             <h5 className="card-title">{titulo}</h5>                                
                             <p className="card-text">{descricao}</p>
                                 {permit  
-                                    ? <p><button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none"><FaTrash color="black" /></button></p>
+                                    ? <Link to={`/DetalheArtigoEditar/${codigo}`}  className="btn btn"><GrEdit/> Editar </Link>
+                                    : <p> </p>
+                                }
+
+                                {permit  
+                                    ? <button onClick={() => {artigoDetalheRemover(codigo) }} className="btn btn-link link-dark text-decoration-none"><FaTrash color="black" /> Remover</button>
                                     : <p></p>
                                 }
                         </div>
@@ -135,11 +141,6 @@ function Detalhe(){
         
             <section>
                 <div className="btn-fim-editar">
-                    {permit  
-                        ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta artigo: {id}</Link>
-                        : <p> </p>
-                    }
-
                     {permit  
                         ? <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Adicionar detalhe a esta publicação: {id}</Link>
                         : <p> </p>
