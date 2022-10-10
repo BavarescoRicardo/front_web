@@ -62,8 +62,7 @@ function PainelMestre(){
             })
             .then(async response => {
                 if(response.data){
-                // history.push('/PainelMestre');
-                alert(response.data)
+                    alert(response.data)
                 }else{
                     console.log("error ao publicar");    
                 }
