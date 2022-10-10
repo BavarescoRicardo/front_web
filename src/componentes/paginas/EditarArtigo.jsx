@@ -134,7 +134,7 @@ function EditarArtigo(props) {
                     <div className="card-body">
                         <h5 className="card-title" style={{marginBottom: '15px'}}>Editar Artigo</h5>
                         <div className="image">                            
-                            {(selectedImage ||artigo.imagem)? <img src={imageUrl} /> : null}
+                            {(selectedImage || artigo.imagem)? <img src={imageUrl} /> : null}
                         </div>
 
                         <div className="formulario-artigo">
