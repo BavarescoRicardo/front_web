@@ -105,7 +105,7 @@ function EditarDetalhe(){
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                        <h1> Editar os detalhe do artigo: {id} </h1>
+                        <h1> Novo detalhe do artigo: {id} </h1>
                         </div>
                     </div>
                 </div>                
