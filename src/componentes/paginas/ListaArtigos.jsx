@@ -182,19 +182,10 @@ function ListaArtigos(){
                         </div>
                     </div>
                 </article>
-            ))}                    
-
-            <div className="div">
-                {permissao  
-                    ? <Link to="/Publicar" className="btn btn-info" style={{float: 'right', marginRight: '2%'}}> Publicar novo</Link>
-                    : <h1> </h1>
-                }
-            </div>
-
-
+            ))}
 
             <nav style={{backgroundColor: 'whitesmoke', padding: '0', maxWidth: '10%', marginLeft: 'auto', marginRight: 'auto'}}>
-                <ul className="pagination pagination-sm" style={{backgroundColor: 'whitesmoke', margin: '2px', maxWidth: '90%'}}>
+                <ul className="pagination pagination-sm" style={{backgroundColor: 'whitesmoke', margin: '2px', maxWidth: '90%', marginRight: '1%'}}>
                     <li className="page-item disabled">
                         <a className="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
@@ -212,6 +203,13 @@ function ListaArtigos(){
                     </li>
                 </ul>
             </nav>
+
+            <div className="publicar-novo-lista-artigo" >
+                {permissao  
+                    ? <Link to="/Publicar" className="btn btn-info" style={{marginTop:'10px', float: 'right', marginRight: '1%'}}> Publicar novo</Link>
+                    : <h1> </h1>
+                }
+            </div>
 
         </div>
     );    
