@@ -36,8 +36,9 @@ function EditarArtigo(props) {
         
         if ((artigo.codigo > 0) && (selectedImage == null)) {
             setImageUrl('data:image/jpeg;base64,' + artigo.imagem)
-        }        
-        componentatualiza();
+        }
+        if(atualizar < 2)
+            componentatualiza();
       }, [selectedImage, atualizar]);
 
       function componentatualiza(){
