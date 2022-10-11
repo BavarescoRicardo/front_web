@@ -110,7 +110,6 @@ function EditarArtigo(props) {
     }  
     
     const artigoPost = async()=>{        
-        delete artigo.codigo;
         console.log("Postando artigo novo")
 
         try {
