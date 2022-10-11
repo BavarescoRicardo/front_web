@@ -15,10 +15,10 @@ function EditarDetalhe(){
         }
     );
 
-    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/foto";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/foto";
-    const baseUrlArtigoDetal ="https://tcc-spring-back-end.herokuapp.com/artigo/salvardetalhe";
-    const baseUrlEditarHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/dettalheedicao";
+    const baseUrl ="http://localhost:3033/artigo/foto";
+    const baseUrlExterno ="http://localhost:3033/artigo/foto";
+    const baseUrlArtigoDetal ="http://localhost:3033/artigo/salvardetalhe";
+    const baseUrlEditarHeroku ="http://localhost:3033/artigo/dettalheedicao";
     const { id } = useParams()
 
     const [selectedImage, setSelectedImage] = useState(null);

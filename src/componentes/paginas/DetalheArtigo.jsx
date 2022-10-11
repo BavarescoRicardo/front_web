@@ -11,10 +11,10 @@ function Detalhe(){
     
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
-    const userUrl ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
-    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
-    const baseUrlArtigoDetal ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";
-    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/removerdetalhe/";    
+    const userUrl ="http://localhost:3033/verificaparticipante/";
+    const userUrlHeroku ="http://localhost:3033/verificaparticipante/";
+    const baseUrlArtigoDetal ="http://localhost:3033/artigo/removerdetalhe/";
+    const userUrlHerokuArtigo ="http://localhost:3033/removerdetalhe/";    
   
 
     async function verificaParticipante() {        
@@ -69,7 +69,7 @@ function Detalhe(){
         }
       } 
 
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigodettalhe";
+    const baseUrlHeroku ="http://localhost:3033/artigo/artigodettalhe";
 
     const formData = new FormData();
     formData.append('idArtigo', id);
