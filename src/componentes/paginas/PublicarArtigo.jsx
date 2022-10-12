@@ -142,7 +142,7 @@ function Publicar(){
                                 <div className="row">
                                     <div className="col">
                                         <label>Curso:  </label>
-                                        <select style={{marginRight: "10%", float: "right"}} name='curso' onChange={handleChange}>
+                                        <select style={{marginRight: "10%", float: "right"}} name='codCurso' id='codCurso' onChange={handleChange}>
                                             <option value="">Selecione o curso </option>
                                             <option value="0">Eng. Computação </option>
                                             <option value="1">Eng. Eletrica </option>
