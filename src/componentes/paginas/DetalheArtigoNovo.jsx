@@ -100,67 +100,63 @@ function NovoDetalhe(){
       } 
 
       return(
-        <div>
-            <section>
-                <div className="container">
-                    <div className="row">
-                        <div className="col">
-                        <h1> Novo detalhe do artigo: {id} </h1>
-                        </div>
+        <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
+            <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto", marginTop: '10%'}}>
+                <div className="card-body">
+                    <h5 className="card-title">Novo detalhe do Artigo</h5>
+                    <div className="image">                            
+                        {selectedImage? <img src={imageUrl} /> : null}
                     </div>
-                </div>                
-            </section>
-            <section>
-                <div className="container">
-                    <div className="row">
 
+                    <div className="formulario-artigo">
+                        <div className="camposcad-artigo">
+                            <div className="row">
+                                <div className="col">
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <label>Titulo</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <input type="text" name="titulo" onChange={handleChange} value={detalheArtigo.titulo} />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                <label>Descriçao</label>
+                                    <input type="text" name="descricao" onChange={handleChange} value={detalheArtigo.descricao} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                
                     <div className="row">
-                        <div className="col">
-                            <label htmlFor="titulo">Título</label>
-                            <input type="text" name='titulo' style={{marginLeft: '3%', marginTop: "-2%", width: '90%'}} onChange={handleChange}/>
-                        </div>
-                    </div>                    
-                    <div className="row">
-                        <div className="col">
-                            <label htmlFor="descricao">Descrição</label>
-                            <textarea style={{width: '90%'}} name="descricao" onChange={handleChange} cols="30" rows="5"></textarea>
-                        </div>
-                    </div> 
-                </div>
-                    <div className="imagem-detalhe">
-                        <div className="row">
-                        <input
-                            accept="image/*"
-                            type="file"
-                            id="select-image"
-                            name="fotoPublicacao"
-                            style={{ display: 'none' }}
-                            onChange={e => setSelectedImage(e.target.files[0])}
-                        />
-                        <label htmlFor="select-image">
-                            <Button variant="contained" size='small' color="secondary" component="span">
-                                Buscar foto
-                            </Button>
-                        </label>
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                
+                            <div className="row">
+                            <input
+                                accept="image/*"
+                                type="file"
+                                id="select-image"
+                                style={{ display: 'none' }}
+                                onChange={e => setSelectedImage(e.target.files[0])}
+                            />
+                            <label htmlFor="select-image">
+                                <Button variant="contained" size='small' color="secondary" component="span">
+                                    Buscar foto
+                                </Button>
+                            </label>
                             </div>
                         </div>
 
-                    </div>                    
-
-            </section>
-        
-            <section>                
-                <div className="btn-fim-editar">
-                    <button onClick={() => artigoDetalhePost()} type="button" class="btn btn-secondary">Confirmar</button>
+                        <div className="col">
+                            <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoDetalhePost()}>Confirmar</button>
+                        </div>
+                    </div>
                 </div>
-            </section>
+        </div>
             
-        </div>        
     );    
 }
 
