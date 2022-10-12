@@ -218,7 +218,7 @@ function ListaArtigos(){
                                 }
                             </p>
 
-                            <p className="card-text">{"Curso " + options[codCurso].label}</p>
+                            <p className="card-text">{"Curso: " + options[codCurso].label}</p>
                         </div>
                     </div>
                 </article>
