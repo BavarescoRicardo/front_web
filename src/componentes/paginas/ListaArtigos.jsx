@@ -65,6 +65,7 @@ function ListaArtigos(){
         await axios.get(baseUrlHeroku+"?pg="+pagina)
         .then(response => {
             setDados(response.data);
+            console.log(response.data)
             verificarPermissao();
         }).catch(error=> {
             console.log(error);
@@ -195,7 +196,7 @@ function ListaArtigos(){
                 </div>
             </div>
 
-            {dados.map(({ codigo, titulo, descricao, imagem }) => (
+            {dados.map(({ codigo, titulo, descricao, codCurso, imagem }) => (
                 <article key={codigo}>
                     <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
                         {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
@@ -216,6 +217,8 @@ function ListaArtigos(){
                                     : <h1> </h1>
                                 }
                             </p>
+
+                            <p className="card-text">{"Curso " + options[codCurso].label}</p>
                         </div>
                     </div>
                 </article>
