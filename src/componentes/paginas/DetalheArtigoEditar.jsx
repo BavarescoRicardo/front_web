@@ -151,28 +151,28 @@ function EditarDetalhe(){
                             </div>
                         </div>
                     
-                            <div className="row">
-                                    <div className="row">
-                                    <input
-                                        accept="image/*"
-                                        type="file"
-                                        id="select-image"
-                                        style={{ display: 'none' }}
-                                        onChange={e => setSelectedImage(e.target.files[0])}
-                                    />
-                                    <label htmlFor="select-image">
-                                        <Button variant="contained" size='small' color="secondary" component="span">
-                                            Buscar foto
-                                        </Button>
-                                    </label>
-                                    </div>
-                                </div>
-
-                                <div className="col">
-                                    <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoDetalhePost()}>Confirmar</button>
+                        <div className="row">
+                                <div className="row">
+                                <input
+                                    accept="image/*"
+                                    type="file"
+                                    id="select-image"
+                                    style={{ display: 'none' }}
+                                    onChange={e => setSelectedImage(e.target.files[0])}
+                                />
+                                <label htmlFor="select-image">
+                                    <Button variant="contained" size='small' color="secondary" component="span">
+                                        Buscar foto
+                                    </Button>
+                                </label>
                                 </div>
                             </div>
+
+                            <div className="col">
+                                <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoDetalhePost()}>Confirmar</button>
+                            </div>
                         </div>
+                    </div>
             </div>
             
         </div>        
