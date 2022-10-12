@@ -186,7 +186,6 @@ function ListaArtigos(){
                             hideSelectedOptions={false}
                             placeholder = 'Cursos'                       
                             onChange={(sel) => handleSelect(sel)}
-                            // onChange={handleChange}
                             /> 
                     </div>
                         <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{ minWidth: '90px'}} onClick={()=> artigoGetFiltrado()} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
