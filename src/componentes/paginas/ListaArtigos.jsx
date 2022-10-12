@@ -217,8 +217,9 @@ function ListaArtigos(){
                                     : <h1> </h1>
                                 }
                             </p>
-
-                            <p className="card-text">{"Curso: " + options[codCurso].label}</p>
+                            <div className="texto-card-cod">
+                                <p className="card-text">{"Curso: " + options[codCurso].label}</p>
+                            </div>                            
                         </div>
                     </div>
                 </article>

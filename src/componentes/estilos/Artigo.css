@@ -25,7 +25,6 @@
     margin-bottom: 15px;
 }
 
-
 .foto {
     display: flex;
     margin-left: 1%;
@@ -51,4 +50,9 @@
     margin-left: 70%;
     font-size: 13px;
     font-family: 'Varela Round', sans-serif;
+}
+
+.texto-card-cod {
+    background-color: #d6e2e8;
+    padding-left: 5%;
 }
