@@ -27,6 +27,14 @@ function ListaArtigos(){
     const [permissao, setPermissao] = useState(false);
     const userUrlHeroku ="http://localhost:3033/selusuario";
 
+    const [filtro, setFiltro]=useState(
+        {
+          codCurso: 0,
+          textoFiltro: "",
+          pg: 0
+        }
+    );
+
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  
             await axios.get(userUrlHeroku, 
@@ -60,7 +68,17 @@ function ListaArtigos(){
         }).catch(error=> {
             console.log(error);
         })
-    }    
+    }
+
+    const artigoGetFiltrado = async(pg)=>{
+        await axios.post(baseUrlHeroku, filtro)
+        .then(response => {
+            setDados(response.data);
+            verificarPermissao();
+        }).catch(error=> {
+            console.log(error);
+        })
+    }
 
     useEffect(async ()=>{            
         await artigoGet(0);      
@@ -128,6 +146,17 @@ function ListaArtigos(){
         }
       }
 
+      const handleChange = e=> 
+      {
+          // Montar objeto usuario
+          const {name, value}=e.target;
+          setFiltro(
+          {
+              ...filtro,
+              [name]: value
+          });        
+      }
+
     return(
         <div className='lista-artigo'>
             <div className="container">
@@ -141,7 +170,7 @@ function ListaArtigos(){
                 <div className="row searchFilter" >
                     <div className="col-sm-12" >
                     <div className="input-group" >
-                    <input id="table_filter" placeholder='Filtrar por:  Título, Conteúdo' type="text" className="form-control" aria-label="Text input with segmented button dropdown" />
+                    <input id="textoFiltro" name="textoFiltro" placeholder='Filtrar por:  Título, Conteúdo' type="text" className="form-control" aria-label="Text input with segmented button dropdown" onChange={handleChange} />
                     <div className='searchFilter-selecao'>
                         <Select 
                             styles={customStyles}
@@ -152,7 +181,7 @@ function ListaArtigos(){
                             // onChange={(sel) => handleSelect(sel)}
                             /> 
                     </div>
-                        <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{ minWidth: '90px'}} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
+                        <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{ minWidth: '90px'}} onClick={()=> artigoGetFiltrado()} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
                     </div>
                     </div>
                 </div>
