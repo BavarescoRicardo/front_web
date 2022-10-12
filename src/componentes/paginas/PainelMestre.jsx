@@ -10,8 +10,8 @@ function PainelMestre(){
 
     const history = useHistory();
 
-    const baseUrlListagem ="http://localhost:3033/loginsapi";
-    const baseUrlExternoListagem ="http://localhost:3033/loginsapi";
+    const baseUrlListagem ="https://tcc-spring-back-end.herokuapp.com/loginsapi";
+    const baseUrlExternoListagem ="https://tcc-spring-back-end.herokuapp.com/loginsapi";
     const [data, setData]=useState([]);    
     
     const [permissao, setPermissao]=useState(
@@ -27,8 +27,8 @@ function PainelMestre(){
             permissao.username = nomerol
 
             await axios.post(admin ? 
-                'http://localhost:3033/adicionaroleapi' : 
-                'http://localhost:3033/removerroleapi', permissao, 
+                'https://tcc-spring-back-end.herokuapp.com/adicionaroleapi' : 
+                'https://tcc-spring-back-end.herokuapp.com/removerroleapi', permissao, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -55,7 +55,7 @@ function PainelMestre(){
             formDataUser.append('senhaNova', "senha");
             
 
-            await axios.post('http://localhost:3033/mudarsenhalogin', formDataUser, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/mudarsenhalogin', formDataUser, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -79,7 +79,7 @@ function PainelMestre(){
             const formDataUser = new FormData();
             formDataUser.append('idLogin', idUser);
             await axios.post( 
-                'http://localhost:3033/removeusuariopelologin', formDataUser, 
+                'https://tcc-spring-back-end.herokuapp.com/removeusuariopelologin', formDataUser, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -93,7 +93,7 @@ function PainelMestre(){
                 // Caso o servidor não posso remover um usuario manda requisicao para remover login
                 formDataUser.append('idUser', idUser);
                 await axios.post( 
-                    'http://localhost:3033/removerloginapi', formDataUser, 
+                    'https://tcc-spring-back-end.herokuapp.com/removerloginapi', formDataUser, 
                 { headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
                 }
