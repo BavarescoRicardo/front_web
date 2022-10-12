@@ -123,11 +123,11 @@ function ListaArtigos(){
     }
 
     const options = [
-        { value: 'comp', label: 'Computação' },
-        { value: 'elet', label: 'Elétrica' },
-        { value: 'civi', label: 'Civil' },
-        { value: 'meca', label: 'Mecânica' },
-        { value: 'prod', label: 'Produção' }
+        { value: 0, label: 'Computação' },
+        { value: 1, label: 'Elétrica' },
+        { value: 2, label: 'Civil' },
+        { value: 3, label: 'Mecânica' },
+        { value: 4, label: 'Produção' }
     ]
 
     const customStyles = {
@@ -157,6 +157,13 @@ function ListaArtigos(){
           });        
       }
 
+      const handleSelect = (s) => {
+        setFiltro(filtro => ({
+            ...filtro,
+            codCurso: s.value,
+         }));
+    };
+
     return(
         <div className='lista-artigo'>
             <div className="container">
@@ -178,7 +185,8 @@ function ListaArtigos(){
                             isMulti={false}
                             hideSelectedOptions={false}
                             placeholder = 'Cursos'                       
-                            // onChange={(sel) => handleSelect(sel)}
+                            onChange={(sel) => handleSelect(sel)}
+                            // onChange={handleChange}
                             /> 
                     </div>
                         <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{ minWidth: '90px'}} onClick={()=> artigoGetFiltrado()} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>

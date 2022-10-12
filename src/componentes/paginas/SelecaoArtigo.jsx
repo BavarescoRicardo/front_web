@@ -70,7 +70,6 @@ const SelecaoArtigo = (props) => {
             idArtigo: s[0].value,
             idUsuario: props.cod
          }));
-
     };
 
     return(        
