@@ -18,14 +18,15 @@ function ListaArtigos(){
     const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
 
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
     const [imageUrl, setImageUrl] = useState([]);
     const [codImagem, setCodImagem] = useState([]);
-
     const [permissao, setPermissao] = useState(false);
-    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+    const [pagina, setPagina]=useState(0);
+    
 
     const [filtro, setFiltro]=useState(
         {
@@ -60,8 +61,8 @@ function ListaArtigos(){
         }  
     }
 
-    const artigoGet = async(pg)=>{
-        await axios.get(baseUrlHeroku+"?pg="+pg)
+    const artigoGet = async()=>{
+        await axios.get(baseUrlHeroku+"?pg="+pagina)
         .then(response => {
             setDados(response.data);
             verificarPermissao();
@@ -70,7 +71,7 @@ function ListaArtigos(){
         })
     }
 
-    const artigoGetFiltrado = async(pg)=>{
+    const artigoGetFiltrado = async()=>{
         await axios.post(baseUrlHeroku, filtro)
         .then(response => {
             setDados(response.data);
@@ -84,7 +85,7 @@ function ListaArtigos(){
         await artigoGet(0);      
         console.log('Invocou use efeito');
         setImg(true)
-    }, []); 
+    }, [pagina]); 
 
 
     function decodifImagem(foto, codigo){
@@ -198,7 +199,7 @@ function ListaArtigos(){
                 <article key={codigo}>
                     <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
                         {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
-                        {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}                                    
+                        {imagem? <img style={{ width: "95%", height: "85%", margin: "5px 5px" }} src={imageUrl[codImagem.indexOf(codigo)]} /> : null}
                         <div className="card-body">
                             <h5 className="card-title">{titulo}</h5>
                             <p className="card-text">{descricao}</p>
@@ -226,13 +227,13 @@ function ListaArtigos(){
                         <a className="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#" onClick={() => artigoGet(0)}>1</a>
+                        <a className="page-link" href="#" onClick={() => setPagina(0)}>1</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#" onClick={() => artigoGet(1)}>2</a></li>
+                        <a className="page-link" href="#" onClick={() => setPagina(1)}>2</a></li>
                     <li className="page-item">
 
-                        <a className="page-link" href="#" onClick={() => artigoGet(2)}>3</a></li>
+                        <a className="page-link" href="#" onClick={() => setPagina(2)}>3</a></li>
                     <li className="page-item">
                         
                         <a className="page-link" href="#">Next</a>
