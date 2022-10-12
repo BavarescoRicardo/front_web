@@ -134,8 +134,21 @@ function Publicar(){
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                    <label>Descriçao</label>
+                                        <label>Descrição</label>
                                         <input type="text" name="descricao" onChange={handleChange} />
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col">
+                                        <label>Curso:  </label>
+                                        <select style={{marginRight: "10%", float: "right"}} name='curso' onChange={handleChange}>
+                                            <option value="">Selecione o curso </option>
+                                            <option value="comp">Eng. Computação </option>
+                                            <option value="elet">Eng. Eletrica </option>
+                                            <option value="prod">Eng. Produção </option>
+                                            <option value="meca">Eng. Mecanica </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
