@@ -13,8 +13,7 @@ function Detalhe(){
     const [permit, setPermit]=useState(null);
     const userUrl ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
-    const baseUrlArtigoDetal ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";
-    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/removerdetalhe/";    
+    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";    
   
 
     async function verificaParticipante() {        
