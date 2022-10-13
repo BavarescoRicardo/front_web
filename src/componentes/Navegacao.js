@@ -38,7 +38,7 @@ const Navegacao = () => {
             .then(response => { 
                 setLogado(true)
                 if (response.data.login != null){
-                    setPermissao((response.data.login.roles.find(({ name }) => name === 'ROLE_ADMIN')));
+                    setPermissao((response.data.login.roles.find(({ name }) => name == 'ROLE_ADMIN')));
                 }else {
                     setPermissao(false);
                 }          
@@ -69,10 +69,11 @@ const Navegacao = () => {
                                 <Link to="/" className="nav-link" style={{color: '#4f7279'}}>Home</Link>
                             </li>
                             <li>
-                                <Link to="/Perfil" className="nav-link" style={{color: '#4f7279'}}>Perfil</Link>
-                            </li>
-                            <li>
-                                <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>
+                            {logado
+                                ?
+                                <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Sair</Link>
+                                :
+                                <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>}
                             </li>
                             <li>
                             {logado
@@ -101,10 +102,10 @@ const Navegacao = () => {
 
             <Switch>
                 <Route exact path="/"> <ListaArtigos/>                                               </Route>
-                <Route path="/Login"> <Login setLogado={setLogado} setPermissao = {setPermissao}/>  </Route>
+                <Route path="/Login"> <Login setLogado={setLogado} setPermissao = {setPermissao}/>   </Route>
                 <Route path="/ListaArtigos"> <ListaArtigos/>                                         </Route>
                 <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                                   </Route>
-                <Route exact path="/DetalheArtigoNovo/:id"> <NovoDetalhe/>                       </Route>
+                <Route exact path="/DetalheArtigoNovo/:id"> <NovoDetalhe/>                           </Route>
                 <Route path="/Publicar"> <Publicar/>                                                 </Route>
                 <Route path="/Perfil"> <Perfil/>                                                     </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>
