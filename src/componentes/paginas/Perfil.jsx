@@ -34,28 +34,7 @@ function Perfil(props){
             setImageUrl('data:image/jpeg;base64,' + usuarioData.fotoPerfil)
         }
         
-      }, [!usuarioData, selectedImage]);
-    
-
-    // codigo para postar foto inicio
-    function postarFoto () {
-        if (!selectedImage) {
-            return
-        }
-
-        const formData = new FormData();
-        formData.append('image', selectedImage);
-        axios.post(baseUrlHeroku, formData,
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
-                }
-            })
-            .then(res => {
-                    alert("Imagem salva com sucesso.")
-            })
-    };
-    // fim postar foto    
+      }, [!usuarioData, selectedImage]);   
     
     const imagemGet = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){            
