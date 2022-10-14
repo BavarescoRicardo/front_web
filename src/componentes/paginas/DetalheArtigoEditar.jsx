@@ -6,6 +6,7 @@ import '../estilos/Detal.css';
 import Button from '@material-ui/core/Button';
 
 function EditarDetalhe(){
+
     const [detalheArtigo, setDetalheArtigo] =
     useState(
         {
@@ -23,6 +24,13 @@ function EditarDetalhe(){
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
+    const [atualizar, setAtualizar] = useState(0);
+
+    function componentatualiza(){
+        setTimeout(() => {
+            setAtualizar(atualizar+1)
+        }, 1000);
+      }
 
     const detalheGet = async()=>{
         const formData = new FormData();
@@ -53,11 +61,16 @@ function EditarDetalhe(){
     useEffect(() => {   
         detalheGet();
         if (selectedImage) {
-            setImageUrl(URL.createObjectURL(selectedImage));
-            
+            setImageUrl(URL.createObjectURL(selectedImage));            
+        }
+
+        if ((detalheArtigo.codigo > 0) && (selectedImage == null)) {
+            setImageUrl('data:image/jpeg;base64,' + detalheArtigo.fotoPublicacao)
         }
         
-      }, [selectedImage]);
+        if(atualizar < 2)
+            componentatualiza();
+      }, [selectedImage, atualizar]);
 
     // codigo para postar foto inicio
     function postarFoto (codigoDetal) {
@@ -104,6 +117,7 @@ function EditarDetalhe(){
               if(response.data){
                 console.log("Agora tenta postar a foto! ");
                 postarFoto(response.data.codigo);
+                alert("Artigo salvo com sucesso.")
               }else{
                 console.log("error ao publicar");    
               }
@@ -123,7 +137,7 @@ function EditarDetalhe(){
                     <div className="card-body">
                         <h5 className="card-title">Editar detalhe do Artigo</h5>
                         <div className="image">                            
-                            {selectedImage? <img src={imageUrl} /> : null}
+                            {(selectedImage || detalheArtigo.fotoPublicacao)? <img src={imageUrl} /> : null}
                         </div>
 
                         <div className="formulario-artigo">
