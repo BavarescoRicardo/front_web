@@ -8,12 +8,12 @@ import Button from '@material-ui/core/Button';
 function Publicar(){
 
     const history = useHistory();
-    const baseUrlExterno ="http://localhost:3033/artigo/imagem";
-    const baseUrlArtigo = 'http://localhost:3033/artigo/salvarartigo';
-    const baseUrlArtigoHeroku ="http://localhost:3033/artigo/salvarartigo";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
+    const baseUrlArtigo = 'https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo';
+    const baseUrlArtigoHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo";
 
-    const baseUrlHerokuImg ="http://localhost:3033/artigo/imagem";
-    const baseUrlHeroku ="http://localhost:3033/salvaloginapi";
+    const baseUrlHerokuImg ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
 
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);
