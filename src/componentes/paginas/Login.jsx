@@ -17,9 +17,8 @@ const Login = props => {
             password: ''
         }
     );
-    const url = 'http://localhost:3033/blog/login'
     const urlex = 'http://localhost:3033/blog/login'
-    const baseUrlHeroku ="http://localhost:3033/blog/login";
+    const userUrlHeroku ="http://localhost:3033/selusuario";
 
     const handleChange = e=> 
     {       
@@ -38,9 +37,9 @@ const Login = props => {
 
             await axios.post(urlex, datau)
             .then(async response => {
-                if(response.data){                    
+                if(response.data){                                        
+                    localStorage.setItem('tokens', response.data.access_token)
                     verificarLogado()
-                    localStorage.setItem('tokens', response.data.access_token)                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
                   }else{
                     alert("Login não encontrado.")
@@ -54,11 +53,29 @@ const Login = props => {
             console.log('catch erro '+error);
             alert("Login não encontrado.")
         }
-    }
-    
-    const verificarLogado = () =>{        
-        props.setLogado(true);
-        console.log('Login verificado')       
+    }    
+
+    const verificarLogado = async()=>{  
+        console.log("Verificando a permissão para o usuario ") 
+        if(localStorage.getItem('tokens') != null){
+            await axios.get(userUrlHeroku, 
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            }
+            )
+            .then(response => { 
+                props.setLogado(true)
+                if (response.data.login != null){
+                    props.setPermissao((response.data.login.roles.find(({ name }) => name == 'ROLE_ADMIN')));
+                }else {
+                    props.setPermissao(false);
+                }          
+            }).catch(error=> {
+                console.log(error);
+            })
+        }
     }
 
     return(        
