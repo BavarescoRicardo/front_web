@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import '../estilos/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +9,7 @@ import qs from 'qs';
 
 const Login = props => {  
     const history = useHistory();  
-    localStorage.clear();
+    localStorage.clear();    
 
     var [usuariolog, setUsuariolog]=useState(
         {
@@ -29,7 +29,11 @@ const Login = props => {
             ...usuariolog,
             [name]: value
     });
-    }   
+    }
+
+    useEffect(() => {   
+        verificarLogado();        
+      }, []);
     
     async function usuarioPost(event) {
         try {
@@ -66,7 +70,7 @@ const Login = props => {
             }
             )
             .then(response => { 
-                props.setLogado(true)
+                props.setLogado(true);
                 if (response.data.login != null){
                     props.setPermissao((response.data.login.roles.find(({ name }) => name == 'ROLE_ADMIN')));
                 }else {
@@ -75,6 +79,8 @@ const Login = props => {
             }).catch(error=> {
                 console.log(error);
             })
+        } else {
+            props.setLogado(false)
         }
     }
 
