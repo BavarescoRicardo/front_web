@@ -54,10 +54,12 @@ const SelecaoArtigo = (props) => {
                 }
             }).catch(error=> {
               console.log("Erro " + error);
-            })            
+            }).then(() => {
+                window.location.reload();
+            })
         } catch (error) {
             console.log("Erro " + error);
-        }
+        }        
     }   
     
     useEffect(async ()=>{      

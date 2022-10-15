@@ -13,6 +13,7 @@ function PainelMestre(){
     const baseUrlListagem ="http://localhost:3033/loginsapi";
     const baseUrlExternoListagem ="http://localhost:3033/loginsapi";
     const [data, setData]=useState([]);    
+    const [atualizar, setAtualizar]=useState(false);    
     
     const [permissao, setPermissao]=useState(
         {
@@ -45,6 +46,7 @@ function PainelMestre(){
         } catch (error) {
             console.log(error);
         }
+        setAtualizar(true);
     }
 
     async function mudarSenha(nomerol) {        
@@ -127,7 +129,8 @@ function PainelMestre(){
     useEffect(()=>{
         artigoGet()        
         console.log('Interval triggered');
-    }, 1000);      
+        setAtualizar(false);
+    }, [atualizar]);      
 
     return(
         <div>
