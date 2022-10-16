@@ -8,6 +8,7 @@ import CadastroLogin from './paginas/CadastroLogin'
 import EditarPerfil from './paginas/EditarPerfil'
 import EditarArtigo from './paginas/EditarArtigo'
 import EditarDetalhe from './paginas/DetalheArtigoEditar'
+import ConfirmacaoModal from './elementos/ConfirmacaoModal'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -71,7 +72,7 @@ const Navegacao = () => {
                             <li>
                             {logado
                                 ?
-                                <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Sair</Link>
+                                <Link to="/ConfirmacaoModal" className="nav-link" style={{color: '#4f7279'}}>Sair</Link>
                                 :
                                 <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>}
                             </li>
@@ -111,7 +112,8 @@ const Navegacao = () => {
                 <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>
                 <Route path="/PainelMestre"> <PainelMestre/>                                         </Route>
                 <Route path="/EditarArtigo"> <EditarArtigo/>                                         </Route>
-                <Route path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>                                         </Route>
+                <Route path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>                             </Route>
+                <Route path="/ConfirmacaoModal"> <ConfirmacaoModal/>                                 </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>
