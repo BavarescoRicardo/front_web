@@ -60,6 +60,7 @@ function EditarArtigo(props) {
                 }
             })
         .then(response => {
+            console.log(response.data)
             setArtigo(response.data)            
         }).catch(error=> {
             console.log(error);
@@ -173,7 +174,7 @@ function EditarArtigo(props) {
                                 <div className="row">
                                     <div className="col">
                                         <label>Curso:  </label>
-                                        <select style={{marginRight: "10%", float: "right"}} name='codCurso' id='codCurso' onChange={handleChange}>
+                                        <select style={{marginRight: "10%", float: "right"}} name='codCurso' id='codCurso' value={artigo.codCurso} onChange={handleChange}>
                                             <option value="">Selecione o curso </option>
                                             <option value="0">Eng. Computação </option>
                                             <option value="1">Eng. Eletrica </option>
