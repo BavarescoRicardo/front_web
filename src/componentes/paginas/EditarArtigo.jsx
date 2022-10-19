@@ -134,6 +134,7 @@ function EditarArtigo(props) {
         } catch (error) {
             console.log(error);
         }
+        alert("Artigo editado com sucesso.")
       }    
     
     return(        
