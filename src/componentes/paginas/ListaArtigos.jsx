@@ -129,7 +129,11 @@ function ListaArtigos(){
         { value: 1, label: 'Elétrica' },
         { value: 2, label: 'Civil' },
         { value: 3, label: 'Mecânica' },
-        { value: 4, label: 'Produção' }
+        { value: 4, label: 'Produção' },
+        { value: 5, label: 'Química' },
+        { value: 6, label: 'Florestal' },
+        { value: 7, label: 'Ambiental' },
+        { value: 8, label: 'Biomédica' }
     ]
 
     const customStyles = {

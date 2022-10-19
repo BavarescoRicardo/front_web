@@ -151,10 +151,15 @@ function Perfil(){
                                 <h2>Curso:  </h2>
                                 <select style={{marginLeft: "50px"}} name='curso' onChange={handleChange}>
                                     <option value="">Selecione o curso </option>
-                                    <option value="comp">Eng. Computação </option>
-                                    <option value="elet">Eng. Eletrica </option>
-                                    <option value="prod">Eng. Produção </option>
-                                    <option value="meca">Eng. Mecanica </option>
+                                            <option value="0">Eng. Computação </option>
+                                            <option value="1">Eng. Eletrica </option>
+                                            <option value="2">Eng. Civil </option>
+                                            <option value="3">Eng. Mecânica </option>
+                                            <option value="4">Eng. Produção </option>
+                                            <option value="5">Eng. Química </option>
+                                            <option value="6">Eng. Florestal </option>
+                                            <option value="7">Eng. Ambiental </option>
+                                            <option value="8">Eng. Biomédica </option>
                                 </select>
                             </div>
                         </div>
