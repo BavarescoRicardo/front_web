@@ -10,7 +10,7 @@ function Perfil(){
     const baseUrlHerokuft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
 
     const [selectedImage, setSelectedImage] = useState(null); 
-    const history = useHistory();        
+    const history = useHistory();
     const [imageUrl, setImageUrl] = useState(null);
 
     const formData = new FormData();
@@ -28,7 +28,7 @@ function Perfil(){
         }
     );
     useEffect(async () => {
-        selecionaUsuario();        
+        selecionaUsuario();
 
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));                        
