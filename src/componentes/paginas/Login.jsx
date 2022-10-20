@@ -17,8 +17,8 @@ const Login = props => {
             password: ''
         }
     );
-    const urlex = 'https://tcc-spring-back-end.herokuapp.com/blog/login'
-    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+    const urlex = 'http://localhost:3033/blog/login'
+    const userUrlHeroku ="http://localhost:3033/selusuario";
 
     const handleChange = e=> 
     {       
