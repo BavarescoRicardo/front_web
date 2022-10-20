@@ -2,7 +2,8 @@
   "name": "front_web",
   "version": "1.1.0",
   "engines": {
-    "yarn": ">=1.22.x"
+    "yarn": ">=1.22.x",
+    "node": "^16"
   },
   "private": true,
   "dependencies": {
