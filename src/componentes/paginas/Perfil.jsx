@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 
 function Perfil(props){    
     const history = useHistory();
-    const userUrlHeroku ="http://localhost:3033/selusuario";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);

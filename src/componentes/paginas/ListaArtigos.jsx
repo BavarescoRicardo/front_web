@@ -15,9 +15,9 @@ import axios from 'axios';
 
 function ListaArtigos(){
     const history = useHistory();
-    const baseUrlHeroku ="http://localhost:3033/artigo/artigolista";
-    const userUrlHeroku ="http://localhost:3033/selusuario";
-    const userUrlHerokuCont ="http://localhost:3033/artigo/artigoconta";
+    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+    const userUrlHerokuCont ="https://tcc-spring-back-end.herokuapp.com/artigo/artigoconta";
 
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
@@ -120,7 +120,7 @@ function ListaArtigos(){
         try {
             const formData = new FormData();
             formData.append('idArtigo', idArtigo);
-            await axios.post('http://localhost:3033/artigo/remover/', formData, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/artigo/remover/', formData, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
