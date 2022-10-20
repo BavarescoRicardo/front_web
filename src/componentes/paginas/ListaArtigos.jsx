@@ -67,7 +67,7 @@ function ListaArtigos(){
             await axios.get(userUrlHerokuCont)
             .then(response => {                          
             if (response.data != null){
-                setContagem(response.data);
+                setContagem(response.data);                
             }else {
                 setPermissao(false);
             }          
@@ -252,7 +252,8 @@ function ListaArtigos(){
                         <a className="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
                     {
-                        [...Array(contagem)].map(
+                        // Divide a contagem pelo numero de artigos por pagina
+                        [...Array(Math.floor(contagem/3))].map(
                             (e, i) => 
                                 <li>
                                     <a className="page-link" href="#" onClick={() => setPagina(i)}>{i+1}</a>
