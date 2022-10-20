@@ -15,10 +15,9 @@ import axios from 'axios';
 
 function ListaArtigos(){
     const history = useHistory();
-    const baseUrl ="http://localhost:3033/artigo/artigolista";
-    const baseUrlExterno ="http://localhost:3033/artigo/artigolista";
     const baseUrlHeroku ="http://localhost:3033/artigo/artigolista";
     const userUrlHeroku ="http://localhost:3033/selusuario";
+    const userUrlHerokuCont ="http://localhost:3033/artigo/artigoconta";
 
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
@@ -26,7 +25,9 @@ function ListaArtigos(){
     const [codImagem, setCodImagem] = useState([]);
     const [permissao, setPermissao] = useState(false);
     const [pagina, setPagina]=useState(0);
+    const [contagem, setContagem]=useState([]);
     
+    var n = 5;
 
     const [filtro, setFiltro]=useState(
         {
@@ -61,12 +62,28 @@ function ListaArtigos(){
         }  
     }
 
+    const contagemArtigo = async()=>{   
+        if(localStorage.getItem('tokens') != null){  
+            await axios.get(userUrlHerokuCont)
+            .then(response => {                          
+            if (response.data != null){
+                setContagem(response.data);
+            }else {
+                setPermissao(false);
+            }          
+            }).catch(error=> {
+                console.log(error);
+            })
+        }  
+    }
+
     const artigoGet = async()=>{
         await axios.get(baseUrlHeroku+"?pg="+pagina)
         .then(response => {
             setDados(response.data);
-            console.log(response.data)
+
             verificarPermissao();
+            contagemArtigo();
         }).catch(error=> {
             console.log(error);
         })
@@ -234,16 +251,16 @@ function ListaArtigos(){
                     <li className="page-item disabled">
                         <a className="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" onClick={() => setPagina(0)}>1</a>
-                    </li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" onClick={() => setPagina(1)}>2</a></li>
-                    <li className="page-item">
+                    {
+                        [...Array(contagem)].map(
+                            (e, i) => 
+                                <li>
+                                    <a className="page-link" href="#" onClick={() => setPagina(i)}>{i+1}</a>
+                                </li>
+                        )
+                    }
 
-                        <a className="page-link" href="#" onClick={() => setPagina(2)}>3</a></li>
-                    <li className="page-item">
-                        
+                    <li className="page-item">                        
                         <a className="page-link" href="#">Next</a>
                     </li>
                 </ul>
