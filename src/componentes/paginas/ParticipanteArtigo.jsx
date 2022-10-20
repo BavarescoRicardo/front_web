@@ -81,7 +81,7 @@ const ParticipanteArtigo = (props) => {
     }, []); 
 
     return(        
-    <div className="selecao">        
+    <div className="selecao" style={{marginLeft: '10px'}}>        
         {
             dadoParticipa.map(
                 (number) => <li>
