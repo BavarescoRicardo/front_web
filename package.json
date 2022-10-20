@@ -33,7 +33,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "servidor.js",
+    "start": "node servidor.js",
     "dev": "cross-env react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
