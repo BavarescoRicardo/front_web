@@ -53,11 +53,13 @@ const SelecaoArtigo = (props) => {
                     console.log("error ao publicar");
                 }
             }).catch(error=> {
-              console.log("Erro " + error);
+                alert(error)
+                console.log("Erro " + error);
             }).then(() => {
                 window.location.reload();
             })
         } catch (error) {
+            alert(error)
             console.log("Erro " + error);
         }        
     }   

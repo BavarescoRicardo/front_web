@@ -41,9 +41,11 @@ function PainelMestre(){
                     console.log("error ao publicar");    
                 }
             }).catch(error=> {
-              console.log(error);
+                alert(error)
+                console.log(error);
             })            
         } catch (error) {
+            alert(error)
             console.log(error);
         }
         setAtualizar(true);

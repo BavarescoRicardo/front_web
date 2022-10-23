@@ -43,7 +43,8 @@ function CadLogin(){
               if(response.data){
                 history.push('/');
               }else{
-                console.log("error ao fazer login");    
+                alert("error ao cadastrar login");
+                console.log("error ao cadastrar login");    
               }
             }).catch(error=> {
               console.log(error);
