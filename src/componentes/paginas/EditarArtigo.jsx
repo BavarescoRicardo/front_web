@@ -51,13 +51,7 @@ function EditarArtigo(props) {
         const formData = new FormData();
         formData.append('idArtigo', location.idArtigo);
 
-        await axios.post(editarUrlHeroku, formData,
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
-                    'Content-Type': 'multipart/form-data'            
-                }
-            })
+        await axios.post(editarUrlHeroku, formData)
         .then(response => {
             console.log(response.data)
             setArtigo(response.data)            

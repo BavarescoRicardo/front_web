@@ -12,8 +12,30 @@ function Detalhe(){
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
-    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";    
-  
+    const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";
+    const editarUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigo";
+
+    const artigoGet = async()=>{
+
+        const formData = new FormData();
+        formData.append('idArtigo', id);
+
+        await axios.post(editarUrlHeroku, formData)
+        .then(response => {
+            setArtigo(response.data)            
+        }).catch(error=> {
+            console.log(error);
+        })
+    }
+
+    const [artigo, setArtigo]=useState(
+        {
+          codigo: 0,
+          titulo: '',
+          descricao: '',
+          observacao: ''
+        }
+    );
 
     async function verificaParticipante() {        
         try {
@@ -79,7 +101,6 @@ function Detalhe(){
     const detalhrGet = async()=>{        
       await axios.post(baseUrlHeroku, formData)
       .then(response => {
-        console.log(response.data)
         setArtigos(response.data);
       }).catch(error=> {
         console.log(error);
@@ -87,7 +108,8 @@ function Detalhe(){
     }
 
     useEffect(async ()=>{
-        await detalhrGet();  
+        await detalhrGet();
+        artigoGet();
         setEfeito(true);
         verificaParticipante();
       }, [])
@@ -111,7 +133,8 @@ function Detalhe(){
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <h1> Detalhes do artigo {id} </h1> {/* substituir id pelo titulo do artigo*/}
+                            {/* {artigo.codigo > 0 ? null: artigoGet()} */}
+                            <h1> Detalhes do artigo {artigo.titulo} </h1> {/* substituir id pelo titulo do artigo*/}
                         </div>
                     </div>
                 </div>                
