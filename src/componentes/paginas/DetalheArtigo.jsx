@@ -11,7 +11,6 @@ function Detalhe(){
     
     const { id } = useParams();
     const [permit, setPermit]=useState(null);
-    const userUrl ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/verificaparticipante/";
     const userUrlHerokuArtigo ="https://tcc-spring-back-end.herokuapp.com/artigo/removerdetalhe/";    
   
@@ -35,10 +34,10 @@ function Detalhe(){
                     console.log("error ao verificar");    
                 }
             }).catch(error=> {
-              // console.log("Erro " + error);
+              console.log("Erro " + error);
             })            
         } catch (error) {
-            // console.log("Erro " + error);
+            console.log("Erro " + error);
         }
     }
 
@@ -80,6 +79,7 @@ function Detalhe(){
     const detalhrGet = async()=>{        
       await axios.post(baseUrlHeroku, formData)
       .then(response => {
+        console.log(response.data)
         setArtigos(response.data);
       }).catch(error=> {
         console.log(error);
@@ -111,7 +111,7 @@ function Detalhe(){
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <h1> Detalhes do artigo {id} </h1>
+                            <h1> Detalhes do artigo {id} </h1> {/* substituir id pelo titulo do artigo*/}
                         </div>
                     </div>
                 </div>                
