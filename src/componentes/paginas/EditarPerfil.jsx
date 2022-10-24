@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../../servicos/api'
 import Button from '@material-ui/core/Button';
 
+import Resizer from "react-image-file-resizer";
+
 function Perfil(){
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
     const baseUrlHerokuft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
@@ -29,10 +31,6 @@ function Perfil(){
     );
     useEffect(async () => {
         selecionaUsuario();
-
-        if (selectedImage) {
-            setImageUrl(URL.createObjectURL(selectedImage));                        
-        }
 
         if (usuariolog && (imageUrl == null)) {
             console.log('definindo imagem')
@@ -79,9 +77,10 @@ function Perfil(){
             if (!selectedImage) {
                 return
             }
-    
+
             const formData = new FormData();
-            formData.append('image', selectedImage);
+            formData.append("image", selectedImage);
+
             api.post(baseUrlHerokuft, formData,
                 {          
                     headers: {          
@@ -115,8 +114,48 @@ function Perfil(){
         } catch (error) {
             console.log(error);
         }
-    }   
-      
+    }
+ 
+
+
+    const resizeFile = (file) =>
+        new Promise((resolve) => {
+        Resizer.imageFileResizer(
+            file,
+            800,
+            600,
+            "JPEG",
+            80,
+            0,
+            (uri) => {
+            resolve(uri);
+            },
+            "base64"
+        );
+        });
+
+    const dataURIToBlob = (dataURI) => {
+        const splitDataURI = dataURI.split(",");
+        const byteString =
+        splitDataURI[0].indexOf("base64") >= 0
+            ? atob(splitDataURI[1])
+            : decodeURI(splitDataURI[1]);
+        const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
+        const ia = new Uint8Array(byteString.length);
+        for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+        return new Blob([ia], { type: mimeString });
+    };
+
+    async function onChange(event) {
+        const file = event.target.files[0];
+        const image = await resizeFile(file);
+        console.log(image);
+        
+        setImageUrl(image);
+        setSelectedImage(dataURIToBlob(image));
+
+    };
+
 
     return(
         <div className='editar-perfil'>
@@ -184,7 +223,7 @@ function Perfil(){
                                     type="file"
                                     id="select-image"
                                     style={{ display: 'none' }}
-                                    onChange={e => setSelectedImage(e.target.files[0])}/>
+                                    onChange={e => {onChange(e)} }/>
                                 <label htmlFor="select-image">
                                     <Button variant="contained" size='small' color="secondary" component="span" style={{width: '120px', height: '35px'}}>
                                         Buscar foto
