@@ -2,10 +2,10 @@ import React, { useState, useEffect} from 'react';
 import { useHistory } from "react-router-dom";
 import '../estilos/EditarPerfil.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import api from '../../servicos/api'
 import Button from '@material-ui/core/Button';
-
-import Resizer from "react-image-file-resizer";
+import api from '../../servicos/api'
+import upladImagem from '../../servicos/upladImagem'
+import resizeImg from '../../servicos/resizeImg'
 
 function Perfil(){
     const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
@@ -115,45 +115,14 @@ function Perfil(){
             console.log(error);
         }
     }
- 
-
-
-    const resizeFile = (file) =>
-        new Promise((resolve) => {
-        Resizer.imageFileResizer(
-            file,
-            800,
-            600,
-            "JPEG",
-            80,
-            0,
-            (uri) => {
-            resolve(uri);
-            },
-            "base64"
-        );
-        });
-
-    const dataURIToBlob = (dataURI) => {
-        const splitDataURI = dataURI.split(",");
-        const byteString =
-        splitDataURI[0].indexOf("base64") >= 0
-            ? atob(splitDataURI[1])
-            : decodeURI(splitDataURI[1]);
-        const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
-        const ia = new Uint8Array(byteString.length);
-        for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
-        return new Blob([ia], { type: mimeString });
-    };
 
     async function onChange(event) {
         const file = event.target.files[0];
-        const image = await resizeFile(file);
+        const image = await resizeImg(file);
         console.log(image);
         
         setImageUrl(image);
-        setSelectedImage(dataURIToBlob(image));
-
+        setSelectedImage(upladImagem(image));
     };
 
 
