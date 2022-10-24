@@ -4,6 +4,8 @@ import '../estilos/Publicar.css'
 import api from '../../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from '@material-ui/core/Button';
+import upladImagem from '../../servicos/upladImagem';
+import resizeImg from '../../servicos/resizeImg';
 
 function Publicar(){
 
@@ -104,6 +106,15 @@ function Publicar(){
         }
       }    
     
+      async function onChangeFoto(event) {
+        const file = event.target.files[0];
+        const image = await resizeImg(file);
+        console.log(image);
+        
+        setImageUrl(image);
+        setSelectedImage(upladImagem(image));
+    };
+
     return(        
         <div className="publica-artigo">            
             <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
@@ -166,7 +177,7 @@ function Publicar(){
                                         type="file"
                                         id="select-image"
                                         style={{ display: 'none' }}
-                                        onChange={e => setSelectedImage(e.target.files[0])}
+                                        onChange={e => {onChangeFoto(e)}}
                                     />
                                     <label htmlFor="select-image">
                                         <Button variant="contained" size='small' color="secondary" component="span">

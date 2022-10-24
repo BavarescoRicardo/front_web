@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import '../estilos/Detal.css';
 import Button from '@material-ui/core/Button';
+import upladImagem from '../../servicos/upladImagem';
+import resizeImg from '../../servicos/resizeImg';
 
 function EditarDetalhe(){
 
@@ -99,10 +101,18 @@ function EditarDetalhe(){
         } catch (error) {
             alert("Erro ao postar imagem: "+ error)
         }
-
-
     };
     // fim postar foto
+
+    async function onChangeFoto(event) {
+        const file = event.target.files[0];
+        const image = await resizeImg(file);
+        console.log(image);
+        
+        setImageUrl(image);
+        setSelectedImage(upladImagem(image));
+    };
+
 
     const artigoDetalhePost = async()=>{        
 
@@ -172,7 +182,7 @@ function EditarDetalhe(){
                                     type="file"
                                     id="select-image"
                                     style={{ display: 'none' }}
-                                    onChange={e => setSelectedImage(e.target.files[0])}
+                                    onChange={e => {onChangeFoto(e)}}
                                 />
                                 <label htmlFor="select-image">
                                     <Button variant="contained" size='small' color="secondary" component="span">

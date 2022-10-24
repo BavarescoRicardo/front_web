@@ -116,7 +116,7 @@ function Perfil(){
         }
     }
 
-    async function onChange(event) {
+    async function onChangeFoto(event) {
         const file = event.target.files[0];
         const image = await resizeImg(file);
         console.log(image);
@@ -192,7 +192,7 @@ function Perfil(){
                                     type="file"
                                     id="select-image"
                                     style={{ display: 'none' }}
-                                    onChange={e => {onChange(e)} }/>
+                                    onChange={e => {onChangeFoto(e)} }/>
                                 <label htmlFor="select-image">
                                     <Button variant="contained" size='small' color="secondary" component="span" style={{width: '120px', height: '35px'}}>
                                         Buscar foto

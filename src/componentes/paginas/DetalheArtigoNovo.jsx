@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import '../estilos/Detal.css';
 import Button from '@material-ui/core/Button';
+import upladImagem from '../../servicos/upladImagem';
+import resizeImg from '../../servicos/resizeImg';
 
 function NovoDetalhe(){
     const [detalheArtigo, setDetalheArtigo] =
@@ -97,7 +99,17 @@ function NovoDetalhe(){
         } catch (error) {
             console.log(error);
         }
-      } 
+      }
+
+      async function onChangeFoto(event) {
+        const file = event.target.files[0];
+        const image = await resizeImg(file);
+        console.log(image);
+        
+        setImageUrl(image);
+        setSelectedImage(upladImagem(image));
+    };
+
 
       return(
         <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
@@ -140,7 +152,7 @@ function NovoDetalhe(){
                                 type="file"
                                 id="select-image"
                                 style={{ display: 'none' }}
-                                onChange={e => setSelectedImage(e.target.files[0])}
+                                onChange={e => {onChangeFoto(e)}}
                             />
                             <label htmlFor="select-image">
                                 <Button variant="contained" size='small' color="secondary" component="span">

@@ -5,6 +5,8 @@ import '../estilos/Publicar.css'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from '@material-ui/core/Button';
+import upladImagem from '../../servicos/upladImagem';
+import resizeImg from '../../servicos/resizeImg';
 
 function EditarArtigo(props) {
     const history = useHistory();
@@ -29,10 +31,7 @@ function EditarArtigo(props) {
     );
 
     useEffect(async () => {
-        artigoGet();
-        if (selectedImage) {
-            setImageUrl(URL.createObjectURL(selectedImage));
-        }        
+        artigoGet(); 
         
         if ((artigo.codigo > 0) && (selectedImage == null)) {
             setImageUrl('data:image/jpeg;base64,' + artigo.imagem)
@@ -137,6 +136,16 @@ function EditarArtigo(props) {
         alert("Artigo editado com sucesso.")
       }    
     
+    async function onChangeFoto(event) {
+        const file = event.target.files[0];
+        const image = await resizeImg(file);
+        console.log(image);
+        
+        setImageUrl(image);
+        setSelectedImage(upladImagem(image));
+    };
+
+
     return(        
         <div className="publica-artigo">            
             <div className='cad-login' style={{marginTop: '1%', paddingBottom: '10%'}}>
@@ -199,7 +208,7 @@ function EditarArtigo(props) {
                                         type="file"
                                         id="select-image"
                                         style={{ display: 'none' }}
-                                        onChange={e => setSelectedImage(e.target.files[0])}
+                                        onChange={e => {onChangeFoto(e)}}
                                     />
                                     <label htmlFor="select-image">
                                         <Button variant="contained" size='small' color="secondary" component="span">
