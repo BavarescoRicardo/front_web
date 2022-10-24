@@ -53,7 +53,6 @@ function EditarArtigo(props) {
 
         await axios.post(editarUrlHeroku, formData)
         .then(response => {
-            console.log(response.data)
             setArtigo(response.data)            
         }).catch(error=> {
             console.log(error);

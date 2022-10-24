@@ -48,7 +48,6 @@ function Detalhe(){
                 }
             })
             .then(async response => {
-                console.log(response.data)
                 if(response.data){
                     alert("Usuário pode editar este artigo");
                     setPermit(true);
