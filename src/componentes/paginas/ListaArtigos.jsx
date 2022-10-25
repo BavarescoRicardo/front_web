@@ -6,12 +6,11 @@ import { BiEdit } from "@react-icons/all-files/bi/BiEdit";
 import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
-import Select from 'react-select'
-
 import "../estilos/search-filter.css"
-
-
 import axios from 'axios';
+
+import FiltroArtigo from './FiltroArtigo';
+
 
 function ListaArtigos(){
     const history = useHistory();
@@ -26,16 +25,7 @@ function ListaArtigos(){
     const [permissao, setPermissao] = useState(false);
     const [pagina, setPagina]=useState(0);
     const [contagem, setContagem]=useState([]);
-    
-    var n = 5;
 
-    const [filtro, setFiltro]=useState(
-        {
-          codCurso: 0,
-          textoFiltro: "",
-          pg: 0
-        }
-    );
 
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  
@@ -84,16 +74,6 @@ function ListaArtigos(){
 
             verificarPermissao();
             contagemArtigo();
-        }).catch(error=> {
-            console.log(error);
-        })
-    }
-
-    const artigoGetFiltrado = async()=>{
-        await axios.post(baseUrlHeroku, filtro)
-        .then(response => {
-            setDados(response.data);
-            verificarPermissao();
         }).catch(error=> {
             console.log(error);
         })
@@ -153,40 +133,6 @@ function ListaArtigos(){
         { value: 8, label: 'Biomédica' }
     ]
 
-    const customStyles = {
-        option: (provided, state) => ({
-          ...provided,
-          height: 35,
-        }),
-        control: () => ({
-          width: 115,
-          height: 25,
-          marginTop: -5          
-        }),
-        singleValue: (provided, state) => {
-      
-          return { ...provided };
-        }
-      }
-
-      const handleChange = e=> 
-      {
-          // Montar objeto usuario
-          const {name, value}=e.target;
-          setFiltro(
-          {
-              ...filtro,
-              [name]: value
-          });        
-      }
-
-      const handleSelect = (s) => {
-        setFiltro(filtro => ({
-            ...filtro,
-            codCurso: s.value,
-         }));
-    };
-
     return(
         <div className='lista-artigo'>
             <div className="container">
@@ -195,27 +141,9 @@ function ListaArtigos(){
                         <h1>Divulgação de Trabalhos Acadêmicos</h1>
                     </div>
                 </div>
-                <hr />              
-                
-                <div className="row searchFilter" >
-                    <div className="col-sm-12" >
-                    <div className="input-group" >
-                    <input id="textoFiltro" name="textoFiltro" placeholder='Filtrar por:  Título, Conteúdo' type="text" className="form-control" aria-label="Text input with segmented button dropdown" onChange={handleChange} />
-                    <div className='searchFilter-selecao'>
-                        <Select 
-                            styles={customStyles}
-                            options={options} 
-                            isMulti={false}
-                            hideSelectedOptions={false}
-                            placeholder = 'Cursos'                       
-                            onChange={(sel) => handleSelect(sel)}
-                            /> 
-                    </div>
-                        <button id="searchBtn" type="button" class="btn btn-primary btn-search" style={{ minWidth: '90px'}} onClick={()=> artigoGetFiltrado()} ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Pesquisar</span></button>
-                    </div>
-                    </div>
-                </div>
-            </div>
+                <hr />                       
+                <FiltroArtigo setDados={setDados}/>
+        </div>
 
             {dados.map(({ codigo, titulo, descricao, codCurso, imagem }) => (
                 <article key={codigo}>
