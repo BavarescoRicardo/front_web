@@ -48,6 +48,24 @@ app.use('/',
         )
     )
 
+    app.use('/DetalheArtigo/*', 
+    express.static(
+            resolve(
+                __dirname,
+                './build'
+            )
+        )
+    )
+
+    app.use('/EditarArtigo', 
+    express.static(
+            resolve(
+                __dirname,
+                './build'
+            )
+        )
+    )
+
 app .listen(process.env.PORT || 3000, (err) => {
     if(err) {
         return console.log(err)
