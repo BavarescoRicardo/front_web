@@ -153,22 +153,32 @@ function ListaArtigos(){
                         <div className="card-body">
                             <h5 className="card-title">{titulo}</h5>
                             <p className="card-text">{descricao}</p>
-                            <p>
-                                <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none"> Ver Detalhes <FaInfoCircle /> </Link>
+                            <div className="row">
+                                <div className="col">
+                                    <p>
+                                        <Link to={`/DetalheArtigo/${codigo}`} style={{ marginLeft: "10px" }}  className="link-dark text-decoration-none"> Ver Detalhes <FaInfoCircle /> </Link>
 
-                                {permissao  
-                                    ? <button onClick={()=> editarArtigo(codigo)} className="btn btn-link link-dark text-decoration-none"> Editar <BiEdit color="black" size={20} /> </button>
-                                    : <h1> </h1>
-                                }
+                                        {permissao  
+                                            ? <button onClick={()=> editarArtigo(codigo)} className="btn btn-link link-dark text-decoration-none"> Editar <BiEdit color="black" size={20} /> </button>
+                                            : <h1> </h1>
+                                        }
 
-                                {permissao  
-                                    ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" size={15} /> </button>
-                                    : <h1> </h1>
-                                }
-                            </p>
-                            <div className="texto-card-cod">
-                                <p className="card-text">{"Curso: " + options[codCurso].label}</p>
-                            </div>                            
+                                        {permissao  
+                                            ? <button onClick={()=> removeArtigo(codigo)} className="btn btn-link link-danger text-decoration-none"> <FaTrash color="black" size={15} /> </button>
+                                            : <h1> </h1>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col">
+                                        <div className="lista-artigo-flags">
+                                            <p className="card-text">{"Curso: " + options[codCurso].label}</p>
+                                        </div>
+                                </div>
+                            </div>
+                                                      
                         </div>
                     </div>
                 </article>

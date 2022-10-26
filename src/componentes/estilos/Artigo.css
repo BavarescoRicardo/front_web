@@ -52,7 +52,18 @@
     font-family: 'Varela Round', sans-serif;
 }
 
+.lista-artigo-flags {
+    background-color: rgb(215, 224, 225);
+    box-shadow: 0 1px 1px 0 rgba(59, 65, 71, 0.5);
+    padding-left: 10px;
+    
+    border-radius: 5px;
+    width: 95%;
+    font-family: 'Varela Round', sans-serif;
+    margin-top: 15px;
+}
+
+
 .texto-card-cod {
-    background-color: #d6e2e8;
     padding-left: 5%;
 }
