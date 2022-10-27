@@ -15,7 +15,7 @@ function ConfirmacaoModal(props){
                             </button>
                         </div>
                         <div className="modal-body d-flex justify-content-center">
-                            <p>Tem certeza que deseja sair</p>
+                            <p> Tem certeza que deseja sair </p>
                         </div>
                         <div className="modal-footer d-flex justify-content-center">
                         <Link to="/" className="btn btn-primary" style={{margin: '20px', width: '100px'}}>Fechar</Link>
