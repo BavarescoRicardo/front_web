@@ -9,6 +9,7 @@ import EditarPerfil from './paginas/EditarPerfil'
 import EditarArtigo from './paginas/EditarArtigo'
 import EditarDetalhe from './paginas/DetalheArtigoEditar'
 import ConfirmacaoModal from './elementos/ConfirmacaoModal'
+import PublicarNoticia from './paginas/PublicarNoticia'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -77,6 +78,12 @@ const Navegacao = () => {
                                 <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>}
                             </li>
                             <li>
+                                {permissao  
+                                    ? <Link to="/PublicarNoticia" className="nav-link" style={{color: '#4f7279'}}>Notícia</Link>
+                                    : <h1> </h1>
+                                }                                
+                            </li>                            
+                            <li>
                             {logado
                                 ?
                                 <Dropdown>
@@ -114,6 +121,7 @@ const Navegacao = () => {
                 <Route path="/EditarArtigo"> <EditarArtigo/>                                         </Route>
                 <Route path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>                             </Route>
                 <Route path="/ConfirmacaoModal"> <ConfirmacaoModal/>                                 </Route>
+                <Route path="/PublicarNoticia"> <PublicarNoticia/>                                   </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>
