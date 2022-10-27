@@ -77,12 +77,12 @@ const Navegacao = () => {
                                 :
                                 <Link to="/Login" className="nav-link" style={{color: '#4f7279'}}>Login</Link>}
                             </li>
-                            <li>
+                            {/* <li>
                                 {permissao  
                                     ? <Link to="/PublicarNoticia" className="nav-link" style={{color: '#4f7279'}}>Notícia</Link>
                                     : <h1> </h1>
                                 }                                
-                            </li>                            
+                            </li>                             */}
                             <li>
                             {logado
                                 ?
