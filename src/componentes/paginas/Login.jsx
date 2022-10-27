@@ -80,7 +80,8 @@ const Login = props => {
                 console.log(error);
             })
         } else {
-            props.setLogado(false)
+            props.setLogado(false);
+            props.setPermissao(false);
         }
     }
 
