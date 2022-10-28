@@ -11,6 +11,7 @@ import axios from 'axios';
 
 import FiltroArtigo from './FiltroArtigo';
 import Paginacao from './Paginacao'
+import Autores from './Autores'
 
 
 function ListaArtigos(){
@@ -176,6 +177,9 @@ function ListaArtigos(){
                                 <div className="col">
                                         <div className="lista-artigo-flags">
                                             <p className="card-text">{"Curso: " + options[codCurso].label}</p>
+                                            {(codigo > 30)? 
+                                                <p><Autores idArtigo = {codigo}/></p>:
+                                            <p>Não identificado</p>}
                                         </div>
                                 </div>
                             </div>
