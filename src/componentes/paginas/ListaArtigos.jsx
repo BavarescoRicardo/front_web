@@ -10,6 +10,7 @@ import "../estilos/search-filter.css"
 import axios from 'axios';
 
 import FiltroArtigo from './FiltroArtigo';
+import Paginacao from './Paginacao'
 
 
 function ListaArtigos(){
@@ -184,26 +185,7 @@ function ListaArtigos(){
                 </article>
             ))}
 
-            <nav style={{backgroundColor: 'whitesmoke', padding: '0', maxWidth: '10%', marginLeft: 'auto', marginRight: 'auto'}}>
-                <ul className="pagination pagination-sm" style={{backgroundColor: 'whitesmoke', margin: '2px', maxWidth: '90%', marginRight: '1%'}}>
-                    <li className="page-item disabled">
-                        <a className="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    {
-                        // Divide a contagem pelo numero de artigos por pagina
-                        [...Array(Math.floor(contagem/3))].map(
-                            (e, i) => 
-                                <li>
-                                    <a className="page-link" href="#" onClick={() => setPagina(i)}>{i+1}</a>
-                                </li>
-                        )
-                    }
-
-                    <li className="page-item">                        
-                        <a className="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            <Paginacao contagem = {contagem} setPagina = {setPagina}/>
 
             <div className="publicar-novo-lista-artigo" >
                 {permissao  

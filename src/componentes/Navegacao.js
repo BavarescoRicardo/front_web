@@ -10,7 +10,6 @@ import EditarArtigo from './paginas/EditarArtigo'
 import EditarDetalhe from './paginas/DetalheArtigoEditar'
 import ConfirmacaoModal from './elementos/ConfirmacaoModal'
 import PublicarNoticia from './paginas/PublicarNoticia'
-import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './paginas/DetalheArtigo';
@@ -19,6 +18,7 @@ import axios from 'axios';
 import { HiAcademicCap } from 'react-icons/hi';
 import { BsPersonCircle } from 'react-icons/bs';
 import Dropdown from 'react-bootstrap/Dropdown';
+import './estilos/Navegacao.css'
 
 const Navegacao = () => {
 
