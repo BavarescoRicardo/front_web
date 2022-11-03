@@ -71,6 +71,7 @@ function ListaArtigos(){
     const artigoGet = async()=>{
         await axios.get(baseUrlHeroku+"?pg="+pagina)
         .then(response => {
+            console.log(response.data)
             setDados(response.data);
 
             verificarPermissao();
@@ -82,7 +83,6 @@ function ListaArtigos(){
 
     useEffect(async ()=>{            
         await artigoGet(0);      
-        console.log('Invocou use efeito');
         setImg(true)
     }, [pagina]); 
 
