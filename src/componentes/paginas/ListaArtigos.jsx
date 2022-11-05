@@ -146,7 +146,7 @@ function ListaArtigos(){
                 <FiltroArtigo setDados={setDados}/>
         </div>
 
-            {dados.map(({ codigo, titulo, descricao, codCurso, imagem }) => (
+            {dados.map(({ codigo, titulo, descricao, codCurso, imagem, participantesArtigo }) => (
                 <article key={codigo}>
                     <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
                         {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
@@ -175,7 +175,11 @@ function ListaArtigos(){
                             <div className="row">
                                 <div className="col">
                                         <div className="lista-artigo-flags">
-                                            <p className="card-text">{"Curso: " + options[codCurso].label}</p>
+                                        <p className="card-text">{"Curso: " + options[codCurso].label}</p>
+                                        <p>Participantes:</p>
+                                            {participantesArtigo.map((p) => {     
+                                                return (<p>{p.nomeCompleto}</p>) 
+                                            })}
                                         </div>
                                 </div>
                             </div>

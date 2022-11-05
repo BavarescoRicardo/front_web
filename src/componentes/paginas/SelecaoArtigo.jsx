@@ -41,7 +41,7 @@ const SelecaoArtigo = (props) => {
 
     async function confirmarParticipant() {        
         try {
-            await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
+            await axios.post('http://localhost:3033/adiconaparticipantenovo', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -56,7 +56,7 @@ const SelecaoArtigo = (props) => {
                 alert(error)
                 console.log("Erro " + error);
             }).then(() => {
-                window.location.reload();
+                //window.location.reload();
             })
         } catch (error) {
             alert(error)

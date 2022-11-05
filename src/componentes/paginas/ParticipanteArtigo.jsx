@@ -52,7 +52,7 @@ const ParticipanteArtigo = (props) => {
         return numero;
     }
 
-    async function artigosParticipa(idUsuario) {        
+    async function artigosParticipa(idUsuario) {
         try {
             const formData = new FormData();
             formData.append('idUsuario', idUsuario);
