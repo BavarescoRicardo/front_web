@@ -4,6 +4,7 @@ import ListaArtigos from './paginas/ListaArtigos';
 import PainelMestre from './paginas/PainelMestre';
 import Publicar from './paginas/PublicarArtigo';
 import Perfil from './paginas/Perfil';
+import PerfilUsuario from './paginas/PerfilUsuario';
 import CadastroLogin from './paginas/CadastroLogin'
 import EditarPerfil from './paginas/EditarPerfil'
 import EditarArtigo from './paginas/EditarArtigo'
@@ -110,6 +111,7 @@ const Navegacao = () => {
                 <Route exact path="/DetalheArtigoNovo/:id"> <NovoDetalhe/>                           </Route>
                 <Route path="/Publicar"> <Publicar/>                                                 </Route>
                 <Route path="/Perfil"> <Perfil/>                                                     </Route>
+                <Route path="/PerfilUsuario"> <Perfil/>                                                     </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>
                 <Route path="/PainelMestre"> <PainelMestre/>                                         </Route>
                 <Route path="/EditarArtigo"> <EditarArtigo/>                                         </Route>

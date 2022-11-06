@@ -15,7 +15,7 @@ function ParticipantesModal(props){
                 <Modal.Title>Participantes</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {props.users.map((nome) =>  <li> <Link to="/Perfil" className="nav-link" style={{color: '#4f7279'}}>{nome} </Link> </li>)}                
+                    {props.users.map((nome) =>  <li> <Link to="/PerfilUsuario" className="nav-link" style={{color: '#4f7279'}}>{nome} </Link> </li>)}                
                 </Modal.Body>
                 <Modal.Footer>
 
