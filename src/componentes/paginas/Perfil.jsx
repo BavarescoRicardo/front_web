@@ -19,7 +19,7 @@ function Perfil(props){
     }
 
     useEffect(() => {   
-        imagemGet();     
+        perfilGet();     
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
         }
@@ -30,7 +30,7 @@ function Perfil(props){
         
       }, [!usuarioData, selectedImage]);   
     
-    const imagemGet = async()=>{        
+    const perfilGet = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){            
             await axios.get(userUrlHeroku, 
             {          
