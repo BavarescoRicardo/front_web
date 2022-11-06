@@ -111,7 +111,7 @@ const Navegacao = () => {
                 <Route exact path="/DetalheArtigoNovo/:id"> <NovoDetalhe/>                           </Route>
                 <Route path="/Publicar"> <Publicar/>                                                 </Route>
                 <Route path="/Perfil"> <Perfil/>                                                     </Route>
-                <Route path="/PerfilUsuario"> <Perfil/>                                                     </Route>
+                <Route path="/PerfilUsuario"> <Perfil/>                                              </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>                                            </Route>
                 <Route path="/PainelMestre"> <PainelMestre/>                                         </Route>
                 <Route path="/EditarArtigo"> <EditarArtigo/>                                         </Route>

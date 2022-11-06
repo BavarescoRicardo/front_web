@@ -189,7 +189,7 @@ function ListaArtigos(){
 
                                         {participantesArtigo.forEach(p => { 
                                             console.log(p.nomeCompleto)
-                                            users.push(p.nomeCompleto) 
+                                            users.push(p) 
                                         })}
 
                                     </div>
