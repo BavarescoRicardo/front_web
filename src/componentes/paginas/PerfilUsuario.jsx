@@ -13,10 +13,6 @@ function PerfilUsuario(props){
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     var [usuarioData, setUsuarioData] = useState(null);
-    
-    function redirecionarParaEdicao(){
-        history.push({ pathname: '/EditarPerfil' })
-    }
 
     useEffect(() => {   
         perfilGet();     
@@ -33,7 +29,7 @@ function PerfilUsuario(props){
     const perfilGet = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){    
             const formData = new FormData();
-            formData.append('idLogin', 5);        
+            formData.append('idLogin', props.idUsuario);        
             await axios.post("http://localhost:3033/selecionaperfil", 
             {          
                 headers: {          
@@ -45,11 +41,7 @@ function PerfilUsuario(props){
             if (response.data.login != null){
                 console.log('existia usuario '+response.data);
                 setUsuarioData(response.data);            
-            }else{
-                alert("Não existe usuário cadastrado para este login.")
-                history.push({ pathname: '/EditarPerfil' })
-            }
-            
+            }            
             }).catch(error=> {
                 console.log(error);
             })
