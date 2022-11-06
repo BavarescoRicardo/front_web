@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
 import "../estilos/search-filter.css"
+import ParticipantesModal from "../elementos/ParticipantesModal"
 import axios from 'axios';
 
 import FiltroArtigo from './FiltroArtigo';
@@ -19,6 +20,10 @@ function ListaArtigos(){
     const userUrlHeroku ="http://localhost:3033/selusuario";
     const userUrlHerokuCont ="http://localhost:3033/artigo/artigoconta";
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
     const [imageUrl, setImageUrl] = useState([]);
@@ -27,6 +32,8 @@ function ListaArtigos(){
     const [pagina, setPagina]=useState(0);
     const [contagem, setContagem]=useState([]);
 
+    const [participantes, setParticipantes]=useState([]);
+    let users =[];
 
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  
@@ -174,22 +181,28 @@ function ListaArtigos(){
 
                             <div className="row">
                                 <div className="col">
-                                        <div className="lista-artigo-flags">
-                                        <p className="card-text">{"Curso: " + options[codCurso].label}</p>
-                                        <p>Participantes:</p>
-                                            {participantesArtigo.map((p) => {     
-                                                return (<p>{p.nomeCompleto}</p>) 
-                                            })}
-                                        </div>
+                                    <div className="lista-artigo-flags">
+                                        <p className="card-text">{"Curso: " + options[codCurso].label}
+                                        <button type="button" class="btn btn-outline-dark btn-sm" onClick={handleShow}>
+                                            Listar Participantes
+                                        </button></p>
+
+                                        {participantesArtigo.forEach(p => { 
+                                            console.log(p.nomeCompleto)
+                                            users.push(p.nomeCompleto) 
+                                        })}
+
+                                    </div>
                                 </div>
                             </div>
                                                       
                         </div>
-                    </div>
+                    </div>                    
                 </article>
             ))}
 
             <Paginacao contagem = {contagem} setPagina = {setPagina}/>
+            <ParticipantesModal show = {show} setShow = {setShow} users = {users} />
 
             <div className="publicar-novo-lista-artigo" >
                 {permissao  
