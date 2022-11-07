@@ -41,7 +41,7 @@ const SelecaoArtigo = (props) => {
 
     async function confirmarParticipant() {        
         try {
-            await axios.post('http://localhost:3033/adiconaparticipantenovo', selecionado, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/adiconaparticipantenovo', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -66,7 +66,7 @@ const SelecaoArtigo = (props) => {
 
     async function confirmarPermissao() {        
         try {
-            await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/adiconaparticipante', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
