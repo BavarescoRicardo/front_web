@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 
-function PerfilUsuario(props){
+function PerfilParticipante(props){
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -105,4 +105,4 @@ function PerfilUsuario(props){
 }
 
 
-export default PerfilUsuario;
+export default PerfilParticipante;
