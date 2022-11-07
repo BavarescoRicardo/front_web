@@ -45,7 +45,7 @@ function PerfilUsuario(props){
     return(
         <div className='perfil'>
             <div className="cabecalho">
-                <h1>Perfil usuário 2 </h1>
+                <h1>Participante</h1>
             </div>
 
             <div className="container">  
