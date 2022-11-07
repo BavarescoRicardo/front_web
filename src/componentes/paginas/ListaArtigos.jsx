@@ -37,12 +37,9 @@ function ListaArtigos(){
     async function handleShow(codigo) {
         users = [];
         setParticipantes([])
-        console.log("Codigo parametro");
         console.log(codigo);
         codUsers.forEach(element => {
             if (codigo == element[1].cod){
-                console.log("Igual")
-                // users.push([element[0], {cod: codigo}]);
                 setParticipantes(participantes => [...participantes, element[0]])                    
             }
             console.log(participantes);
