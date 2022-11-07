@@ -3,16 +3,14 @@ import '../estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-import Button from '@material-ui/core/Button';
+import { useLocation } from "react-router-dom";
 
-function PerfilUsuario(props){    
-    const history = useHistory();
-    const userUrlHeroku ="http://localhost:3033/selusuario";
+function PerfilUsuario(props){
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     var [usuarioData, setUsuarioData] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {   
         perfilGet();     
@@ -29,17 +27,13 @@ function PerfilUsuario(props){
     const perfilGet = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){    
             const formData = new FormData();
-            formData.append('idLogin', props.idUsuario);        
-            await axios.post("http://localhost:3033/selecionaperfil", 
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
-                }
-            }
-            )
+            console.log("props sao:  "+props)
+            console.log(location.state.idUsuario)
+            // formData.append('idLogin', location.idUsuario);
+            formData.append('idLogin', location.state.idUsuario);
+            await axios.post("http://localhost:3033/selecionaperfil", formData)
             .then(response => {                          
             if (response.data.login != null){
-                console.log('existia usuario '+response.data);
                 setUsuarioData(response.data);            
             }            
             }).catch(error=> {
@@ -51,7 +45,7 @@ function PerfilUsuario(props){
     return(
         <div className='perfil'>
             <div className="cabecalho">
-                <h1>Perfil usuário </h1>
+                <h1>Perfil usuário 2 </h1>
             </div>
 
             <div className="container">  

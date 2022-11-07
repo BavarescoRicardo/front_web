@@ -48,7 +48,7 @@ const SelecaoArtigo = (props) => {
             })
             .then(async response => {
                 if(response.data){
-                    alert("Adicionado participante ao artigo");                    
+                    confirmarPermissao();
                 }else{
                     console.log("error ao publicar");
                 }
@@ -62,7 +62,32 @@ const SelecaoArtigo = (props) => {
             alert(error)
             console.log("Erro " + error);
         }        
-    }   
+    }
+
+    async function confirmarPermissao() {        
+        try {
+            await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(async response => {
+                if(response.data){
+                    alert("Adicionado participante ao artigo");                    
+                }else{
+                    console.log("error ao publicar");
+                }
+            }).catch(error=> {
+                alert(error)
+                console.log("Erro " + error);
+            }).then(() => {
+                window.location.reload();
+            })
+        } catch (error) {
+            alert(error)
+            console.log("Erro " + error);
+        }        
+    } 
     
     useEffect(async ()=>{      
         await artigoGet();
