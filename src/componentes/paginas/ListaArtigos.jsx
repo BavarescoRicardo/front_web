@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../estilos/Artigo.css'
 import "../estilos/search-filter.css"
+import ParticipantesModal from "../elementos/ParticipantesModal"
 import axios from 'axios';
 
 import FiltroArtigo from './FiltroArtigo';
@@ -19,14 +20,35 @@ function ListaArtigos(){
     const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
     const userUrlHerokuCont ="https://tcc-spring-back-end.herokuapp.com/artigo/artigoconta";
 
+    const [show, setShow] = useState(false);
+    const [participantes, setParticipantes]=useState([]);
+
     const [dados, setDados]=useState([]);    
     const [img, setImg]=useState(false);
     const [imageUrl, setImageUrl] = useState([]);
     const [codImagem, setCodImagem] = useState([]);
     const [permissao, setPermissao] = useState(false);
     const [pagina, setPagina]=useState(0);
-    const [contagem, setContagem]=useState([]);
+    const [contagem, setContagem]=useState([]);    
 
+    let users =[];
+    let codUsers =[];
+
+    async function handleShow(codigo) {
+        users = [];
+        setParticipantes([])
+        console.log("Codigo parametro");
+        console.log(codigo);
+        codUsers.forEach(element => {
+            if (codigo == element[1].cod){
+                console.log("Igual")
+                // users.push([element[0], {cod: codigo}]);
+                setParticipantes(participantes => [...participantes, element[0]])                    
+            }
+            console.log(participantes);
+            setShow(true)            
+        })        
+    }
 
     const verificarPermissao = async()=>{   
         if(localStorage.getItem('tokens') != null){  
@@ -71,7 +93,6 @@ function ListaArtigos(){
     const artigoGet = async()=>{
         await axios.get(baseUrlHeroku+"?pg="+pagina)
         .then(response => {
-            console.log(response.data)
             setDados(response.data);
 
             verificarPermissao();
@@ -146,7 +167,7 @@ function ListaArtigos(){
                 <FiltroArtigo setDados={setDados}/>
         </div>
 
-            {dados.map(({ codigo, titulo, descricao, codCurso, imagem }) => (
+            {dados.map(({ codigo, titulo, descricao, codCurso, imagem, participantesArtigo }) => (
                 <article key={codigo}>
                     <div className="card mb-5" style={{ display: "flex", marginLeft: "auto", marginRight: "auto"}}>
                         {(imagem && img && dados.length > 0)? decodifImagem(imagem, codigo) : null}
@@ -174,18 +195,27 @@ function ListaArtigos(){
 
                             <div className="row">
                                 <div className="col">
-                                        <div className="lista-artigo-flags">
-                                            <p className="card-text">{"Curso: " + options[codCurso].label}</p>
-                                        </div>
+                                    <div className="lista-artigo-flags">
+                                        <p className="card-text">{"Curso: " + options[codCurso].label}
+                                        <button type="button" class="btn btn-outline-dark btn-sm" onClick={() =>handleShow(codigo)}>
+                                            Listar Participantes
+                                        </button></p>
+                                        
+                                        {participantesArtigo.forEach(p => { 
+                                            codUsers.push([p, {cod: codigo}]);
+                                        })}
+
+                                    </div>
                                 </div>
                             </div>
                                                       
                         </div>
-                    </div>
+                    </div>                    
                 </article>
             ))}
 
             <Paginacao contagem = {contagem} setPagina = {setPagina}/>
+            <ParticipantesModal show = {show} setShow = {setShow} users = {participantes} />         
 
             <div className="publicar-novo-lista-artigo" >
                 {permissao  

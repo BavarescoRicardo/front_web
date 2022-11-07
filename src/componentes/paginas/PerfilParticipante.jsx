@@ -3,20 +3,14 @@ import '../estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-import Button from '@material-ui/core/Button';
+import { useLocation } from "react-router-dom";
 
-function Perfil(props){    
-    const history = useHistory();
-    const userUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/selusuario";
+function PerfilParticipante(props){
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     var [usuarioData, setUsuarioData] = useState(null);
-    
-    function redirecionarParaEdicao(){
-        history.push({ pathname: '/EditarPerfil' })
-    }
+    const location = useLocation();
 
     useEffect(() => {   
         perfilGet();     
@@ -31,33 +25,25 @@ function Perfil(props){
       }, [!usuarioData, selectedImage]);   
     
     const perfilGet = async()=>{        
-        if(!imageUrl && (localStorage.getItem('tokens') != null)){            
-            await axios.get(userUrlHeroku, 
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
-                }
-            }
-            )
-            .then(response => {                          
-            if (response.data.login != null){
-                console.log('existia usuario '+response.data);
-                setUsuarioData(response.data);            
-            }else{
-                alert("Não existe usuário cadastrado para este login.")
-                history.push({ pathname: '/EditarPerfil' })
-            }
-            
-            }).catch(error=> {
-                console.log(error);
-            })
-        }
+        const formData = new FormData();
+        console.log("props sao:  "+props)
+        console.log(location.state.idUsuario)
+        // formData.append('idLogin', location.idUsuario);
+        formData.append('idLogin', location.state.idUsuario);
+        await axios.post("http://localhost:3033/selecionaperfil", formData)
+        .then(response => {                          
+        if (response.data.login != null){
+            setUsuarioData(response.data);            
+        }            
+        }).catch(error=> {
+            console.log(error);
+        })        
     }
 
     return(
         <div className='perfil'>
             <div className="cabecalho">
-                <h1>Perfil usuário </h1>
+                <h1>Participante</h1>
             </div>
 
             <div className="container">  
@@ -104,9 +90,6 @@ function Perfil(props){
                                 style={{ display: 'none' }}
                                 onChange={e => setSelectedImage(e.target.files[0])}
                             />
-                            <button type="button" class="btn btn-outline-dark" onClick={redirecionarParaEdicao} >
-                                Editar Perfil
-                            </button>
                     </div>
                 </div>
                 <div className="row">
@@ -122,4 +105,4 @@ function Perfil(props){
 }
 
 
-export default Perfil;
+export default PerfilParticipante;
