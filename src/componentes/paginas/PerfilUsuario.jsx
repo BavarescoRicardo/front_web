@@ -25,21 +25,19 @@ function PerfilUsuario(props){
       }, [!usuarioData, selectedImage]);   
     
     const perfilGet = async()=>{        
-        if(!imageUrl && (localStorage.getItem('tokens') != null)){    
-            const formData = new FormData();
-            console.log("props sao:  "+props)
-            console.log(location.state.idUsuario)
-            // formData.append('idLogin', location.idUsuario);
-            formData.append('idLogin', location.state.idUsuario);
-            await axios.post("http://localhost:3033/selecionaperfil", formData)
-            .then(response => {                          
-            if (response.data.login != null){
-                setUsuarioData(response.data);            
-            }            
-            }).catch(error=> {
-                console.log(error);
-            })
-        }
+        const formData = new FormData();
+        console.log("props sao:  "+props)
+        console.log(location.state.idUsuario)
+        // formData.append('idLogin', location.idUsuario);
+        formData.append('idLogin', location.state.idUsuario);
+        await axios.post("http://localhost:3033/selecionaperfil", formData)
+        .then(response => {                          
+        if (response.data.login != null){
+            setUsuarioData(response.data);            
+        }            
+        }).catch(error=> {
+            console.log(error);
+        })        
     }
 
     return(
