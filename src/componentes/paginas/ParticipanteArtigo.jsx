@@ -30,12 +30,33 @@ const ParticipanteArtigo = (props) => {
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
                 }
             }).then(response => {
-                window.location.reload();
+                removeParticipante(idArtigo);
             });
         } catch (error) {
             console.log("Erro " + error);
         }
     }
+
+    async function removeParticipante(idArtigo) {        
+        try {
+            console.log("removendo o artigo de  id: "+idArtigo);
+            console.log("removendo o usuario de  id: "+props.idUsuario);
+
+            selecionado.idArtigo = idArtigo;
+            selecionado.idUsuario = props.idUsuario;
+
+            await axios.post('http://localhost:3033/participanteremovernovo/', selecionado, 
+            { 
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+                }
+            }).then(response => {
+                window.location.reload();
+            });
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+    }    
 
     function formataNumero(numero){
         var zeros = '0';
