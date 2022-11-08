@@ -10,12 +10,12 @@ import resizeImg from '../../servicos/resizeImg';
 function Publicar(){
 
     const history = useHistory();
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
-    const baseUrlArtigo = 'https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo';
-    const baseUrlArtigoHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/salvarartigo";
+    const baseUrlExterno ="http://localhost:3033/artigo/imagem";
+    const baseUrlArtigo = 'http://localhost:3033/artigo/salvarartigo';
+    const baseUrlArtigoHeroku ="http://localhost:3033/artigo/salvarartigo";
 
-    const baseUrlHerokuImg ="https://tcc-spring-back-end.herokuapp.com/artigo/imagem";
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvaloginapi";
+    const baseUrlHerokuImg ="http://localhost:3033/artigo/imagem";
+    const baseUrlHeroku ="http://localhost:3033/salvaloginapi";
 
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);

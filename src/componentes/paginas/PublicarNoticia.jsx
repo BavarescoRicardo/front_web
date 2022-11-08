@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button';
 function PublicarNoticia(){
 
     const history = useHistory();;
-    const baseUrlArtigoHeroku ="https://tcc-spring-back-end.herokuapp.com/noticia/salvar";
-    const baseUrlHerokuImg ="https://tcc-spring-back-end.herokuapp.com/noticia/imagem";
+    const baseUrlArtigoHeroku ="http://localhost:3033/noticia/salvar";
+    const baseUrlHerokuImg ="http://localhost:3033/noticia/imagem";
 
     var codigoArtigo = 0;
     const [selectedImage, setSelectedImage] = useState(null);

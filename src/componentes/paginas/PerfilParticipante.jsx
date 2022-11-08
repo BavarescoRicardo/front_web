@@ -30,7 +30,7 @@ function PerfilParticipante(props){
         console.log(location.state.idUsuario)
         // formData.append('idLogin', location.idUsuario);
         formData.append('idLogin', location.state.idUsuario);
-        await axios.post("https://tcc-spring-back-end.herokuapp.com/selecionaperfil", formData)
+        await axios.post("http://localhost:3033/selecionaperfil", formData)
         .then(response => {                          
         if (response.data.login != null){
             setUsuarioData(response.data);            

@@ -4,8 +4,8 @@ import Select from 'react-select'
 import axios from 'axios';
 
 const SelecaoArtigo = (props) => {  
-    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
-    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolistaparticipante";
+    const baseUrl ="http://localhost:3033/artigo/artigolista";
+    const baseUrlExterno ="http://localhost:3033/artigo/artigolistaparticipante";
     
     var opcoes = [
         {value: 0, label: "Selecione o artigo"}
@@ -41,7 +41,7 @@ const SelecaoArtigo = (props) => {
 
     async function confirmarParticipant() {        
         try {
-            await axios.post('https://tcc-spring-back-end.herokuapp.com/adiconaparticipantenovo', selecionado, 
+            await axios.post('http://localhost:3033/adiconaparticipantenovo', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -66,7 +66,7 @@ const SelecaoArtigo = (props) => {
 
     async function confirmarPermissao() {        
         try {
-            await axios.post('https://tcc-spring-back-end.herokuapp.com/adiconaparticipante', selecionado, 
+            await axios.post('http://localhost:3033/adiconaparticipante', selecionado, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }

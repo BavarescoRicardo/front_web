@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function FiltroArtigo(props){
 
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const baseUrlHeroku ="http://localhost:3033/artigo/artigolista";
     const [filtro, setFiltro]=useState(
         {
           codCurso: 0,

@@ -8,8 +8,8 @@ import upladImagem from '../../servicos/upladImagem'
 import resizeImg from '../../servicos/resizeImg'
 
 function Perfil(){
-    const baseUrlHeroku ="https://tcc-spring-back-end.herokuapp.com/salvausuario";
-    const baseUrlHerokuft ="https://tcc-spring-back-end.herokuapp.com/postaFt";
+    const baseUrlHeroku ="http://localhost:3033/salvausuario";
+    const baseUrlHerokuft ="http://localhost:3033/postaFt";
 
     const [selectedImage, setSelectedImage] = useState(null); 
     const history = useHistory();
@@ -41,7 +41,7 @@ function Perfil(){
 
       const selecionaUsuario = async()=>{        
         if(!imageUrl && (localStorage.getItem('tokens') != null)){            
-            await api.get("https://tcc-spring-back-end.herokuapp.com/selusuario", 
+            await api.get("http://localhost:3033/selusuario", 
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
