@@ -4,8 +4,8 @@ import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import axios from 'axios';
 
 const ParticipanteArtigo = (props) => {  
-    const baseUrl ="http://localhost:3033/artigo/artigolista";
-    const baseUrlExterno ="http://localhost:3033/artigo/artigolista";
+    const baseUrl ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
+    const baseUrlExterno ="https://tcc-spring-back-end.herokuapp.com/artigo/artigolista";
 
     const [dadoParticipa, setDadoParticipa]=useState([]);    
 
@@ -24,7 +24,7 @@ const ParticipanteArtigo = (props) => {
             selecionado.idArtigo = idArtigo;
             selecionado.idUsuario = props.idUsuario;
 
-            await axios.post('http://localhost:3033/participanteremover/', selecionado, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/participanteremover/', selecionado, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -45,7 +45,7 @@ const ParticipanteArtigo = (props) => {
             selecionado.idArtigo = idArtigo;
             selecionado.idUsuario = props.idUsuario;
 
-            await axios.post('http://localhost:3033/participanteremovernovo/', selecionado, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/participanteremovernovo/', selecionado, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -77,7 +77,7 @@ const ParticipanteArtigo = (props) => {
         try {
             const formData = new FormData();
             formData.append('idUsuario', idUsuario);
-            await axios.post('http://localhost:3033/selparticipantes/', formData, 
+            await axios.post('https://tcc-spring-back-end.herokuapp.com/selparticipantes/', formData, 
             { 
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
