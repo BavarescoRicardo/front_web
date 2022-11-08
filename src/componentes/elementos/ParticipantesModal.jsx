@@ -18,8 +18,12 @@ function ParticipantesModal(props){
                 <Modal.Title>Participantes</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* {console.log(props.users.map((e) => e.nomeCompleto))} */}
-                    {props.users.map((nome) =>  <li> <Link to={{ pathname: `/PerfilParticipante`, state: {idUsuario: nome.codigo} }} className="nav-link" style={{color: '#4f7279'}}>{nome.codigo}: {nome.nomeCompleto}</Link> </li>)}
+                    {props.users.map((nome) =>  
+                    <li> 
+                        {nome.codigo}: {nome.nomeCompleto} <Link to={{ pathname: `/PerfilParticipante`, state: {idUsuario: nome.codigo} }} className="nav-link" style={{color: '#5c94ac', display: 'contents'}}>
+                            Ver Usuário
+                        </Link> 
+                    </li>)}
                 </Modal.Body>
                 <Modal.Footer>
 
